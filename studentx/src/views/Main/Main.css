@@ -1,0 +1,171 @@
+.wrapper {
+    background: #8E95C7;
+    border-radius: 0px 0px 10px 10px;
+    height: 170px;
+    height: 210px;
+}
+
+.main-container {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-top: -15px;
+}
+
+.search-container {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-top: -15px;
+    padding-top: 47px;
+}
+
+.search {
+    display: flex;
+}
+
+.search__input {
+    width: 90%;
+    height: 28px;
+    padding-left: 25px;
+    background: #9DA4D8;
+    border: none;
+    border-radius: 10px;
+    background-image: url("./../../img/searchIcon.svg");
+    background-repeat: no-repeat;
+    background-position: 5px 50%;
+    margin-right: 15px;
+    margin-bottom: 14px;
+}
+
+.search__input::after {
+    background-image: url("./../../img/searchIcon.svg");
+    background-position: 0 50%;
+}
+
+.button-box {
+    width: 286px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 30px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.toggle-btn {
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+}
+
+#btn {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+}
+
+.toggle-btn--active {
+    background: #FFFFFF;
+    /* fill */
+    border: 1px solid #E7E7E7;
+    box-shadow: 1px 1px 28px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 10px;
+}
+
+.filter {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.filter__title {
+    font-style: normal;
+    margin-left: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    /* identical to box height, or 16px */
+    text-align: center;
+    /* white */
+    color: #FFFFFF;
+}
+
+.content-item {
+    width: 312px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 12px;
+    padding-left: 20px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+}
+
+.content-item__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    color: #232036;
+}
+
+.content-item__descr {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 130%;
+    /* or 13px */
+    /* dark grey */
+    color: #686868;
+    margin-bottom: 40px;
+}
+
+.content-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-info__date {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 130%;
+    /* identical to box height, or 13px */
+    text-align: center;
+    /* dark white */
+    color: #AEAEAE;
+}
+
+.content-info__price {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 130%;
+    /* or 10px */
+    text-align: center;
+    /* new black */
+    color: #232036;
+}
+
+.content-info__button {
+    background-color: #fff;
+    border: 1px solid #E7E7E7;
+    border-radius: 10px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 8px;
+    line-height: 130%;
+    /* or 10px */
+    text-align: center;
+    /* new black */
+    color: #232036;
+}
