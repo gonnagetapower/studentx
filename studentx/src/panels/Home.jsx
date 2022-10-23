@@ -36,7 +36,7 @@ import MyPublication from '../views/MyPublication/MyPublication';
 import Profile from '../views/Profile/Profile';
 import Navigation from '../components/Navigation';
 
-const Example = () => {
+const Home = () => {
   const platform = usePlatform();
   const viewWidth = useAdaptivity();
   const [activeStory, setActiveStory] = React.useState('profile');
@@ -138,4 +138,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default Home;

@@ -1,0 +1,43 @@
+.intro {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 10%;
+}
+
+.intro__title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    color: #232036;
+}
+
+.intro__descr {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    color: #686868;
+    padding-bottom: 15%;
+}
+
+.buttonExample {
+    width: 230px;
+    height: 42px;
+    left: 65px;
+    top: 670px;
+    background: #6C639E;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #F3F3F3;
+}
+
+.buttonExample:hover {
+    cursor: pointer;
+}
