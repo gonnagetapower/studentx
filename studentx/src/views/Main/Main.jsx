@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
 import { View, Panel, Group } from '@vkontakte/vkui';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchTasks } from '../../redux/slices/taskSlice';
 
 import './Main.css';
 
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
+import { useEffect } from 'react';
+import { Task } from '../../components/';
 
 const Main = ({ id, activePanel }) => {
   const [buttonActive, setButtonActive] = useState('1');
@@ -13,6 +17,19 @@ const Main = ({ id, activePanel }) => {
   const onClickButton = (e) => {
     setButtonActive(e.target.id);
   };
+
+  const dispatch = useDispatch();
+
+  const tasksData = useSelector((state) => state.tasks.items);
+  const status = useSelector((state) => state.tasks.status);
+
+  const getTasks = async () => {
+    dispatch(fetchTasks());
+  };
+
+  useEffect(() => {
+    getTasks();
+  }, []);
 
   return (
     <View id={id} activePanel={activePanel}>
@@ -49,54 +66,15 @@ const Main = ({ id, activePanel }) => {
               </div>
             </div>
             <div className="main-container">
-              <div className="content-item">
-                <h1 className="content-item__title">Решить метрологию</h1>
-                <p className="content-item__descr">
-                  Нужно решить метрологию блин ничего не понимаю вообще помогите пожалуйста иначе я
-                  выпилюсь нахрен оч тяжко жить
-                </p>
-                <div className="content-info">
-                  <p className="content-info__date">23 сентября, 09:32</p>
-                  <p className="content-info__price">от 1.000 </p>
-                  <button className="content-info__button">откликнуться</button>
-                </div>
-              </div>
-              <div className="content-item">
-                <h1 className="content-item__title">Решить метрологию</h1>
-                <p className="content-item__descr">
-                  Нужно решить метрологию блин ничего не понимаю вообще помогите пожалуйста иначе я
-                  выпилюсь нахрен оч тяжко жить
-                </p>
-                <div className="content-info">
-                  <p className="content-info__date">23 сентября, 09:32</p>
-                  <p className="content-info__price">от 1.000 </p>
-                  <button className="content-info__button">откликнуться</button>
-                </div>
-              </div>
-              <div className="content-item">
-                <h1 className="content-item__title">Решить метрологию</h1>
-                <p className="content-item__descr">
-                  Нужно решить метрологию блин ничего не понимаю вообще помогите пожалуйста иначе я
-                  выпилюсь нахрен оч тяжко жить
-                </p>
-                <div className="content-info">
-                  <p className="content-info__date">23 сентября, 09:32</p>
-                  <p className="content-info__price">от 1.000 </p>
-                  <button className="content-info__button">откликнуться</button>
-                </div>
-              </div>
-              <div className="content-item">
-                <h1 className="content-item__title">Решить метрологию</h1>
-                <p className="content-item__descr">
-                  Нужно решить метрологию блин ничего не понимаю вообще помогите пожалуйста иначе я
-                  выпилюсь нахрен оч тяжко жить
-                </p>
-                <div className="content-info">
-                  <p className="content-info__date">23 сентября, 09:32</p>
-                  <p className="content-info__price">от 1.000 </p>
-                  <button className="content-info__button">откликнуться</button>
-                </div>
-              </div>
+              {tasksData.map((obj) => (
+                <Task
+                  key={obj.id}
+                  title={obj.title}
+                  descr={obj.description}
+                  dateOrder={obj.orderDate}
+                  price={obj.price}
+                />
+              ))}
             </div>
           </div>
         </Group>

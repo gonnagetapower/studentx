@@ -1,0 +1,78 @@
+.content-item {
+    width: 312px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 12px;
+    padding-left: 20px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+}
+
+.content-item__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    color: #232036;
+}
+
+.content-item__descr {
+    display: -webkit-box;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 130%;
+    /* or 13px */
+    /* dark grey */
+    color: #686868;
+    margin-bottom: 40px;
+    -webkit-line-clamp: 4;
+    /* количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.content-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-info__date {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 130%;
+    /* identical to box height, or 13px */
+    text-align: center;
+    /* dark white */
+    color: #AEAEAE;
+}
+
+.content-info__price {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 130%;
+    color: #232036;
+}
+
+.content-info__button {
+    background-color: #fff;
+    border: 1px solid #E7E7E7;
+    border-radius: 10px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 8px;
+    line-height: 130%;
+    /* or 10px */
+    text-align: center;
+    /* new black */
+    color: #232036;
+}
