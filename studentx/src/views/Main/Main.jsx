@@ -34,7 +34,7 @@ const Main = ({ id, activePanel, go, ROUTES }) => {
   return (
     <View id={id} activePanel={activePanel}>
       <Panel id={id}>
-        <Group style={{ height: '1000px' }}>
+        <div className="main-wrapper">
           <div className="wrapper">
             <div className="search-container">
               <div className="search">
@@ -80,7 +80,7 @@ const Main = ({ id, activePanel, go, ROUTES }) => {
               ))}
             </div>
           </div>
-        </Group>
+        </div>
       </Panel>
     </View>
   );

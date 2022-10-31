@@ -7,6 +7,8 @@
     padding-left: 20px;
     padding-right: 18px;
     padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .content-item__title {
@@ -28,8 +30,8 @@
     /* or 13px */
     /* dark grey */
     color: #686868;
-    margin-bottom: 40px;
-    -webkit-line-clamp: 4;
+    margin-bottom: 20px;
+    -webkit-line-clamp: 3;
     /* количество строк */
     -webkit-box-orient: vertical;
     overflow: hidden;
