@@ -20,6 +20,7 @@
 
 .search {
     display: flex;
+    align-items: baseline;
 }
 
 .search__input {
@@ -42,7 +43,7 @@
 }
 
 .button-box {
-    width: 286px;
+    width: 288px;
     margin: 0 auto;
     position: relative;
     border-radius: 30px;

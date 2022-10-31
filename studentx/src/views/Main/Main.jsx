@@ -11,7 +11,7 @@ import filterIcon from './../../img/filterIcon.svg';
 import { useEffect } from 'react';
 import { Task } from '../../components/';
 
-const Main = ({ id, activePanel }) => {
+const Main = ({ id, activePanel, go, ROUTES }) => {
   const [buttonActive, setButtonActive] = useState('1');
 
   const onClickButton = (e) => {
@@ -68,11 +68,14 @@ const Main = ({ id, activePanel }) => {
             <div className="main-container">
               {tasksData.map((obj) => (
                 <Task
+                  go={go}
+                  ROUTES={ROUTES}
                   key={obj.id}
                   title={obj.title}
                   descr={obj.description}
                   dateOrder={obj.orderDate}
                   price={obj.price}
+                  id={obj.id}
                 />
               ))}
             </div>

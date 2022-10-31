@@ -36,7 +36,7 @@ import MyPublication from '../views/MyPublication/MyPublication';
 import Profile from '../views/Profile/Profile';
 import Navigation from '../components/Navigation';
 
-const Home = () => {
+const Home = ({ go, ROUTES }) => {
   const platform = usePlatform();
   const viewWidth = useAdaptivity();
   const [activeStory, setActiveStory] = React.useState('profile');
@@ -128,7 +128,7 @@ const Home = () => {
           tabbar={
             !isDesktop && <Navigation onStoryChange={onStoryChange} activeStory={activeStory} />
           }>
-          <Main id="main" activePanel="main" />
+          <Main id="main" activePanel="main" go={go} ROUTES={ROUTES} />
           <MyPublication id="publication" activePanel="publication" />
           <Messages id="messages" activePanel="messages" />
           <Profile id="profile" activePanel="profile" />

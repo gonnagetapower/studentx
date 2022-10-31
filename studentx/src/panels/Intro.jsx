@@ -13,10 +13,10 @@ const Intro = ({ id, go, route, userApplyPolicy, setOpen, setActiveModal }) => {
           <Div className="intro">
             <h2 className="intro__title">Твой персональный помощник</h2>
             <p className="intro__descr">создан для содействия в написании учебных работ</p>
-            <img src={girl} alt="girl styding photo" />
+            <img className="intro__img" src={girl} alt="girl styding photo" />
           </Div>
           <Div>
-            <button className="buttonExample" onClick={() => setOpen(true)}>
+            <button className="button" onClick={() => setOpen(true)}>
               Хорошо
             </button>
           </Div>
