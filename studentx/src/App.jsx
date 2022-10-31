@@ -19,21 +19,33 @@ import './App.css';
 
 import Home from './panels/Home';
 import Intro from './panels/Intro';
+import { useLocation } from '@happysanta/router';
+import {
+  PANEL_MAIN,
+  PAGE_INTRO,
+  PAGE_HOME,
+  PANEL_HOME,
+  PANEL_INTRO,
+  router,
+  VIEW_MAIN,
+} from './router';
 
-const ROUTES = {
-  HOME: 'home',
-  INTRO: 'intro',
-  FIRST: 'first',
-  TASK: `task/`,
-};
+// const ROUTES = {
+//   HOME: 'home',
+//   INTRO: 'intro',
+//   FIRST: 'first',
+//   TASK: `task/`,
+// };
 
 const STORAGE_KEYS = {
   STATUS: 'status',
 };
 
 const App = () => {
+  const location = useLocation();
+
   const [scheme, setScheme] = useState('bright_light');
-  const [activePanel, setActivePanel] = useState(ROUTES.INTRO);
+  // const [activePanel, setActivePanel] = useState(ROUTES.INTRO);
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [userApplyPolicy, setUserApplyPolicy] = useState(false);
@@ -65,7 +77,7 @@ const App = () => {
           switch (key) {
             case STORAGE_KEYS.STATUS:
               if (!data[key].userApplyPolicy) {
-                setActivePanel(ROUTES.HOME);
+                router.pushPage(PAGE_HOME);
                 setUserApplyPolicy(true);
               }
               break;
@@ -88,8 +100,9 @@ const App = () => {
     fetchData();
   }, []);
 
-  const go = (panel) => {
-    setActivePanel(panel);
+  const go = (page) => {
+    router.pushPage(PAGE_HOME);
+    console.log(router);
     setOpen(false);
   };
 
@@ -101,7 +114,7 @@ const App = () => {
           userApplyPolicy: true,
         }),
       });
-      go(ROUTES.HOME);
+      go(PAGE_HOME);
     } catch (error) {
       console.log(error);
     }
@@ -175,13 +188,13 @@ const App = () => {
                           type="checkbox"
                           id="policy"
                           name="policy"
-                        />{' '}
+                        />
                         Согласен с правилами
                       </div>
                       <button
                         disabled={!checked ? true : false}
                         className={checked ? 'button modal__button' : 'button--off modal__button'}
-                        onClick={() => go(ROUTES.HOME)}>
+                        onClick={() => go(PAGE_HOME)}>
                         Понятно
                       </button>
                     </div>
@@ -191,13 +204,11 @@ const App = () => {
             }>
             <SplitCol>
               <div className="container">
-                <View activePanel={activePanel}>
-                  <Home id="home" fetchedUser={fetchedUser} go={go} ROUTES={ROUTES} />
-                  {/* <Example id="home" go={go} route={ROUTES} /> */}
+                <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
+                  <Home id={PANEL_HOME} />
                   <Intro
-                    id={ROUTES.INTRO}
+                    id={PANEL_MAIN}
                     go={veiwIntro}
-                    route={ROUTES.HOME}
                     userApplyPolicy={userApplyPolicy}
                     setOpen={setOpen}
                   />

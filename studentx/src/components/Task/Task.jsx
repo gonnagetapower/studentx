@@ -1,4 +1,5 @@
 import React from 'react';
+import { PAGE_PUBLICATIONS, router } from '../../router';
 
 import './Task.css';
 
@@ -10,7 +11,9 @@ const Task = ({ title, descr, dateOrder, price, id, go, ROUTES }) => {
       <div className="content-info">
         <p className="content-info__date">{dateOrder}</p>
         <p className="content-info__price">от {price} </p>
-        <button onClick={() => go(ROUTES.TASK + `${id}`)} className="content-info__button">
+        <button
+          onClick={() => router.pushPage(PAGE_PUBLICATIONS, { id: `${id}` })}
+          className="content-info__button">
           откликнуться
         </button>
       </div>

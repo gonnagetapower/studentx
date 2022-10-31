@@ -32,57 +32,55 @@ const Main = ({ id, activePanel, go, ROUTES }) => {
   }, []);
 
   return (
-    <View id={id} activePanel={activePanel}>
-      <Panel id={id}>
-        <div className="main-wrapper">
-          <div className="wrapper">
-            <div className="search-container">
-              <div className="search">
-                <input type="text" placeholder="Поиск" className="search__input" />
-                <img src={bellIcon} alt="search" className="search__info-bell" />
-              </div>
-              <div className="button-box">
-                <div id="btn"></div>
-                <button
-                  type="button"
-                  key={1}
-                  id={'1'}
-                  onClick={onClickButton}
-                  className={buttonActive === '1' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'}>
-                  Главная
-                </button>
-                <button
-                  key={2}
-                  id={'2'}
-                  onClick={onClickButton}
-                  type="button"
-                  className={buttonActive === '2' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'}>
-                  Публикации
-                </button>
-              </div>
-              <div className="filter">
-                <img className="filter__icon" src={filterIcon} alt="filter" />
-                <h2 className="filter__title">Фильтры</h2>
-              </div>
+    <Panel id={id}>
+      <div className="main-wrapper">
+        <div className="wrapper">
+          <div className="search-container">
+            <div className="search">
+              <input type="text" placeholder="Поиск" className="search__input" />
+              <img src={bellIcon} alt="search" className="search__info-bell" />
             </div>
-            <div className="main-container">
-              {tasksData.map((obj) => (
-                <Task
-                  go={go}
-                  ROUTES={ROUTES}
-                  key={obj.id}
-                  title={obj.title}
-                  descr={obj.description}
-                  dateOrder={obj.orderDate}
-                  price={obj.price}
-                  id={obj.id}
-                />
-              ))}
+            <div className="button-box">
+              <div id="btn"></div>
+              <button
+                type="button"
+                key={1}
+                id={'1'}
+                onClick={onClickButton}
+                className={buttonActive === '1' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'}>
+                Главная
+              </button>
+              <button
+                key={2}
+                id={'2'}
+                onClick={onClickButton}
+                type="button"
+                className={buttonActive === '2' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'}>
+                Публикации
+              </button>
+            </div>
+            <div className="filter">
+              <img className="filter__icon" src={filterIcon} alt="filter" />
+              <h2 className="filter__title">Фильтры</h2>
             </div>
           </div>
+          <div className="main-container">
+            {tasksData.map((obj) => (
+              <Task
+                go={go}
+                ROUTES={ROUTES}
+                key={obj.id}
+                title={obj.title}
+                descr={obj.description}
+                dateOrder={obj.orderDate}
+                price={obj.price}
+                id={obj.id}
+              />
+            ))}
+          </div>
         </div>
-      </Panel>
-    </View>
+      </div>
+    </Panel>
   );
 };
 

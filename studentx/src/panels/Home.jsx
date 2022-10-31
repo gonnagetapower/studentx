@@ -35,6 +35,7 @@ import Messages from '../views/Messages/Messages';
 import MyPublication from '../views/MyPublication/MyPublication';
 import Profile from '../views/Profile/Profile';
 import Navigation from '../components/Navigation';
+import { PANEL_MESSAGES, PANEL_PUBLICATIONS } from '../router';
 
 const Home = ({ go, ROUTES }) => {
   const platform = usePlatform();
@@ -84,16 +85,16 @@ const Home = ({ go, ROUTES }) => {
                 publication
               </Cell>
               <Cell
-                disabled={activeStory === 'messages'}
+                disabled={activeStory === { PANEL_MESSAGES }}
                 style={
-                  activeStory === 'messages'
+                  activeStory === { PANEL_MESSAGES }
                     ? {
                         backgroundColor: 'var(--vkui--color_background_secondary)',
                         borderRadius: 8,
                       }
                     : {}
                 }
-                data-story="messages"
+                data-story={PANEL_MESSAGES}
                 onClick={onStoryChange}
                 before={<Icon28MessageOutline />}>
                 messages
@@ -129,8 +130,8 @@ const Home = ({ go, ROUTES }) => {
             !isDesktop && <Navigation onStoryChange={onStoryChange} activeStory={activeStory} />
           }>
           <Main id="main" activePanel="main" go={go} ROUTES={ROUTES} />
-          <MyPublication id="publication" activePanel="publication" />
-          <Messages id="messages" activePanel="messages" />
+          <MyPublication id={PANEL_PUBLICATIONS} activePanel={PANEL_PUBLICATIONS} />
+          <Messages id={PANEL_MESSAGES} activePanel={PANEL_MESSAGES} />
           <Profile id="profile" activePanel="profile" />
         </Epic>
       </SplitCol>

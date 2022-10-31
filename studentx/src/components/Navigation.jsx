@@ -7,6 +7,8 @@ import MsgIcon from './../img/msgIcon.svg';
 
 import { Tabbar, TabbarItem } from '@vkontakte/vkui';
 
+import { PANEL_MESSAGES } from '../router';
+
 const Navigation = ({ onStoryChange, activeStory }) => {
   return (
     <div>
@@ -27,8 +29,8 @@ const Navigation = ({ onStoryChange, activeStory }) => {
         </TabbarItem>
         <TabbarItem
           onClick={onStoryChange}
-          selected={activeStory === 'messages'}
-          data-story="messages"
+          selected={activeStory === { PANEL_MESSAGES }}
+          data-story={PANEL_MESSAGES}
           text="Сообщения">
           <img src={MsgIcon} />
         </TabbarItem>
