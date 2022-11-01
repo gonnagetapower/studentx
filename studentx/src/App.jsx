@@ -31,12 +31,14 @@ import {
   PANEL_MESSAGES,
   PANEL_PROFILE,
   PANEL_PUBLICATIONS,
+  PANEL_RESPOND,
 } from './router';
 import Messages from './views/Messages/Messages';
 import Profile from './views/Profile/Profile';
 import Navigation from './components/Navigation';
 import Main from './views/Main/Main';
 import MyPublication from './views/MyPublication/MyPublication';
+import Respond from './views/Respond/Respond';
 
 // const ROUTES = {
 //   HOME: 'home',
@@ -225,6 +227,7 @@ const App = () => {
                   <Messages id={PANEL_MESSAGES} />
                   <Profile id={PANEL_PROFILE} />
                   <MyPublication id={PANEL_PUBLICATIONS} />
+                  <Respond id={PANEL_RESPOND} />
                 </View>
               </div>
             </SplitCol>

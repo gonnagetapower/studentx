@@ -66,18 +66,20 @@ const Main = ({ id, activePanel, go, ROUTES }) => {
             </div>
           </div>
           <div className="main-container">
-            {tasksData.map((obj) => (
-              <Task
-                go={go}
-                ROUTES={ROUTES}
-                key={obj.id}
-                title={obj.title}
-                descr={obj.description}
-                dateOrder={obj.orderDate}
-                price={obj.price}
-                id={obj.id}
-              />
-            ))}
+            <div className="content">
+              {tasksData.map((obj) => (
+                <Task
+                  go={go}
+                  ROUTES={ROUTES}
+                  key={obj.id}
+                  title={obj.title}
+                  descr={obj.description}
+                  dateOrder={obj.orderDate}
+                  price={obj.price}
+                  id={obj.id}
+                />
+              ))}
+            </div>
           </div>
           <Navigation />
         </div>
