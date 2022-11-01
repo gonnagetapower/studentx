@@ -35,15 +35,26 @@ import Messages from '../views/Messages/Messages';
 import MyPublication from '../views/MyPublication/MyPublication';
 import Profile from '../views/Profile/Profile';
 import Navigation from '../components/Navigation';
-import { PANEL_MESSAGES, PANEL_PUBLICATIONS } from '../router';
+import {
+  PAGE_MESSAGES,
+  PAGE_PROFILE,
+  PANEL_MESSAGES,
+  PANEL_PUBLICATIONS,
+  VIEW_MAIN,
+} from '../router';
+import { useLocation, useRouter } from '@happysanta/router';
 
 const Home = ({ go, ROUTES }) => {
   const platform = usePlatform();
   const viewWidth = useAdaptivity();
   const [activeStory, setActiveStory] = React.useState('profile');
-  const onStoryChange = (e) => setActiveStory(e.currentTarget.dataset.story);
+  const onStoryChange = (page) => setActiveStory(page);
   const isDesktop = viewWidth >= viewWidth.TABLET;
   const hasHeader = platform !== 'VKCOM';
+
+  const router = useRouter();
+
+  const location = useLocation();
 
   return (
     <SplitLayout
@@ -70,9 +81,9 @@ const Home = ({ go, ROUTES }) => {
                 feed
               </Cell>
               <Cell
-                disabled={activeStory === 'services'}
+                disabled={activeStory === 'publication'}
                 style={
-                  activeStory === 'services'
+                  activeStory === 'publication'
                     ? {
                         backgroundColor: 'var(--vkui--color_background_secondary)',
                         borderRadius: 8,
@@ -85,24 +96,24 @@ const Home = ({ go, ROUTES }) => {
                 publication
               </Cell>
               <Cell
-                disabled={activeStory === { PANEL_MESSAGES }}
+                disabled={activeStory === 'messages'}
                 style={
-                  activeStory === { PANEL_MESSAGES }
+                  activeStory === 'messages'
                     ? {
                         backgroundColor: 'var(--vkui--color_background_secondary)',
                         borderRadius: 8,
                       }
                     : {}
                 }
-                data-story={PANEL_MESSAGES}
-                onClick={onStoryChange}
+                data-story={'messages'}
+                onClick={() => router.pushPage(PAGE_MESSAGES)}
                 before={<Icon28MessageOutline />}>
                 messages
               </Cell>
               <Cell
-                disabled={activeStory === 'profile'}
+                disabled={location.getPageId() === { PAGE_PROFILE }}
                 style={
-                  activeStory === 'profile'
+                  location.getPageId() === { PAGE_PROFILE }
                     ? {
                         backgroundColor: 'var(--vkui--color_background_secondary)',
                         borderRadius: 8,
@@ -110,7 +121,7 @@ const Home = ({ go, ROUTES }) => {
                     : {}
                 }
                 data-story="profile"
-                onClick={onStoryChange}
+                onClick={() => router.pushPage(PAGE_MESSAGES)}
                 before={<Icon28UserCircleOutline />}>
                 profile
               </Cell>
@@ -130,8 +141,8 @@ const Home = ({ go, ROUTES }) => {
             !isDesktop && <Navigation onStoryChange={onStoryChange} activeStory={activeStory} />
           }>
           <Main id="main" activePanel="main" go={go} ROUTES={ROUTES} />
-          <MyPublication id={PANEL_PUBLICATIONS} activePanel={PANEL_PUBLICATIONS} />
-          <Messages id={PANEL_MESSAGES} activePanel={PANEL_MESSAGES} />
+          <MyPublication id="publication" activePanel="publication" />
+          <Messages id={PANEL_MESSAGES} activePanel={location.getViewActivePanel(VIEW_MAIN)} />
           <Profile id="profile" activePanel="profile" />
         </Epic>
       </SplitCol>

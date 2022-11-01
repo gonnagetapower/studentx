@@ -11,9 +11,7 @@ const Task = ({ title, descr, dateOrder, price, id, go, ROUTES }) => {
       <div className="content-info">
         <p className="content-info__date">{dateOrder}</p>
         <p className="content-info__price">от {price} </p>
-        <button
-          onClick={() => router.pushPage(PAGE_PUBLICATIONS, { id: `${id}` })}
-          className="content-info__button">
+        <button onClick={() => console.log('success')} className="content-info__button">
           откликнуться
         </button>
       </div>

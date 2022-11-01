@@ -1,19 +1,15 @@
 import React from 'react';
 
 import { View, Panel, PanelHeader, Group, Placeholder, PanelHeaderBack } from '@vkontakte/vkui';
-import { PANEL_PUBLICATIONS } from '../../router';
-import { useParams } from '@happysanta/router';
+import Navigation from '../../components/Navigation';
 
-const MyPublication = (props) => {
-  const { id } = useParams();
+const MyPublication = ({ id }) => {
   return (
-    <Panel id={props.id}>
-      <PanelHeader before={<PanelHeaderBack />}>Новости</PanelHeader>
+    <Panel id={id}>
       <Group style={{ height: '1000px' }}>
-        <h1>{id}</h1>
-        {console.log({ id })}
-        <h2>pampam</h2>
+        <h1>Publications Page</h1>
       </Group>
+      <Navigation />
     </Panel>
   );
 };

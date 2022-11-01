@@ -10,6 +10,7 @@ import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
 import { useEffect } from 'react';
 import { Task } from '../../components/';
+import Navigation from '../../components/Navigation';
 
 const Main = ({ id, activePanel, go, ROUTES }) => {
   const [buttonActive, setButtonActive] = useState('1');
@@ -78,6 +79,7 @@ const Main = ({ id, activePanel, go, ROUTES }) => {
               />
             ))}
           </div>
+          <Navigation />
         </div>
       </div>
     </Panel>

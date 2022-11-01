@@ -28,7 +28,15 @@ import {
   PANEL_INTRO,
   router,
   VIEW_MAIN,
+  PANEL_MESSAGES,
+  PANEL_PROFILE,
+  PANEL_PUBLICATIONS,
 } from './router';
+import Messages from './views/Messages/Messages';
+import Profile from './views/Profile/Profile';
+import Navigation from './components/Navigation';
+import Main from './views/Main/Main';
+import MyPublication from './views/MyPublication/MyPublication';
 
 // const ROUTES = {
 //   HOME: 'home',
@@ -124,6 +132,7 @@ const App = () => {
     <ConfigProvider scheme={scheme}>
       <AdaptivityProvider>
         <AppRoot>
+          {console.log(location.getPageId())}
           <SplitLayout
             modal={
               <ModalRoot onClose={() => setOpen(false)} activeModal={open ? 'modal' : null}>
@@ -205,13 +214,17 @@ const App = () => {
             <SplitCol>
               <div className="container">
                 <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-                  <Home id={PANEL_HOME} />
+                  {/* <Home id={PANEL_HOME} PANEL_MESSAGES={PANEL_MESSAGES} /> */}
                   <Intro
                     id={PANEL_MAIN}
                     go={veiwIntro}
                     userApplyPolicy={userApplyPolicy}
                     setOpen={setOpen}
                   />
+                  <Main id={PANEL_HOME} />
+                  <Messages id={PANEL_MESSAGES} />
+                  <Profile id={PANEL_PROFILE} />
+                  <MyPublication id={PANEL_PUBLICATIONS} />
                 </View>
               </div>
             </SplitCol>
