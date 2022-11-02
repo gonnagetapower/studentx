@@ -1,0 +1,98 @@
+.profile-container {
+    padding-top: 30px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.user-info-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user__photo {
+    width: 100px;
+    height: 100px;
+}
+
+.user__name {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    color: #232036;
+}
+
+.user__status {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    line-height: 14px;
+    color: #AEAEAE;
+}
+
+.list {
+    display: flex;
+    width: 100%;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    /* white */
+}
+
+.list-link {
+    text-align: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.list-active {
+    background: #8E95C7;
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+
+.saved-tasks-wrapper {
+    background-color: #F5F5F5;
+    padding-top: 20px;
+    height: 58vh;
+}
+
+.saved-tasks {
+    height: 40px;
+    margin-left: 24px;
+    margin-right: 24px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.saved-tasks__img {
+    margin-left: 8px;
+}
+
+.saved-tasks__img--star {
+    width: 17px;
+    height: 16px;
+}
+
+.saved-tasks__img--blank {
+    width: 14px;
+    height: 18px;
+}
+
+.saved-tasks__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #686868;
+    padding-left: 12px;
+}
