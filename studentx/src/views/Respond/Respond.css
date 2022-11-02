@@ -97,14 +97,15 @@ ul {
 .contactAuthor {
     display: flex;
     justify-content: space-between;
-    padding-left: 24px;
-    padding-right: 24px;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 80px;
 }
 
 .button--write {
-    width: 148px;
+    width: 48%;
 }
 
 .button--respond {
-    width: 148px;
+    width: 48%;
 }

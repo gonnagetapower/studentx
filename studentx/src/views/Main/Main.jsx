@@ -65,7 +65,7 @@ const Main = ({ id, activePanel, go, ROUTES }) => {
               <h2 className="filter__title">Фильтры</h2>
             </div>
           </div>
-          <div className="main-container">
+          <div className="content-container">
             <div className="content">
               {tasksData.map((obj) => (
                 <Task
