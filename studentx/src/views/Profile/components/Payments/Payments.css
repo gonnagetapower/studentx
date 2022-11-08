@@ -1,0 +1,71 @@
+.payment {
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-bottom: 100px;
+    background-color: #F3F3F3;
+}
+
+.pay-way {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 100%;
+    height: 40px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.pay-way__icon {
+    padding-left: 10px;
+    height: 14px;
+    width: 18px;
+    margin-right: 6px;
+}
+
+.pay-way__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2px;
+    color: #686868;
+}
+
+.card-content__img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.add-pay {
+    width: 100%;
+    height: 40px;
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.add-pay__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #686868;
+}
+
+.arrow-right {
+    position: absolute;
+    cursor: pointer;
+    right: 15px;
+    border: 1px solid #AEAEAE;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}

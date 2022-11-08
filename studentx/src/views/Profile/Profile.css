@@ -1,3 +1,16 @@
+.header-profile__title {
+    width: 93vw;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    display: flex;
+    justify-content: center;
+    color: #232036;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .profile-container {
     padding-top: 30px;
     padding-left: 24px;
@@ -36,8 +49,8 @@
 
 .list {
     display: flex;
-    width: 100%;
     font-family: 'Open Sans';
+    gap: 6px;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -46,13 +59,21 @@
 
 .list-link {
     text-align: center;
-    width: 100%;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
     flex-wrap: wrap;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #686868;
+    border: none;
 }
 
 .list-active {
     background: #8E95C7;
-    border-radius: 10px;
     color: #FFFFFF;
 }
 
