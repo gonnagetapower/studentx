@@ -77,10 +77,14 @@
     color: #FFFFFF;
 }
 
-.saved-tasks-wrapper {
+.list-content-wrapper {
     background-color: #F5F5F5;
     padding-top: 20px;
     height: 58vh;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-bottom: 100px;
+    background-color: #F3F3F3;
 }
 
 .saved-tasks {

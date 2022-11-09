@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setService } from '../../redux/slices/profileSlice';
 import { Panel, PanelHeader } from '@vkontakte/vkui';
-import Navigation from '../../components/Navigation';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 
+import Navigation from '../../components/Navigation';
 import { Works, Payments, Assistance } from './components';
 
 import './Profile.css';
 
-const Profile = ({ id, activePanel }) => {
-  // switch case logic
-  const [service, setService] = useState('Works');
+const Profile = ({ id }) => {
+  const service = useSelector((state) => state.profile.service);
+  const dispatch = useDispatch();
 
   const handleService = (serviceState) => {
-    setService(serviceState);
+    dispatch(setService(serviceState));
   };
 
   return (
@@ -50,7 +51,7 @@ const Profile = ({ id, activePanel }) => {
           </ul>
         </div>
       </div>
-      <div className="saved-tasks-wrapper">
+      <div className="list-content-wrapper">
         {(() => {
           switch (service) {
             case 'Works':

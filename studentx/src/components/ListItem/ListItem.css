@@ -1,0 +1,41 @@
+.list-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 100%;
+    height: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.list-item__icon {
+    padding-left: 10px;
+    height: 14px;
+    width: 18px;
+    margin-right: 6px;
+}
+
+.text__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2px;
+    color: #686868;
+}
+
+.arrow-right {
+    position: absolute;
+    cursor: pointer;
+    right: 15px;
+    border: 1px solid #AEAEAE;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
