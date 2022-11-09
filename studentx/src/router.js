@@ -23,10 +23,9 @@ export const PANEL_RESPOND = '/panel_respond'
 
 export const VIEW_MAIN = 'view_main'
 
-export const PANEL_TASK = 'panel_task'
 
-export const MODAL_CARD = 'modal_card'
-export const MODAL_PAGE = 'modal_page'
+export const MODAL_TERMS = 'modal_terms'
+export const MODAL_FILTER = 'modal_filter'
 
 
 const routes = {

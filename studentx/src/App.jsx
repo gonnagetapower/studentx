@@ -22,30 +22,24 @@ import Intro from './panels/Intro';
 import { useLocation } from '@happysanta/router';
 import {
   PANEL_MAIN,
-  PAGE_INTRO,
   PAGE_HOME,
   PANEL_HOME,
-  PANEL_INTRO,
   router,
   VIEW_MAIN,
   PANEL_MESSAGES,
   PANEL_PROFILE,
   PANEL_PUBLICATIONS,
   PANEL_RESPOND,
+  MODAL_TERMS,
+  MODAL_FILTER,
 } from './router';
 import Messages from './views/Messages/Messages';
 import Profile from './views/Profile/Profile';
-import Navigation from './components/Navigation';
 import Main from './views/Main/Main';
 import MyPublication from './views/MyPublication/MyPublication';
 import Respond from './views/Respond/Respond';
-
-// const ROUTES = {
-//   HOME: 'home',
-//   INTRO: 'intro',
-//   FIRST: 'first',
-//   TASK: `task/`,
-// };
+import Terms from './modals/Terms/Terms';
+import Filter from './modals/Filter/Filter';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -54,15 +48,13 @@ const STORAGE_KEYS = {
 const App = () => {
   const location = useLocation();
 
+  const [checked, setChecked] = useState(false);
   const [scheme, setScheme] = useState('bright_light');
-  // const [activePanel, setActivePanel] = useState(ROUTES.INTRO);
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [userApplyPolicy, setUserApplyPolicy] = useState(false);
   const [snackBar, setSnackBar] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const [checked, setChecked] = useState(false);
 
   const onCheckBoxChecked = () => {
     setChecked(!checked);
@@ -112,7 +104,6 @@ const App = () => {
 
   const go = (page) => {
     router.pushPage(PAGE_HOME);
-    console.log(router);
     setOpen(false);
   };
 
@@ -130,108 +121,38 @@ const App = () => {
     }
   };
 
+  const modal = (
+    <ModalRoot activeModal={location.getModalId()} onClose={() => router.popPage()}>
+      <Terms
+        onCheckBoxChecked={onCheckBoxChecked}
+        id={MODAL_TERMS}
+        checked={checked}
+        onClose={() => router.popPage()}
+      />
+      <Filter id={MODAL_FILTER} />
+    </ModalRoot>
+  );
+
   return (
     <ConfigProvider scheme={scheme}>
       <AdaptivityProvider>
         <AppRoot>
-          {console.log(location.getPageId())}
-          <SplitLayout
-            modal={
-              <ModalRoot onClose={() => setOpen(false)} activeModal={open ? 'modal' : null}>
-                <ModalPage nav="modal" settlingHeight={20}>
-                  <div style={{ height: '150vh' }}>
-                    <div className="modal-container">
-                      <div className="modal">
-                        <h1 className="modal__title">Условия пользования</h1>
-                        <p className="modal__descr">
-                          Данное приложение создано для помощи студентам. Если вы хотите
-                          зарабатывать, перейдите во вкладку “Исполнитель”, если желаете получить
-                          услугу - то “Покупатель”.
-                        </p>
-                        <p className="modal__descr">
-                          Правила: 1. <br />
-                          Кстати, сторонники тоталитаризма в науке лишь добавляют фракционных
-                          разногласий и представлены в исключительно положительном свете. Лишь
-                          диаграммы связей, превозмогая сложившуюся непростую экономическую
-                          ситуацию, призваны к ответу. <br />
-                          2. Равным образом, внедрение современных методик, в своём классическом
-                          представлении, допускает внедрение системы массового участия! Безусловно,
-                          я понимаю объективно ситуацию где связь противоречит экономической
-                          ситуации
-                        </p>
-                        <p className="modal__descr">
-                          Данное приложение создано для помощи студентам. Если вы хотите
-                          зарабатывать, перейдите во вкладку “Исполнитель”, если желаете получить
-                          услугу - то “Покупатель”.
-                        </p>
-                        <p className="modal__descr">
-                          Правила: 1. <br />
-                          Кстати, сторонники тоталитаризма в науке лишь добавляют фракционных
-                          разногласий и представлены в исключительно положительном свете. Лишь
-                          диаграммы связей, превозмогая сложившуюся непростую экономическую
-                          ситуацию, призваны к ответу. <br />
-                          2. Равным образом, внедрение современных методик, в своём классическом
-                          представлении, допускает внедрение системы массового участия! Безусловно,
-                          я понимаю объективно ситуацию где связь противоречит экономической
-                          ситуации
-                        </p>
-                        <p className="modal__descr">
-                          Данное приложение создано для помощи студентам. Если вы хотите
-                          зарабатывать, перейдите во вкладку “Исполнитель”, если желаете получить
-                          услугу - то “Покупатель”.
-                        </p>
-                        <p className="modal__descr">
-                          Правила: 1. <br />
-                          Кстати, сторонники тоталитаризма в науке лишь добавляют фракционных
-                          разногласий и представлены в исключительно положительном свете. Лишь
-                          диаграммы связей, превозмогая сложившуюся непростую экономическую
-                          ситуацию, призваны к ответу. <br />
-                          2. Равным образом, внедрение современных методик, в своём классическом
-                          представлении, допускает внедрение системы массового участия! Безусловно,
-                          я понимаю объективно ситуацию где связь противоречит экономической
-                          ситуации
-                        </p>
-                      </div>
-                      <div className="modal__checkbox">
-                        <input
-                          checked={checked}
-                          onChange={onCheckBoxChecked}
-                          type="checkbox"
-                          id="policy"
-                          name="policy"
-                        />
-                        Согласен с правилами
-                      </div>
-                      <button
-                        disabled={!checked ? true : false}
-                        className={checked ? 'button modal__button' : 'button--off modal__button'}
-                        onClick={() => go(PAGE_HOME)}>
-                        Понятно
-                      </button>
-                    </div>
-                  </div>
-                </ModalPage>
-              </ModalRoot>
-            }>
-            <SplitCol>
-              <div className="container">
-                <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-                  {/* <Home id={PANEL_HOME} PANEL_MESSAGES={PANEL_MESSAGES} /> */}
-                  <Intro
-                    id={PANEL_MAIN}
-                    go={veiwIntro}
-                    userApplyPolicy={userApplyPolicy}
-                    setOpen={setOpen}
-                  />
-                  <Main id={PANEL_HOME} />
-                  <Messages id={PANEL_MESSAGES} />
-                  <Profile id={PANEL_PROFILE} />
-                  <MyPublication id={PANEL_PUBLICATIONS} />
-                  <Respond id={PANEL_RESPOND} />
-                </View>
-              </div>
-            </SplitCol>
-          </SplitLayout>
+          <div className="container">
+            <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)} modal={modal}>
+              {/* <Home id={PANEL_HOME} PANEL_MESSAGES={PANEL_MESSAGES} /> */}
+              <Intro
+                id={PANEL_MAIN}
+                go={veiwIntro}
+                userApplyPolicy={userApplyPolicy}
+                setOpen={setOpen}
+              />
+              <Main id={PANEL_HOME} />
+              <Messages id={PANEL_MESSAGES} />
+              <Profile id={PANEL_PROFILE} />
+              <MyPublication id={PANEL_PUBLICATIONS} />
+              <Respond id={PANEL_RESPOND} />
+            </View>
+          </div>
         </AppRoot>
       </AdaptivityProvider>
     </ConfigProvider>
