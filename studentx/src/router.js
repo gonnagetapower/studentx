@@ -26,6 +26,7 @@ export const VIEW_MAIN = 'view_main'
 
 export const MODAL_TERMS = 'modal_terms'
 export const MODAL_FILTER = 'modal_filter'
+export const MODAL_DISCIPLINE = 'modal_discipline'
 
 
 const routes = {

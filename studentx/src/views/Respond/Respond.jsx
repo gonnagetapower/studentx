@@ -41,6 +41,7 @@ const Respond = () => {
         style={{ marginTop: '50px' }}
         left={
           <PanelHeaderButton
+            aria-label="кнопка"
             onClick={() => {
               router.popPage();
             }}>

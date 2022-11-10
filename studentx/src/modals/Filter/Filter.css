@@ -1,0 +1,55 @@
+.filter-modal {
+    padding-top: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 50px;
+    height: 100vh;
+    padding-bottom: 100px;
+}
+
+.filter-modal__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #DADADA;
+}
+
+.filter-modal__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #232036;
+    width: 90vw;
+    text-align: start;
+}
+
+.filter-modal__buttonBlock {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-left {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #686868;
+    background-color: #F3F3F3;
+}
+
+.btn-right {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+
+.filter-modal__acceptbtn {
+    display: flex;
+    justify-content: center;
+}

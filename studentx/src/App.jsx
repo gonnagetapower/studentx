@@ -32,6 +32,7 @@ import {
   PANEL_RESPOND,
   MODAL_TERMS,
   MODAL_FILTER,
+  MODAL_DISCIPLINE,
 } from './router';
 import Messages from './views/Messages/Messages';
 import Profile from './views/Profile/Profile';
@@ -40,6 +41,7 @@ import MyPublication from './views/MyPublication/MyPublication';
 import Respond from './views/Respond/Respond';
 import Terms from './modals/Terms/Terms';
 import Filter from './modals/Filter/Filter';
+import Discipline from './modals/Discipline/Discipline';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -47,6 +49,9 @@ const STORAGE_KEYS = {
 
 const App = () => {
   const location = useLocation();
+
+  //filter-logic
+  const [discipline, setDiscipline] = useState('');
 
   const [checked, setChecked] = useState(false);
   const [scheme, setScheme] = useState('bright_light');
@@ -129,7 +134,8 @@ const App = () => {
         checked={checked}
         onClose={() => router.popPage()}
       />
-      <Filter id={MODAL_FILTER} />
+      <Filter id={MODAL_FILTER} discipline={discipline} setDiscipline={setDiscipline} />
+      <Discipline id={MODAL_DISCIPLINE} discipline={discipline} setDiscipline={setDiscipline} />
     </ModalRoot>
   );
 
@@ -137,22 +143,26 @@ const App = () => {
     <ConfigProvider scheme={scheme}>
       <AdaptivityProvider>
         <AppRoot>
-          <div className="container">
-            <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)} modal={modal}>
-              {/* <Home id={PANEL_HOME} PANEL_MESSAGES={PANEL_MESSAGES} /> */}
-              <Intro
-                id={PANEL_MAIN}
-                go={veiwIntro}
-                userApplyPolicy={userApplyPolicy}
-                setOpen={setOpen}
-              />
-              <Main id={PANEL_HOME} />
-              <Messages id={PANEL_MESSAGES} />
-              <Profile id={PANEL_PROFILE} />
-              <MyPublication id={PANEL_PUBLICATIONS} />
-              <Respond id={PANEL_RESPOND} />
-            </View>
-          </div>
+          <SplitLayout modal={modal}>
+            <SplitCol>
+              <div className="container">
+                <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
+                  {/* <Home id={PANEL_HOME} PANEL_MESSAGES={PANEL_MESSAGES} /> */}
+                  <Intro
+                    id={PANEL_MAIN}
+                    go={veiwIntro}
+                    userApplyPolicy={userApplyPolicy}
+                    setOpen={setOpen}
+                  />
+                  <Main id={PANEL_HOME} />
+                  <Messages id={PANEL_MESSAGES} />
+                  <Profile id={PANEL_PROFILE} />
+                  <MyPublication id={PANEL_PUBLICATIONS} />
+                  <Respond id={PANEL_RESPOND} />
+                </View>
+              </div>
+            </SplitCol>
+          </SplitLayout>
         </AppRoot>
       </AdaptivityProvider>
     </ConfigProvider>
