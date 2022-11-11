@@ -1,6 +1,9 @@
-import { ModalPage } from '@vkontakte/vkui';
+import { ModalPage, Title } from '@vkontakte/vkui';
 import React from 'react';
+import { useState } from 'react';
 import { router } from '../../router';
+
+import './Discipline.css';
 
 const Discipline = ({ id, discipline, setDiscipline }) => {
   const handleDiscipline = (dis) => {
@@ -8,24 +11,55 @@ const Discipline = ({ id, discipline, setDiscipline }) => {
     router.popPage();
   };
 
+  const [searchValue, setSearchValue] = useState('');
+
+  const disciplineArray = [
+    'Астрономия',
+    'Философия',
+    'История',
+    'География',
+    'Экономика',
+    'Социология',
+    'Литературоведение',
+    'Политология',
+    'Психология',
+    'Журналистика',
+    'Биология',
+    'Товароведение',
+    'Менеджмент',
+    'Юриспруденция',
+    'Моделирование и анализ',
+    'Программная инженерия',
+  ];
+
   return (
     <div>
       <ModalPage id={id} settlingHeight={100}>
-        <h1>discipline</h1>
-        <h1 onClick={() => handleDiscipline('1')}>1</h1>
-        <h1 onClick={() => handleDiscipline('2')}>2</h1>
-        <h1 onClick={() => handleDiscipline('3')}>3</h1>
-        <h1 onClick={() => handleDiscipline('4')}>4</h1>
-        <h1 onClick={() => handleDiscipline('5')}>5</h1>
-        <h1 onClick={() => handleDiscipline('6')}>6</h1>
-        <h1 onClick={() => handleDiscipline('7')}>7</h1>
-        <h1 onClick={() => handleDiscipline('8')}>8</h1>
-        <h1 onClick={() => handleDiscipline('9')}>9</h1>
-        <h1 onClick={() => handleDiscipline('10')}>10</h1>
-        <h1 onClick={() => handleDiscipline('11')}>11</h1>
-        <h1 onClick={() => handleDiscipline('12')}>12</h1>
-        <h1 onClick={() => handleDiscipline('13')}>13</h1>
-        <h1 onClick={() => handleDiscipline('14')}>14</h1>
+        <div className="discipline">
+          <span className="swipe-line"></span>
+          <h1 className="discipline__title">Предмет</h1>
+          <div className="discipline__search">
+            <input
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="discipline__input"
+              type="text"
+              placeholder="Поиск"
+            />
+          </div>
+          {disciplineArray
+            .filter((item) => {
+              if (searchValue === '') {
+                return item;
+              } else if (item.toLowerCase().includes(searchValue.toLowerCase())) {
+                return item;
+              }
+            })
+            .map((item) => (
+              <h1 className="discipline__item" onClick={() => handleDiscipline(item)}>
+                {item}
+              </h1>
+            ))}
+        </div>
       </ModalPage>
     </div>
   );

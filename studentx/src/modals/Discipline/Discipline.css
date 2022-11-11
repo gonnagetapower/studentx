@@ -1,0 +1,53 @@
+.discipline {
+    padding-top: 10px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.discipline__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #232036;
+}
+
+.discipline__search {
+    width: 100%;
+}
+
+.discipline__input {
+    width: 310px;
+    height: 34px;
+    padding-left: 30px;
+    border: none;
+    background: #F3F3F3;
+    border-radius: 10px;
+    background-image: url("./../../img/searchIcon.svg");
+    background-repeat: no-repeat;
+    background-position: 10px 50%;
+}
+
+.discipline__item {
+    padding-top: 10px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 19px;
+    color: #232036;
+}
+
+.swipe-line {
+    margin: 0 auto;
+    display: block;
+    width: 36px;
+    height: 4px;
+    border-top: 1px solid #ccc;
+    background: #DADADA;
+    mix-blend-mode: normal;
+    opacity: 0.9;
+    border-radius: 100px;
+}
