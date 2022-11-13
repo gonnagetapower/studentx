@@ -1,0 +1,67 @@
+import React, { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { setInstitute } from '../../redux/slices/filterSlice';
+import { router } from '../../router';
+
+import { ModalPage } from '@vkontakte/vkui';
+
+const Institute = ({ id, subTitle }) => {
+  const [searchValue, setSearchValue] = useState('');
+
+  const discipline = useSelector((state) => state.filter.discipline);
+  const dispatch = useDispatch();
+
+  const handleInstitute = (item) => {
+    dispatch(setInstitute(item));
+    router.popPage();
+  };
+
+  const itemsArray = [
+    'Московский государственный университет им. М. В. Ломоносова  ',
+    'Московский физико-технический институт',
+    'Высшая школа экономики',
+    'Санкт-Петербургский государственный университет',
+    'Национальный исследовательский ядерный университет “МИФИ”',
+    'Московский государственный технический университет им. Н. Э. Баумана',
+    'Московский государственный институт международных отношений МИД РФ ',
+    'Санкт-Петербургский политехнический университет Петра Великого',
+    'Национальный исследовательский Томский политехнический университет',
+    'Российская академия народного хозяйства и государственной службы при Призиденте РФ',
+    'Уральский федеральный университет им. Б. Н. Ельцины',
+  ];
+
+  return (
+    <div>
+      <ModalPage id={id} settlingHeight={100}>
+        <div className="subFilter">
+          <span className="swipe-line"></span>
+          <h1 className="subFilter__title">Институт</h1>
+          <div className="subFilter__search">
+            <input
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="subFilter__input"
+              type="text"
+              placeholder="Поиск"
+            />
+          </div>
+          {itemsArray
+            .filter((item) => {
+              if (searchValue === '') {
+                return item;
+              } else if (item.toLowerCase().includes(searchValue.toLowerCase())) {
+                return item;
+              }
+            })
+            .map((item) => (
+              <h1 className="subFilter__item" onClick={() => handleInstitute(item)}>
+                {item}
+              </h1>
+            ))}
+        </div>
+      </ModalPage>
+    </div>
+  );
+};
+
+export default Institute;

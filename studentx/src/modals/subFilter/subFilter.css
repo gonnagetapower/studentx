@@ -1,10 +1,10 @@
-.discipline {
+.subFilter {
     padding-top: 10px;
     padding-left: 24px;
     padding-right: 24px;
 }
 
-.discipline__title {
+.subFilter__title {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
@@ -14,11 +14,11 @@
     color: #232036;
 }
 
-.discipline__search {
+.subFilter__search {
     width: 100%;
 }
 
-.discipline__input {
+.subFilter__input {
     width: 310px;
     height: 34px;
     padding-left: 30px;
@@ -30,7 +30,7 @@
     background-position: 10px 50%;
 }
 
-.discipline__item {
+.subFilter__item {
     padding-top: 10px;
     font-family: 'Open Sans';
     font-style: normal;

@@ -6,7 +6,7 @@
 }
 
 .filterItem {
-    padding-top: 9px;
+    padding-top: 4px;
     padding-bottom: 9px;
     padding-left: 20px;
     display: flex;
@@ -14,12 +14,20 @@
 }
 
 .filterItem__title {
+    display: -webkit-box;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
+    line-height: 12px;
     font-size: 12px;
-    line-height: 1px;
+    /* or 13px */
+    /* dark grey */
     color: #686868;
+    -webkit-line-clamp: 1;
+    /* количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .filterItem__img {

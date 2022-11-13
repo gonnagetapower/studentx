@@ -33,6 +33,8 @@ import {
   MODAL_TERMS,
   MODAL_FILTER,
   MODAL_DISCIPLINE,
+  MODAL_TOWNS,
+  MODAL_INSTITUTE,
 } from './router';
 import Messages from './views/Messages/Messages';
 import Profile from './views/Profile/Profile';
@@ -41,7 +43,9 @@ import MyPublication from './views/MyPublication/MyPublication';
 import Respond from './views/Respond/Respond';
 import Terms from './modals/Terms/Terms';
 import Filter from './modals/Filter/Filter';
-import Discipline from './modals/Discipline/Discipline';
+import Discipline from './modals/subFilter/Discipline';
+import Towns from './modals/subFilter/Towns';
+import Institute from './modals/subFilter/Institute';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -136,6 +140,8 @@ const App = () => {
       />
       <Filter id={MODAL_FILTER} discipline={discipline} setDiscipline={setDiscipline} />
       <Discipline id={MODAL_DISCIPLINE} discipline={discipline} setDiscipline={setDiscipline} />
+      <Towns id={MODAL_TOWNS} />
+      <Institute id={MODAL_INSTITUTE} />
     </ModalRoot>
   );
 

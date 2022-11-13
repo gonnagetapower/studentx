@@ -1,19 +1,24 @@
 import { ModalPage, Title } from '@vkontakte/vkui';
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDiscipline } from '../../redux/slices/filterSlice';
 import { router } from '../../router';
 
-import './Discipline.css';
+import './subFilter.css';
 
-const Discipline = ({ id, discipline, setDiscipline }) => {
+const Discipline = ({ id, subTitle }) => {
+  const discipline = useSelector((state) => state.filter.discipline);
+  const dispatch = useDispatch();
+
   const handleDiscipline = (dis) => {
-    setDiscipline(dis);
+    dispatch(setDiscipline(dis));
     router.popPage();
   };
 
   const [searchValue, setSearchValue] = useState('');
 
-  const disciplineArray = [
+  const itemsArray = [
     'Астрономия',
     'Философия',
     'История',
@@ -35,18 +40,18 @@ const Discipline = ({ id, discipline, setDiscipline }) => {
   return (
     <div>
       <ModalPage id={id} settlingHeight={100}>
-        <div className="discipline">
+        <div className="subFilter">
           <span className="swipe-line"></span>
-          <h1 className="discipline__title">Предмет</h1>
-          <div className="discipline__search">
+          <h1 className="subFilter__title">Предмет</h1>
+          <div className="subFilter__search">
             <input
               onChange={(e) => setSearchValue(e.target.value)}
-              className="discipline__input"
+              className="subFilter__input"
               type="text"
               placeholder="Поиск"
             />
           </div>
-          {disciplineArray
+          {itemsArray
             .filter((item) => {
               if (searchValue === '') {
                 return item;
@@ -55,7 +60,7 @@ const Discipline = ({ id, discipline, setDiscipline }) => {
               }
             })
             .map((item) => (
-              <h1 className="discipline__item" onClick={() => handleDiscipline(item)}>
+              <h1 className="subFilter__item" onClick={() => handleDiscipline(item)}>
                 {item}
               </h1>
             ))}
