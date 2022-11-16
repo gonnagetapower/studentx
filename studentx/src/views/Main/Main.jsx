@@ -12,7 +12,8 @@ import { useEffect } from 'react';
 import { Task } from '../../components/';
 import Navigation from '../../components/Navigation';
 import { useRouter } from '@happysanta/router';
-import { MODAL_FILTER } from '../../router';
+import { MODAL_FILTER, PAGE_CREATE, PANEL__CREATE } from '../../router';
+import AddButton from '../../components/AddButton/AddButton';
 
 const Main = ({ id, activePanel, go, ROUTES }) => {
   const [buttonActive, setButtonActive] = useState('1');
@@ -71,6 +72,7 @@ const Main = ({ id, activePanel, go, ROUTES }) => {
             </div>
           </div>
           <div className="content-container">
+            <AddButton router={router} createPanel={PAGE_CREATE} />
             <div className="content">
               {tasksData.map((obj) => (
                 <Task

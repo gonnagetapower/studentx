@@ -49,6 +49,12 @@
     color: #FFFFFF;
 }
 
+.filter-modal__datepicker {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .filter-modal__acceptbtn {
     display: flex;
     justify-content: center;

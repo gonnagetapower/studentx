@@ -1,0 +1,92 @@
+.header-create {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.header-create__title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 10px;
+    word-wrap: wrap;
+    color: #232036;
+}
+
+.create-container {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.create {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    min-height: 80vh;
+    height: auto;
+}
+
+.create__input {
+    border: none;
+    margin-bottom: 20px;
+    background: #F5F5F5;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 30%;
+    min-height: 41px;
+    resize: none;
+}
+
+.photoList {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+}
+
+.custom-file-input {
+    width: 95px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: url('./../../img/cameraIcon.svg');
+    display: inline-block;
+    background: #F5F5F5;
+    border: 1px solid #F5F5F5;
+    border-radius: 10px;
+    padding: 35px;
+    outline: none;
+    cursor: pointer;
+}
+
+.addPhoto::before {
+    width: 20px;
+    content: url('./../../img/plusGreyIcon.svg');
+    text-align: center;
+    display: inline-block;
+    background: #F5F5F5;
+    background-position: center;
+    border: 1px solid #F5F5F5;
+    border-radius: 10px;
+    padding: 36px;
+    outline: none;
+    cursor: pointer;
+}
+
+.create__filter {
+    padding-bottom: 180px;
+}
+
+.create__button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

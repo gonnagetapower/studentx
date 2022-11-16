@@ -20,6 +20,9 @@ export const PANEL_PUBLICATIONS = 'panel_publications'
 export const PAGE_RESPOND = '/respond/:id([0-9]+)'
 export const PANEL_RESPOND = '/panel_respond'
 
+export const PAGE_CREATE = '/create'
+export const PANEL__CREATE = 'panel_create'
+
 //view
 export const VIEW_MAIN = 'view_main'
 
@@ -39,7 +42,8 @@ const routes = {
     [PAGE_MESSAGES]: new Page(PANEL_MESSAGES, VIEW_MAIN),
     [PAGE_PUBLICATION]: new Page(PANEL_PUBLICATIONS, VIEW_MAIN),
     [PAGE_PROFILE]: new Page(PANEL_PROFILE, VIEW_MAIN),
-    [PAGE_RESPOND]: new Page(PANEL_RESPOND, VIEW_MAIN)
+    [PAGE_RESPOND]: new Page(PANEL_RESPOND, VIEW_MAIN),
+    [PAGE_CREATE]: new Page(PANEL__CREATE, VIEW_MAIN)
 }
 
 export const router = new Router(routes)

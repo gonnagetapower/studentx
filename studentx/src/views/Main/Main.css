@@ -103,6 +103,7 @@
 }
 
 .content-container {
+    position: relative;
     display: flex;
     background: #F5F5F5;
     margin-top: 43px;

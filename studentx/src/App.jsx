@@ -35,6 +35,7 @@ import {
   MODAL_DISCIPLINE,
   MODAL_TOWNS,
   MODAL_INSTITUTE,
+  PANEL__CREATE,
 } from './router';
 import Messages from './views/Messages/Messages';
 import Profile from './views/Profile/Profile';
@@ -46,6 +47,7 @@ import Filter from './modals/Filter/Filter';
 import Discipline from './modals/subFilter/Discipline';
 import Towns from './modals/subFilter/Towns';
 import Institute from './modals/subFilter/Institute';
+import CreateTask from './views/CreateTask/CreateTask';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -165,6 +167,7 @@ const App = () => {
                   <Profile id={PANEL_PROFILE} />
                   <MyPublication id={PANEL_PUBLICATIONS} />
                   <Respond id={PANEL_RESPOND} />
+                  <CreateTask id={PANEL__CREATE} />
                 </View>
               </div>
             </SplitCol>

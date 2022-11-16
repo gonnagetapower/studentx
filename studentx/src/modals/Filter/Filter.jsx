@@ -1,5 +1,11 @@
-import { ModalPage, usePlatform, ModalPageHeader, PanelHeaderButton } from '@vkontakte/vkui';
-import React from 'react';
+import {
+  ModalPage,
+  usePlatform,
+  ModalPageHeader,
+  PanelHeaderButton,
+  DateInput,
+} from '@vkontakte/vkui';
+import React, { useState } from 'react';
 
 import './Filter.css';
 import FilterItem from '../../components/FilterItem/FilterItem';
@@ -9,6 +15,7 @@ import { useSelector } from 'react-redux';
 
 const Filter = ({ id, discipline, setDiscipline }) => {
   const filterState = useSelector((state) => state.filter);
+  const [value, setValue] = useState(new Date());
   console.log(filterState);
 
   return (
@@ -43,8 +50,10 @@ const Filter = ({ id, discipline, setDiscipline }) => {
           subModal={MODAL_INSTITUTE}
         />
         <h2 className="filter-modal__title">Сроки</h2>
-        <InputItem title={'С'} />
-        <InputItem title={'До'} />
+        <div className="filter-modal__datepicker">
+          <DateInput value={value} onChange={setValue} />
+          <DateInput value={value} onChange={setValue} />
+        </div>
         <h2 className="filter-modal__title">Желаемый бюджет</h2>
         <InputItem title={'Цена, ₽ '} />
         <div className="filter-modal__acceptbtn">
