@@ -52,7 +52,7 @@ const Respond = () => {
         <div className="header">
           <h2 className="header__title">Объявления</h2>
           <div className="person">
-            <img src={nullPhoto} alt="person photo" />
+            <img src={nullPhoto} alt="erson photop" />
             <h1 className="person__name">Наташа Ростова</h1>
           </div>
         </div>
