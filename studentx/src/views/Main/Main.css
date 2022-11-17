@@ -1,5 +1,6 @@
 .main-wrapper {
     background-color: #F5F5F5;
+    padding-bottom: 15px;
     width: 100vw;
     margin: 0 auto;
 }
@@ -105,7 +106,7 @@
 .content-container {
     position: relative;
     display: flex;
-    background: #F5F5F5;
+    background-color: #F5F5F5;
     margin-top: 43px;
 }
 

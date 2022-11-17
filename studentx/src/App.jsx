@@ -89,7 +89,7 @@ const App = () => {
           data[key] = value ? JSON.parse(value) : {};
           switch (key) {
             case STORAGE_KEYS.STATUS:
-              if (!data[key].userApplyPolicy) {
+              if (data[key].userApplyPolicy) {
                 router.pushPage(PAGE_HOME);
                 setUserApplyPolicy(true);
               }
@@ -111,7 +111,8 @@ const App = () => {
       setPopout(null);
     }
     fetchData();
-  }, []);
+    console.log('dsd');
+  }, [userApplyPolicy]);
 
   const go = (page) => {
     router.pushPage(PAGE_HOME);

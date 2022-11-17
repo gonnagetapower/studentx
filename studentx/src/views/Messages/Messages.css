@@ -1,0 +1,116 @@
+.messages-wrapper {
+    height: 150px;
+}
+
+.messages-container {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.messages-header {
+    padding-top: 14px;
+}
+
+.messages-header__title {
+    text-align: center;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    color: #FFFFFF;
+}
+
+.search-messages {
+    position: relative;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.search-messages__input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 34px;
+    border: none;
+    background: #F3F3F3;
+    border-radius: 10px;
+    padding-left: 25px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #686868;
+}
+
+.search-messages__icon {
+    position: absolute;
+    top: 8px;
+    left: 30px;
+}
+
+.search-messages__icon::before {
+    content: url("./../../img/searchIcon.svg");
+}
+
+.messages-header__descr {
+    text-align: center;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #F3F3F3;
+}
+
+.messages-content {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+.messages {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.messages__icon {
+    width: 40px;
+    height: 40px;
+}
+
+.person-message {
+    padding-left: 8px;
+}
+
+.person-message__name {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 6px;
+    color: #232036;
+}
+
+.person-message__content {
+    display: -webkit-box;
+    padding-right: 15px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #686868;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
