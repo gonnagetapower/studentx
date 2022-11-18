@@ -2,3 +2,7 @@
 button {
     font-family: 'Open Sans', sans-serif;
 }
+
+.container {
+    height: 100%;
+}

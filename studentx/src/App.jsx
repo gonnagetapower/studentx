@@ -36,6 +36,7 @@ import {
   MODAL_TOWNS,
   MODAL_INSTITUTE,
   PANEL__CREATE,
+  PANEL_CHATROOM,
 } from './router';
 import Messages from './views/Messages/Messages';
 import Profile from './views/Profile/Profile';
@@ -48,6 +49,7 @@ import Discipline from './modals/subFilter/Discipline';
 import Towns from './modals/subFilter/Towns';
 import Institute from './modals/subFilter/Institute';
 import CreateTask from './views/CreateTask/CreateTask';
+import ChatRoom from './views/ChatRoom/ChatRoom';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -169,6 +171,7 @@ const App = () => {
                   <MyPublication id={PANEL_PUBLICATIONS} />
                   <Respond id={PANEL_RESPOND} />
                   <CreateTask id={PANEL__CREATE} />
+                  <ChatRoom id={PANEL_CHATROOM} />
                 </View>
               </div>
             </SplitCol>

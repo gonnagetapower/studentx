@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import MainIcon from './../img/homeIcon.svg';
 import PublicationIcon from './../img/publicationIcon.svg';
@@ -19,35 +19,43 @@ import {
 import { useLocation, useRouter } from '@happysanta/router';
 
 const Navigation = ({ onStoryChange, activeStory }) => {
+  const [selected, setSelected] = useState('');
   const router = useRouter();
   const location = useLocation();
+
+  const handlePage = (page) => {
+    router.pushPage(page);
+    setSelected(page);
+    console.log(selected);
+  };
+
   return (
     <div>
       <Tabbar>
         <TabbarItem
-          onClick={() => router.pushPage(PAGE_HOME)}
-          selected={activeStory === 'main'}
+          onClick={() => handlePage(PAGE_HOME)}
+          selected={selected === '/home'}
           data-story="main"
           text="Главная">
           <img src={MainIcon} />
         </TabbarItem>
         <TabbarItem
-          onClick={() => router.pushPage(PAGE_PUBLICATION)}
-          selected={activeStory === 'publication'}
+          onClick={() => handlePage(PAGE_PUBLICATION)}
+          selected={selected === '/publication'}
           data-story="publication"
           text="Мои публикации">
           <img src={PublicationIcon} />
         </TabbarItem>
         <TabbarItem
-          onClick={() => router.pushPage(PAGE_MESSAGES)}
-          selected={activeStory === 'messages'}
+          onClick={() => handlePage(PAGE_MESSAGES)}
+          selected={selected === '/messages'}
           data-story="messages"
           text="Сообщения">
           <img src={MsgIcon} />
         </TabbarItem>
         <TabbarItem
-          onClick={() => router.pushPage(PAGE_PROFILE)}
-          selected={location.getPageId() === { PAGE_PROFILE }}
+          onClick={() => handlePage(PAGE_PROFILE)}
+          selected={selected === '/profile'}
           data-story={PAGE_PROFILE}
           text="Профиль">
           <img src={ProfileIcon} />

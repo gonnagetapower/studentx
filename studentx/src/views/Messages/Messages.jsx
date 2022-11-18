@@ -2,12 +2,15 @@ import React from 'react';
 
 import { View, Panel, PanelHeader, Group, Placeholder, PanelHeaderBack } from '@vkontakte/vkui';
 import Navigation from '../../components/Navigation';
+import { useRouter } from '@happysanta/router';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 
 import './Messages.css';
+import { PAGE_CHATROOM } from '../../router';
 
 const Messages = ({ id, page }) => {
+  const router = useRouter();
   return (
     <Panel id={id}>
       <div className="wrapper messages-wrapper">
@@ -22,7 +25,7 @@ const Messages = ({ id, page }) => {
           <Navigation />
         </div>
         <div className="messages-content">
-          <div className="messages">
+          <div onClick={() => router.pushPage(PAGE_CHATROOM)} className="messages">
             <img className="messages__icon" src={nullPhoto} alt="" />
             <div className="person-message">
               <h1 className="person-message__name">Наташа Ростова</h1>
