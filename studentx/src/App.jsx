@@ -16,7 +16,6 @@ import {
 import '@vkontakte/vkui/dist/vkui.css';
 
 import './App.css';
-import Intro from './panels/Intro';
 import { useLocation } from '@happysanta/router';
 import {
   PANEL_MAIN,
@@ -36,16 +35,11 @@ import {
   PANEL__CREATE,
   PANEL_CHATROOM,
 } from './router';
-import Messages from './views/Messages/Messages';
-import Profile from './views/Profile/Profile';
-import Main from './views/Main/Main';
-import MyPublication from './views/MyPublication/MyPublication';
-import Respond from './views/Respond/Respond';
-import Terms from './modals/Terms/Terms';
-import Filter from './modals/Filter/Filter';
-import Discipline from './modals/subFilter/Discipline';
-import Towns from './modals/subFilter/Towns';
-import Institute from './modals/subFilter/Institute';
+
+import { Messages, Profile, Main, MyPublication, Respond, Intro } from './views';
+
+import { Filter, Discipline, Towns, Institute, Terms } from './modals/';
+
 import CreateTask from './views/CreateTask/CreateTask';
 import ChatRoom from './views/ChatRoom/ChatRoom';
 

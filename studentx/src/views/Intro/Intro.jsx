@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import girl from './../img/girl.svg';
+import girl from './../../img/girl.svg';
 
 import './Intro.css';
 
 import { Panel, Div, SplitLayout, SplitCol } from '@vkontakte/vkui';
-import { MODAL_TERMS, router } from '../router';
+import { MODAL_TERMS, router } from './../../router';
 
 const Intro = ({ id, go, route, userApplyPolicy, setOpen, setActiveModal }) => {
   return (
