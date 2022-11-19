@@ -5,7 +5,7 @@ import { Panel, PanelHeader } from '@vkontakte/vkui';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 
-import Navigation from '../../components/Navigation';
+import { Navigation } from '../../components';
 import { Works, Payments, Assistance } from './components';
 
 import './Profile.css';

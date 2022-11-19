@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { View, Panel, PanelHeader, Group, Placeholder, PanelHeaderBack } from '@vkontakte/vkui';
-import Navigation from '../../components/Navigation';
+import { Panel } from '@vkontakte/vkui';
+import { Navigation } from '../../components';
 import { useRouter } from '@happysanta/router';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 
-import './Messages.css';
 import { PAGE_CHATROOM } from '../../router';
 
-const Messages = ({ id, page }) => {
+import './Messages.css';
+
+const Messages = ({ id }) => {
   const router = useRouter();
   return (
     <Panel id={id}>

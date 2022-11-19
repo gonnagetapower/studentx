@@ -1,15 +1,12 @@
-import React from 'react';
-import Navigation from '../../components/Navigation';
+import React, { useState } from 'react';
+import { useRouter } from '@happysanta/router';
 
 import { Icon28ChevronBack } from '@vkontakte/icons';
 import { PanelHeader, PanelHeaderBack, PanelHeaderButton, Panel } from '@vkontakte/vkui';
 
-import plusIcon from './../../img/plusIcon.svg';
-
 import './CreateTask.css';
-import { useRouter } from '@happysanta/router';
-import { useState } from 'react';
-import FilterItem from '../../components/FilterItem/FilterItem';
+
+import { Navigation, FilterItem } from '../../components';
 
 const CreateTask = ({ id }) => {
   const router = useRouter();

@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { View, Panel, Group } from '@vkontakte/vkui';
+import { Panel } from '@vkontakte/vkui';
+import { useRouter } from '@happysanta/router';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTasks } from '../../redux/slices/taskSlice';
 
-import './Main.css';
-
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
-import { useEffect } from 'react';
-import { Task } from '../../components/';
-import Navigation from '../../components/Navigation';
-import { useRouter } from '@happysanta/router';
-import { MODAL_FILTER, PAGE_CREATE, PANEL__CREATE } from '../../router';
-import AddButton from '../../components/AddButton/AddButton';
+import { Task, Navigation, AddButton } from '../../components/';
+import { MODAL_FILTER, PAGE_CREATE } from '../../router';
 
-const Main = ({ id, activePanel, go, ROUTES }) => {
+import './Main.css';
+
+const Main = ({ id, go, ROUTES }) => {
   const [buttonActive, setButtonActive] = useState('1');
   const router = useRouter();
 

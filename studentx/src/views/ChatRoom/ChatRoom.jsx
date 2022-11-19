@@ -1,8 +1,6 @@
-import { FixedLayout, Panel } from '@vkontakte/vkui';
 import React from 'react';
-import InputItem from '../../components/InputItem/InputItem';
-import Navigation from '../../components/Navigation';
-import Person from '../../components/Person/Person';
+import { FixedLayout, Panel } from '@vkontakte/vkui';
+import { Navigation, Person } from '../../components';
 
 import dots from './../../img/3dots.svg';
 

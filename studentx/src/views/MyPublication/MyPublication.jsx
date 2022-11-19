@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { View, Panel, PanelHeader, Group, Placeholder, PanelHeaderBack } from '@vkontakte/vkui';
-import Navigation from '../../components/Navigation';
+import { Panel, Group } from '@vkontakte/vkui';
+import { Navigation } from '../../components';
 
 const MyPublication = ({ id }) => {
   return (

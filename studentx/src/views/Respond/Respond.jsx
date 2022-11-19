@@ -5,7 +5,7 @@ import { useParams, useRouter } from '@happysanta/router';
 import { Icon24Back, Icon28ChevronBack } from '@vkontakte/icons';
 import { Button, PanelHeader, PanelHeaderBack, PanelHeaderButton } from '@vkontakte/vkui';
 
-import Navigation from './../../components/Navigation';
+import { Navigation } from './../../components';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 import emptyPhotoLogo from './../../img/emptyPhotoLogo.svg';

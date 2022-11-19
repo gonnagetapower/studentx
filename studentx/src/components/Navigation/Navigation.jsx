@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import MainIcon from './../img/homeIcon.svg';
-import PublicationIcon from './../img/publicationIcon.svg';
-import ProfileIcon from './../img/profileIcon.svg';
-import MsgIcon from './../img/msgIcon.svg';
+import MainIcon from './../../img/homeIcon.svg';
+import PublicationIcon from './../../img/publicationIcon.svg';
+import ProfileIcon from './../../img/profileIcon.svg';
+import MsgIcon from './../../img/msgIcon.svg';
 
 import { Tabbar, TabbarItem } from '@vkontakte/vkui';
 
@@ -14,7 +14,7 @@ import {
   PAGE_PUBLICATION,
   PANEL_MESSAGES,
   PAGE_HOME,
-} from '../router';
+} from './../../router';
 
 import { useLocation, useRouter } from '@happysanta/router';
 

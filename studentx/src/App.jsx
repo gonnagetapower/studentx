@@ -16,8 +16,6 @@ import {
 import '@vkontakte/vkui/dist/vkui.css';
 
 import './App.css';
-
-import Home from './panels/Home';
 import Intro from './panels/Intro';
 import { useLocation } from '@happysanta/router';
 import {
