@@ -1,64 +1,57 @@
 import React, { useState } from 'react';
 
-import MainIcon from './../../img/homeIcon.svg';
-import PublicationIcon from './../../img/publicationIcon.svg';
-import ProfileIcon from './../../img/profileIcon.svg';
-import MsgIcon from './../../img/msgIcon.svg';
+import { ReactComponent as MainIcon } from './../../img/NavigationIcons/homeIcon.svg';
+import { ReactComponent as PublicationIcon } from './../../img/NavigationIcons/publicationIcon.svg';
+import { ReactComponent as ProfileIcon } from './../../img/NavigationIcons/profileIcon.svg';
+import { ReactComponent as MsgIcon } from './../../img/NavigationIcons/msgIcon.svg';
 
 import { Tabbar, TabbarItem } from '@vkontakte/vkui';
 
-import {
-  PAGE_MAIN,
-  PAGE_MESSAGES,
-  PAGE_PROFILE,
-  PAGE_PUBLICATION,
-  PANEL_MESSAGES,
-  PAGE_HOME,
-} from './../../router';
+import { PAGE_MESSAGES, PAGE_PROFILE, PAGE_PUBLICATION, PAGE_HOME } from './../../router';
 
-import { useLocation, useRouter } from '@happysanta/router';
+import { useRouter } from '@happysanta/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveIcon } from '../../redux/slices/navSlice';
 
-const Navigation = ({ onStoryChange, activeStory }) => {
-  const [selected, setSelected] = useState('');
+const Navigation = () => {
+  const [selected, setSelected] = useState(PAGE_HOME);
+
+  const dispatch = useDispatch();
+  const activeIcon = useSelector((state) => state.nav.activeIcon);
   const router = useRouter();
-  const location = useLocation();
 
-  const handlePage = (page) => {
-    router.pushPage(page);
+  const handlePage = (page, title) => {
+    dispatch(setActiveIcon(title));
     setSelected(page);
-    console.log(selected);
+    router.pushPage(page);
   };
 
   return (
     <div>
-      <Tabbar>
-        <TabbarItem
-          onClick={() => handlePage(PAGE_HOME)}
-          selected={selected === '/home'}
-          data-story="main"
-          text="Главная">
-          <img src={MainIcon} />
+      <Tabbar style={{ paddingTop: '5px' }}>
+        <TabbarItem onClick={() => handlePage(PAGE_HOME, 'main')} data-story="main" text="Главная">
+          <MainIcon stroke={activeIcon === 'main' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>
         <TabbarItem
-          onClick={() => handlePage(PAGE_PUBLICATION)}
+          onClick={() => handlePage(PAGE_PUBLICATION, 'publication')}
           selected={selected === '/publication'}
           data-story="publication"
           text="Мои публикации">
-          <img src={PublicationIcon} />
+          <PublicationIcon stroke={activeIcon === 'publication' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>
         <TabbarItem
-          onClick={() => handlePage(PAGE_MESSAGES)}
+          onClick={() => handlePage(PAGE_MESSAGES, 'messages')}
           selected={selected === '/messages'}
           data-story="messages"
           text="Сообщения">
-          <img src={MsgIcon} />
+          <MsgIcon fill={activeIcon === 'messages' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>
         <TabbarItem
-          onClick={() => handlePage(PAGE_PROFILE)}
+          onClick={() => handlePage(PAGE_PROFILE, 'profile')}
           selected={selected === '/profile'}
           data-story={PAGE_PROFILE}
           text="Профиль">
-          <img src={ProfileIcon} />
+          <ProfileIcon fill={activeIcon === 'profile' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>
       </Tabbar>
     </div>

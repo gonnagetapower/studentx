@@ -150,7 +150,6 @@ const App = () => {
             <SplitCol>
               <div className="container">
                 <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-                  {/* <Home id={PANEL_HOME} PANEL_MESSAGES={PANEL_MESSAGES} /> */}
                   <Intro
                     id={PANEL_MAIN}
                     go={veiwIntro}
