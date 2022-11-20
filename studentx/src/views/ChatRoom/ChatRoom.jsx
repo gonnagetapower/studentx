@@ -2,16 +2,19 @@ import React from 'react';
 import { FixedLayout, Panel } from '@vkontakte/vkui';
 import { Navigation, Person } from '../../components';
 
+import { useRouter } from '@happysanta/router';
+
 import dots from './../../img/3dots.svg';
 
 import './ChatRoom.css';
 
 const ChatRoom = ({ id }) => {
+  const router = useRouter();
   return (
     <Panel id={id}>
       <div className="chatRoom">
         <div className="chatRoom__header">
-          <div className="arrow-left"></div>
+          <div onClick={() => router.popPage()} className="arrow-left"></div>
           <Person name={'Наташа Ростова'} descr={''} status={'Online'} />
           <img className="chatRoom__dots" src={dots} alt="" />
         </div>
