@@ -11,16 +11,16 @@ const Intro = ({ id, go, route, userApplyPolicy, setOpen, setActiveModal }) => {
     <Panel id={id} centered={true}>
       {!userApplyPolicy && (
         <Fragment>
-          <Div className="intro">
+          <div className="intro">
             <h2 className="intro__title">Твой персональный помощник</h2>
             <p className="intro__descr">создан для содействия в написании учебных работ</p>
             <img className="intro__img" src={girl} alt="girl styding photo" />
-          </Div>
-          <Div>
+          </div>
+          <div>
             <button className="button" onClick={() => router.pushModal(MODAL_TERMS)}>
               Хорошо
             </button>
-          </Div>
+          </div>
         </Fragment>
       )}
     </Panel>

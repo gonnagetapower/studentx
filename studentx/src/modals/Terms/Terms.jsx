@@ -8,8 +8,8 @@ import './Terms.css';
 const Terms = ({ checked, onCheckBoxChecked, id }) => {
   const router = useRouter();
   return (
-    <ModalPage id={id} settlingHeight={20}>
-      <div style={{ height: '150vh' }}>
+    <ModalPage id={id} settlingHeight={100}>
+      <div>
         <div className="modal-container">
           <div className="modal">
             <h1 className="modal__title">Условия пользования</h1>

@@ -1,7 +1,5 @@
 .subFilter {
     padding-top: 10px;
-    padding-left: 24px;
-    padding-right: 24px;
 }
 
 .subFilter__title {
@@ -9,13 +7,15 @@
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 8px;
     text-align: center;
     color: #232036;
 }
 
 .subFilter__search {
     width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 
 .subFilter__input {
@@ -28,10 +28,16 @@
     background-image: url("./../../img/searchIcon.svg");
     background-repeat: no-repeat;
     background-position: 10px 50%;
+    margin-bottom: 10px;
 }
 
 .subFilter__item {
+    margin: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+    cursor: pointer;
     padding-top: 10px;
+    padding-bottom: 10px;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
@@ -50,4 +56,10 @@
     mix-blend-mode: normal;
     opacity: 0.9;
     border-radius: 100px;
+}
+
+.subFilter__item:hover {
+    background-color: #8E95C7;
+    opacity: 0.3;
+    border-radius: 10px;
 }

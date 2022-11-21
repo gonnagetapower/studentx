@@ -6,6 +6,8 @@ export const filterSlice = createSlice({
         discipline: "",
         town: "",
         institute: "",
+        dateFrom: new Date(),
+        dateTo: new Date(),
     },
     reducers: {
         setDiscipline: (state, action) => {
@@ -16,10 +18,16 @@ export const filterSlice = createSlice({
         },
         setInstitute: (state, action) => {
             state.institute = action.payload
-        }
+        },
+        setDateFrom: (state, action) => {
+            state.dateFrom = action.payload
+        },
+        setDateTo: (state, action) => {
+            state.dateTo = action.payload
+        },
     },
 })
 
-export const { setDiscipline, setTown, setInstitute } = filterSlice.actions;
+export const { setDiscipline, setTown, setInstitute, setDateFrom, setDateTo } = filterSlice.actions;
 
 export default filterSlice.reducer

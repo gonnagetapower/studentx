@@ -39,7 +39,6 @@
     font-size: 14px;
     line-height: 130%;
     color: #686868;
-    overflow: scroll;
 }
 
 .modal__checkbox {
@@ -57,5 +56,4 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 150px;
 }

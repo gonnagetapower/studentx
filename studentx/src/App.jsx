@@ -66,12 +66,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    bridge.subscribe(({ detail: { type, data } }) => {
-      if (type === 'VKWebAppUpdateConfig') {
-        setScheme('light');
-      }
-    });
-
     async function fetchData() {
       const user = await bridge.send('VKWebAppGetUserInfo');
       const storageData = await bridge.send('VKWebAppStorageGet', {
@@ -143,7 +137,7 @@ const App = () => {
   );
 
   return (
-    <ConfigProvider scheme={scheme}>
+    <ConfigProvider scheme={'light'}>
       <AdaptivityProvider>
         <AppRoot>
           <SplitLayout modal={modal}>

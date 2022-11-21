@@ -6,6 +6,7 @@
 }
 
 .filterItem {
+    cursor: pointer;
     padding-top: 4px;
     padding-bottom: 9px;
     padding-left: 20px;

@@ -3,6 +3,10 @@ button {
     font-family: 'Open Sans', sans-serif;
 }
 
+button {
+    cursor: pointer;
+}
+
 .container {
     height: 100%;
 }
