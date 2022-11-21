@@ -22,6 +22,7 @@ const Filter = ({ id, discipline, setDiscipline }) => {
   return (
     <ModalPage id={id} settlingHeight={100}>
       <div className="filter-modal">
+        <span className="swipe-line"></span>
         <ModalPageHeader>
           <div className="filter-modal__header">
             <h1 className="filter-modal__title">Фильтры</h1>
