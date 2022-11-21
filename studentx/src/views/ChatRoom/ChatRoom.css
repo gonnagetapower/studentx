@@ -1,14 +1,18 @@
 .chatRoom {
-    padding-top: 53px;
+    padding-top: 50px;
     padding-left: 24px;
     padding-right: 24px;
 }
 
 .chatRoom__header {
-    position: relative;
+    position: fixed;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding-bottom: 24px;
+    background: #8E95C7;
+    border-radius: 0px 0px 10px 10px;
+    height: 70px;
+    padding-top: 5px;
 }
 
 .arrow-left {
@@ -17,13 +21,14 @@
     border-width: 0 1px 1px 0;
     display: inline-block;
     padding: 3px;
+    margin-left: 15px;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
 
 .chatRoom__dots {
     position: absolute;
-    right: 0;
+    right: 35px;
 }
 
 .chatRoom-messages {
