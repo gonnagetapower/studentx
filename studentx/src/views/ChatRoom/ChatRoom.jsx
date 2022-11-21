@@ -76,14 +76,14 @@ const ChatRoom = ({ id }) => {
             </div>
           </div>
         </div>
-        <FixedLayout filled vertical="bottom">
-          <div className="enterMsg">
-            <span className="enterMsg__icon enterMsg__icon--left"></span>
-            <input className="enterMsg__input" placeholder="Введите текст сообщения" type="text" />
-            <span className="enterMsg__icon enterMsg__icon--right"></span>
-          </div>
-        </FixedLayout>
       </div>
+      <FixedLayout filled vertical="bottom">
+        <div className="enterMsg">
+          <span className="enterMsg__icon enterMsg__icon--left"></span>
+          <input className="enterMsg__input" placeholder="Введите текст сообщения" type="text" />
+          <span className="enterMsg__icon enterMsg__icon--right"></span>
+        </div>
+      </FixedLayout>
       <Navigation />
     </Panel>
   );

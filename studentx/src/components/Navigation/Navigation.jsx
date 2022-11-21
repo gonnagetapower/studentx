@@ -14,42 +14,43 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setActiveIcon } from '../../redux/slices/navSlice';
 
 const Navigation = () => {
-  const [selected, setSelected] = useState(PAGE_HOME);
-
   const dispatch = useDispatch();
   const activeIcon = useSelector((state) => state.nav.activeIcon);
   const router = useRouter();
 
   const handlePage = (page, title) => {
     dispatch(setActiveIcon(title));
-    setSelected(page);
     router.pushPage(page);
   };
 
   return (
     <div>
-      <Tabbar style={{ paddingTop: '5px' }}>
-        <TabbarItem onClick={() => handlePage(PAGE_HOME, 'main')} data-story="main" text="Главная">
+      <Tabbar>
+        <TabbarItem
+          style={activeIcon === 'main' ? { color: '#8E95C7' } : { color: '#AEAEAE' }}
+          onClick={() => handlePage(PAGE_HOME, 'main')}
+          data-story="main"
+          text="Главная">
           <MainIcon stroke={activeIcon === 'main' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>
         <TabbarItem
+          style={activeIcon === 'publication' ? { color: '#8E95C7' } : { color: '#AEAEAE' }}
           onClick={() => handlePage(PAGE_PUBLICATION, 'publication')}
-          selected={selected === '/publication'}
           data-story="publication"
           text="Мои публикации">
           <PublicationIcon stroke={activeIcon === 'publication' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>
         <TabbarItem
+          style={activeIcon === 'messages' ? { color: '#8E95C7' } : { color: '#AEAEAE' }}
           onClick={() => handlePage(PAGE_MESSAGES, 'messages')}
-          selected={selected === '/messages'}
           data-story="messages"
           text="Сообщения">
           <MsgIcon fill={activeIcon === 'messages' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>
         <TabbarItem
+          style={activeIcon === 'profile' ? { color: '#8E95C7' } : { color: '#AEAEAE' }}
           onClick={() => handlePage(PAGE_PROFILE, 'profile')}
-          selected={selected === '/profile'}
-          data-story={PAGE_PROFILE}
+          data-story={'profile'}
           text="Профиль">
           <ProfileIcon fill={activeIcon === 'profile' ? '#8E95C7' : '#AEAEAE'} />
         </TabbarItem>

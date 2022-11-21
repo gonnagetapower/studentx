@@ -141,8 +141,9 @@
 
 .enterMsg {
     position: relative;
-    margin-top: -100px;
-    padding-right: 44px;
+    margin-top: -95px;
+    padding-right: 24px;
+    padding-left: 24px;
     background: rgb(255, 255, 255);
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -171,7 +172,7 @@
 .enterMsg__icon--left {
     content: url("./../../img/clip.svg");
     top: 8px;
-    left: 10px;
+    left: 33px;
 }
 
 .enterMsg__icon--right {
