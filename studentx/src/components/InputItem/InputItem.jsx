@@ -2,12 +2,16 @@ import React from 'react';
 
 import './InputItem.css';
 
-const InputItem = ({ title }) => {
+const InputItem = ({ title, setPrice, price, dispatch }) => {
   return (
     <div className="inputItem-container">
-      <div className="inputItem">
-        <h1 className="inputItem__title">{title}</h1>
-      </div>
+      <input
+        value={price}
+        onChange={(e) => dispatch(setPrice(e.target.value))}
+        className="inputItem"
+        placeholder={title}
+        type="text"
+      />
     </div>
   );
 };

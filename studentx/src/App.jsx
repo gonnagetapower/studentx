@@ -99,7 +99,6 @@ const App = () => {
       setPopout(null);
     }
     fetchData();
-    console.log('dsd');
   }, [userApplyPolicy]);
 
   const go = (page) => {

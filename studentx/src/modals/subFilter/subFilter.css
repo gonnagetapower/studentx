@@ -1,6 +1,8 @@
 .subFilter {
     padding-top: 10px;
     padding-bottom: 10px;
+    height: 100vh;
+    padding-bottom: 100px;
 }
 
 .subFilter__title {
