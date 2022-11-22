@@ -136,31 +136,29 @@ const App = () => {
   );
 
   return (
-    <ConfigProvider scheme={'light'}>
-      <AppRoot>
-        <SplitLayout modal={modal}>
-          <SplitCol>
-            <div className="container">
-              <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-                <Intro
-                  id={PANEL_MAIN}
-                  go={veiwIntro}
-                  userApplyPolicy={userApplyPolicy}
-                  setOpen={setOpen}
-                />
-                <Main id={PANEL_HOME} />
-                <Messages id={PANEL_MESSAGES} />
-                <Profile id={PANEL_PROFILE} />
-                <MyPublication id={PANEL_PUBLICATIONS} />
-                <Respond id={PANEL_RESPOND} />
-                <CreateTask id={PANEL__CREATE} />
-                <ChatRoom id={PANEL_CHATROOM} />
-              </View>
-            </div>
-          </SplitCol>
-        </SplitLayout>
-      </AppRoot>
-    </ConfigProvider>
+    <AppRoot>
+      <SplitLayout modal={modal}>
+        <SplitCol>
+          <div className="container">
+            <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
+              <Intro
+                id={PANEL_MAIN}
+                go={veiwIntro}
+                userApplyPolicy={userApplyPolicy}
+                setOpen={setOpen}
+              />
+              <Main id={PANEL_HOME} />
+              <Messages id={PANEL_MESSAGES} />
+              <Profile id={PANEL_PROFILE} />
+              <MyPublication id={PANEL_PUBLICATIONS} />
+              <Respond id={PANEL_RESPOND} />
+              <CreateTask id={PANEL__CREATE} />
+              <ChatRoom id={PANEL_CHATROOM} />
+            </View>
+          </div>
+        </SplitCol>
+      </SplitLayout>
+    </AppRoot>
   );
 };
 

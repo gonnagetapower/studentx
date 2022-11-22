@@ -146,11 +146,12 @@
 
 .enterMsg {
     position: relative;
-    margin-top: -95px;
+    margin-top: -107px;
     padding-right: 24px;
     padding-left: 24px;
     background: rgb(255, 255, 255);
     padding-bottom: 12px;
+    padding-top: 12px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -176,12 +177,12 @@
 
 .enterMsg__icon--left {
     content: url("./../../img/clip.svg");
-    top: 8px;
+    top: 20px;
     left: 33px;
 }
 
 .enterMsg__icon--right {
     content: url("./../../img/smile.svg");
-    top: 8px;
-    right: 55px;
+    top: 20px;
+    right: 45px;
 }
