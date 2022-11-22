@@ -42,9 +42,10 @@
 
 .photoList {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 10px;
     flex-wrap: wrap;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .custom-file-input {
@@ -62,12 +63,13 @@
     border: 1px solid #F5F5F5;
     border-radius: 10px;
     padding: 35px;
+    padding-bottom: 30px;
     outline: none;
     cursor: pointer;
 }
 
 .addPhoto::before {
-    width: 20px;
+    width: 15px;
     content: url('./../../img/plusGreyIcon.svg');
     text-align: center;
     display: inline-block;
@@ -76,6 +78,7 @@
     border: 1px solid #F5F5F5;
     border-radius: 10px;
     padding: 36px;
+    padding-bottom: 30px;
     outline: none;
     cursor: pointer;
 }
