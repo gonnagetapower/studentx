@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 
 import { useParams, useRouter } from '@happysanta/router';
 import { Icon24Back, Icon28ChevronBack } from '@vkontakte/icons';
-import { Button, PanelHeader, PanelHeaderBack, PanelHeaderButton } from '@vkontakte/vkui';
+import { PanelHeader, PanelHeaderBack, PanelHeaderButton, FixedLayout } from '@vkontakte/vkui';
 
-import { Navigation } from './../../components';
+import { Navigation, Person } from './../../components';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 import emptyPhotoLogo from './../../img/emptyPhotoLogo.svg';
@@ -38,9 +38,9 @@ const Respond = () => {
   return (
     <div>
       <PanelHeader
-        style={{ marginTop: '50px' }}
         left={
           <PanelHeaderButton
+            style={{ color: 'black' }}
             aria-label="кнопка"
             onClick={() => {
               router.popPage();
@@ -51,16 +51,14 @@ const Respond = () => {
         before={<PanelHeaderBack />}>
         <div className="header">
           <h2 className="header__title">Объявления</h2>
-          <div className="person">
-            <img src={nullPhoto} alt="person photop" />
-            <h1 className="person__name">Наташа Ростова</h1>
-          </div>
         </div>
       </PanelHeader>
       {respond.data.map((obj) => (
         <div key={obj.id} className="respond-container">
+          <div className="respond-user">
+            <Person name={'Наташа Ростова'} />
+          </div>
           <div className="respond-text">
-            {console.log(obj)}
             <h1 className="respond__title">{obj.title}</h1>
             <p className="respond__descr">{obj.description}</p>
           </div>
@@ -88,12 +86,12 @@ const Respond = () => {
               <li>{obj.price}</li>
             </ul>
           </div>
-          <div className="contactAuthor">
-            <button className="button button--write">Написать</button>
-            <button className="button button--respond">Откликнуться</button>
-          </div>
         </div>
       ))}
+      <div className="contactAuthor">
+        <button className="button button--write">Написать</button>
+        <button className="button button--respond">Откликнуться</button>
+      </div>
       <Navigation />
     </div>
   );
