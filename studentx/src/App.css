@@ -1,3 +1,7 @@
+body {
+    background: #fff;
+}
+
 *,
 button {
     font-family: 'Open Sans', sans-serif;
