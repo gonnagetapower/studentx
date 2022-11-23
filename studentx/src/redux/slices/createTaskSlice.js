@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const createTaskSlice = createSlice({
     name: 'createTask',
     initialState: {
+        photoList: [1],
         discipline: "",
         town: "",
         institute: "",
@@ -11,6 +12,9 @@ export const createTaskSlice = createSlice({
         price: "",
     },
     reducers: {
+        setPhotoList: (state, action) => {
+            state.photoList = action.payload
+        },
         setDiscipline: (state, action) => {
             state.discipline = action.payload
         },

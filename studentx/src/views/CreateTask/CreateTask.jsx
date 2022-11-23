@@ -3,7 +3,14 @@ import { useRouter } from '@happysanta/router';
 import { PAGE_HOME, router, MODAL_DISCIPLINE, MODAL_TOWNS, MODAL_INSTITUTE } from '../../router';
 
 import { Icon28ChevronBack } from '@vkontakte/icons';
-import { PanelHeader, PanelHeaderBack, PanelHeaderButton, Panel } from '@vkontakte/vkui';
+import {
+  PanelHeader,
+  PanelHeaderBack,
+  PanelHeaderButton,
+  Panel,
+  SimpleCell,
+  Switch,
+} from '@vkontakte/vkui';
 
 import './CreateTask.css';
 
@@ -12,16 +19,20 @@ import { DateInput } from '@vkontakte/vkui';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setPrice } from '../../redux/slices/filterSlice';
-import { setDiscipline } from '../../redux/slices/filterSlice';
+import { setPrice, setDiscipline, setPhotoList } from '../../redux/slices/createTaskSlice';
 
 const CreateTask = ({ id }) => {
   const router = useRouter();
-  const [photoList, setPhotoList] = useState([1]);
+  const [photoList, setPhotoList] = useState([
+    {
+      id: 1,
+      photo: '',
+    },
+  ]);
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
 
-  const filterState = useSelector((state) => state.filter);
+  const createState = useSelector((state) => state.create);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -30,6 +41,7 @@ const CreateTask = ({ id }) => {
       ...prev,
       {
         id: id,
+        photo: '',
       },
     ]);
   };
@@ -80,19 +92,19 @@ const CreateTask = ({ id }) => {
           <div className="create__filter">
             <h2 className="filter-modal__title">Предмет</h2>
             <FilterItem
-              subTitle={filterState.discipline}
+              subTitle={createState.discipline}
               setDiscipline={setDiscipline}
               subModal={MODAL_DISCIPLINE}
             />
             <h2 className="filter-modal__title">Город</h2>
             <FilterItem
-              subTitle={filterState.town}
+              subTitle={createState.town}
               setDiscipline={setDiscipline}
               subModal={MODAL_TOWNS}
             />
             <h2 className="filter-modal__title">Учебное заведение</h2>
             <FilterItem
-              subTitle={filterState.institute}
+              subTitle={createState.institute}
               setDiscipline={setDiscipline}
               subModal={MODAL_INSTITUTE}
             />
@@ -103,11 +115,16 @@ const CreateTask = ({ id }) => {
             </div>
             <h2 className="filter-modal__title">Желаемый бюджет</h2>
             <InputItem
-              price={filterState.price}
+              price={createState.price}
               dispatch={dispatch}
               setPrice={setPrice}
               title={'Цена, ₽ '}
             />
+            <div className="switch">
+              <SimpleCell style={{ color: '#232036' }} Component="label" after={<Switch />}>
+                Публиковать пост
+              </SimpleCell>
+            </div>
           </div>
           <div className="create__button">
             <button className="button">Опубликовать</button>
