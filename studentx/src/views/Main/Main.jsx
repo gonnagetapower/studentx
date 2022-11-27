@@ -8,6 +8,7 @@ import { fetchTasks } from '../../redux/slices/taskSlice';
 
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
+import infoIcon from './../../img/infoIcon.svg';
 import { Task, Navigation, AddButton } from '../../components/';
 import { MODAL_FILTER, PAGE_CREATE } from '../../router';
 
@@ -69,23 +70,38 @@ const Main = ({ id, go, ROUTES }) => {
               </h2>
             </div>
           </div>
-          <div className="content-container">
-            <AddButton router={router} createPanel={PAGE_CREATE} />
-            <div className="content">
-              {tasksData.map((obj) => (
-                <Task
-                  go={go}
-                  ROUTES={ROUTES}
-                  key={obj.id}
-                  title={obj.title}
-                  descr={obj.description}
-                  dateOrder={obj.orderDate}
-                  price={obj.price}
-                  id={obj.id}
-                />
-              ))}
+          {buttonActive === '1' ? (
+            <div className="content-container">
+              <div className="content">
+                <div className="create-card">
+                  <div className="create-card--flex">
+                    <h1 className="create-card__title">Создай свою публикацию</h1>
+                    <img className="create-card__img" src={infoIcon} alt="info" />
+                  </div>
+                  <button className="button create-card--button">Начать</button>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="content-container">
+              <AddButton router={router} createPanel={PAGE_CREATE} />
+              <div className="content">
+                {tasksData.map((obj) => (
+                  <Task
+                    go={go}
+                    ROUTES={ROUTES}
+                    key={obj.id}
+                    title={obj.title}
+                    descr={obj.description}
+                    dateOrder={obj.orderDate}
+                    price={obj.price}
+                    id={obj.id}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
           <Navigation />
         </div>
       </div>
