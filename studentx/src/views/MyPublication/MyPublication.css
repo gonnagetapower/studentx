@@ -1,0 +1,39 @@
+.publication__header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: #8E95C7;
+    border-radius: 0px 0px 10px 10px;
+    height: 70px;
+    padding-top: 5px;
+}
+
+.publication__title {
+    text-align: center;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 130%;
+    color: #fff;
+}
+
+.publication__dots {
+    position: absolute;
+    right: 35px;
+}
+
+.publication__container {
+    padding-top: 75px;
+    margin: 0 auto;
+}
+
+.publication__container>* {
+    background: #F3F3F3;
+}
+
+.publication__container button {
+    background: #F3F3F3;
+}
