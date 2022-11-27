@@ -1,13 +1,56 @@
 .welcome {
     height: 100vh;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .welcome__icon {
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    width: 150px;
+    animation: icon 2s 1;
+}
+
+.welcome__title {
+    margin: 0;
+    padding-top: 70px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 130%;
+    color: black;
+    animation: text 3s 1;
+}
+
+@keyframes text {
+    0% {
+        color: white;
+        letter-spacing: 13px;
+        margin-top: -40px;
+    }
+    50% {
+        margin-top: -20px;
+        color: white;
+    }
+    65% {
+        margin-top: 0px;
+        letter-spacing: 7px;
+        color: black;
+    }
+}
+
+@keyframes icon {
+    0% {
+        width: 100px;
+    }
+    100% {
+        width: 150px;
+    }
 }

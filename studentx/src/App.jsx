@@ -58,7 +58,6 @@ const App = () => {
   const [discipline, setDiscipline] = useState('');
 
   const [checked, setChecked] = useState(false);
-  const [scheme, setScheme] = useState('bright_light');
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [userApplyPolicy, setUserApplyPolicy] = useState(false);
@@ -90,13 +89,7 @@ const App = () => {
               break;
           }
         } catch (error) {
-          setSnackBar(
-            <Snackbar
-              layout="vertical"
-              onClose={() => setSnackBar(null)}
-              duration={900}
-              before={<Avatar size={24} />}></Snackbar>,
-          );
+          console.log(error);
         }
       });
       setUser(user);
@@ -151,7 +144,7 @@ const App = () => {
         <SplitCol>
           <div className="container">
             <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-              <Welcome id={PANEL_WELCOME} />
+              <Welcome id={PANEL_WELCOME} userApplyPolicy={userApplyPolicy} />
               <Intro
                 id={PANEL_MAIN}
                 go={veiwIntro}
