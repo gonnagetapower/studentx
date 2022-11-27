@@ -25,20 +25,22 @@ const Confirm = () => {
             mode: 'cancel',
           },
           {
-            title: 'Выйти',
-            autoclose: true,
-            action: () => {
-              actionLeave();
-            },
-          },
-          {
             title: 'Сохранить черновик',
             autoclose: true,
             action: () => {
               actionSave();
             },
           },
+          {
+            title: 'Выйти',
+            mode: 'destructive',
+            autoclose: true,
+            action: () => {
+              actionLeave();
+            },
+          },
         ]}
+        actionsLayout="vertical"
         onClose={() => router.popPage()}>
         <h1 className="alert-title">Вы уверены, что хотите выйти?</h1>
         <p className="alert-descr">Все изменения не сохранятся.</p>
