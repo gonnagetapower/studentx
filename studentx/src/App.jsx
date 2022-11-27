@@ -35,6 +35,7 @@ import {
   PANEL__CREATE,
   PANEL_CHATROOM,
   POPOUT_CONFIRM,
+  PANEL_WELCOME,
 } from './router';
 
 import { Messages, Profile, Main, MyPublication, Respond, Intro } from './views';
@@ -44,6 +45,7 @@ import { Filter, Discipline, Towns, Institute, Terms } from './modals/';
 import CreateTask from './views/CreateTask/CreateTask';
 import ChatRoom from './views/ChatRoom/ChatRoom';
 import Confirm from './popouts/Confirm';
+import Welcome from './views/Welcome/Welcome';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -149,6 +151,7 @@ const App = () => {
         <SplitCol>
           <div className="container">
             <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
+              <Welcome id={PANEL_WELCOME} />
               <Intro
                 id={PANEL_MAIN}
                 go={veiwIntro}

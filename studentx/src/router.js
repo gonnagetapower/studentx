@@ -26,7 +26,10 @@ export const PAGE_CREATE = '/create'
 export const PANEL__CREATE = 'panel_create'
 
 export const PAGE_CHATROOM = '/chat'
-export const PANEL_CHATROOM = '/panel_chat'
+export const PANEL_CHATROOM = 'panel_chat'
+
+export const PAGE_WELCOME = '/'
+export const PANEL_WELCOME = 'panel_welcome'
 
 //modals
 export const MODAL_TERMS = 'modal_terms'
@@ -43,6 +46,7 @@ export const POPOUT_CONFIRM = 'popout_confirm'
 
 //router
 const routes = {
+    [PAGE_WELCOME]: new Page(PANEL_WELCOME, VIEW_MAIN),
     [PAGE_MAIN]: new Page(PANEL_MAIN, VIEW_MAIN),
     [PAGE_HOME]: new Page(PANEL_HOME, VIEW_MAIN),
     [PAGE_MESSAGES]: new Page(PANEL_MESSAGES, VIEW_MAIN),
