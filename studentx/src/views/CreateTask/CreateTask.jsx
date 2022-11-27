@@ -33,9 +33,17 @@ const CreateTask = ({ id }) => {
   const [photoList, setPhotoList] = useState([
     {
       id: 1,
-      photo: '',
+      picture: [],
     },
   ]);
+
+  const [picture, setPicture] = useState([]);
+
+  const onChangePicture = (e) => {
+    console.log('picture', picture);
+    setPicture([...picture, e.target.files[0]]);
+  };
+
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
 
@@ -90,6 +98,7 @@ const CreateTask = ({ id }) => {
               <input
                 key={key}
                 id={photo.id}
+                onChange={(e) => onChangePicture(e)}
                 className="custom-file-input"
                 type="file"
                 accept=".png, .jpg, .jpeg"

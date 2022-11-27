@@ -84,7 +84,6 @@ const ChatRoom = ({ id }) => {
           <span className="enterMsg__icon enterMsg__icon--right"></span>
         </div>
       </FixedLayout>
-      <Navigation />
     </Panel>
   );
 };

@@ -8,6 +8,7 @@
     position: fixed;
     width: 100%;
     display: flex;
+    gap: 10px;
     align-items: center;
     background: #8E95C7;
     border-radius: 0px 0px 10px 10px;
@@ -32,6 +33,7 @@
 }
 
 .chatRoom-messages {
+    padding-top: 30px;
     padding-bottom: 100px;
 }
 
@@ -146,13 +148,13 @@
 
 .enterMsg {
     position: relative;
-    margin-top: -107px;
     padding-right: 24px;
     padding-left: 24px;
     background: rgb(255, 255, 255);
     padding-bottom: 12px;
     padding-top: 12px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .enterMsg__input {
