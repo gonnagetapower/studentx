@@ -5,7 +5,7 @@ export const VIEW_MAIN = 'view_main'
 
 //pages
 export const PAGE_MAIN = '/main'
-export const PANEL_MAIN = 'panel_main';
+export const PANEL_MAIN = 'panel_main'
 
 export const PAGE_HOME = '/home'
 export const PANEL_HOME = 'panel_home'
@@ -36,6 +36,10 @@ export const MODAL_FILTER = 'modal_filter'
 export const MODAL_DISCIPLINE = 'modal_discipline'
 export const MODAL_TOWNS = 'modal_towns'
 export const MODAL_INSTITUTE = 'modal_institute'
+
+//popout
+
+export const POPOUT_CONFIRM = 'popout_confirm'
 
 //router
 const routes = {

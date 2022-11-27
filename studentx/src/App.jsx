@@ -34,6 +34,7 @@ import {
   MODAL_INSTITUTE,
   PANEL__CREATE,
   PANEL_CHATROOM,
+  POPOUT_CONFIRM,
 } from './router';
 
 import { Messages, Profile, Main, MyPublication, Respond, Intro } from './views';
@@ -42,6 +43,7 @@ import { Filter, Discipline, Towns, Institute, Terms } from './modals/';
 
 import CreateTask from './views/CreateTask/CreateTask';
 import ChatRoom from './views/ChatRoom/ChatRoom';
+import Confirm from './popouts/Confirm';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -135,9 +137,15 @@ const App = () => {
     </ModalRoot>
   );
 
+  const popouts = (() => {
+    if (location.getPopupId() === POPOUT_CONFIRM) {
+      return <Confirm />;
+    }
+  })();
+
   return (
     <AppRoot>
-      <SplitLayout modal={modal}>
+      <SplitLayout modal={modal} popout={popouts}>
         <SplitCol>
           <div className="container">
             <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>

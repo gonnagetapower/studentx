@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { useRouter } from '@happysanta/router';
-import { PAGE_HOME, router, MODAL_DISCIPLINE, MODAL_TOWNS, MODAL_INSTITUTE } from '../../router';
+import {
+  PAGE_HOME,
+  router,
+  MODAL_DISCIPLINE,
+  MODAL_TOWNS,
+  MODAL_INSTITUTE,
+  POPOUT_CONFIRM,
+} from '../../router';
 
 import { Icon28ChevronBack } from '@vkontakte/icons';
 import {
@@ -54,7 +61,7 @@ const CreateTask = ({ id }) => {
           <PanelHeaderButton
             aria-label="кнопка"
             onClick={() => {
-              router.popPage();
+              router.pushPopup(POPOUT_CONFIRM);
             }}>
             <Icon28ChevronBack />
           </PanelHeaderButton>
