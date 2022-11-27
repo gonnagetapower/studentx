@@ -4,8 +4,6 @@ import { Panel, Group } from '@vkontakte/vkui';
 import { Navigation, Person, Task } from '../../components';
 import { useRouter } from '@happysanta/router';
 
-import dots from './../../img/3dots.svg';
-
 import './MyPublication.css';
 
 const MyPublication = ({ id }) => {
@@ -15,7 +13,6 @@ const MyPublication = ({ id }) => {
       <div className="publication__header">
         <div onClick={() => router.popPage()} className="arrow-left"></div>
         <h1 className="publication__title">Мои публикации</h1>
-        <img className="publication__dots" src={dots} alt="" />
       </div>
       <div className="publication__container">
         <Task

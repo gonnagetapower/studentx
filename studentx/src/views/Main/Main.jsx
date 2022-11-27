@@ -39,10 +39,6 @@ const Main = ({ id, go, ROUTES }) => {
       <div className="main-wrapper">
         <div className="wrapper">
           <div className="search-container">
-            <div className="search">
-              <input type="text" placeholder="Поиск" className="search__input" />
-              <img src={bellIcon} alt="search" className="search__info-bell" />
-            </div>
             <div className="button-box">
               <div id="btn"></div>
               <button
@@ -61,6 +57,10 @@ const Main = ({ id, go, ROUTES }) => {
                 className={buttonActive === '2' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'}>
                 Публикации
               </button>
+            </div>
+            <div className="search">
+              <input type="text" placeholder="Поиск" className="search__input" />
+              <img src={bellIcon} alt="search" className="search__info-bell" />
             </div>
             <div className="filter">
               <img className="filter__icon" src={filterIcon} alt="filter" />
