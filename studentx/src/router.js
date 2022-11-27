@@ -1,5 +1,7 @@
 import { Page, Router } from '@happysanta/router'
 
+//view
+export const VIEW_MAIN = 'view_main'
 
 //pages
 export const PAGE_MAIN = '/main'
@@ -26,14 +28,11 @@ export const PANEL__CREATE = 'panel_create'
 export const PAGE_CHATROOM = '/chat'
 export const PANEL_CHATROOM = '/panel_chat'
 
-//view
-export const VIEW_MAIN = 'view_main'
-
 //modals
 export const MODAL_TERMS = 'modal_terms'
 export const MODAL_FILTER = 'modal_filter'
 
-//subFilter
+//modals--subFilter
 export const MODAL_DISCIPLINE = 'modal_discipline'
 export const MODAL_TOWNS = 'modal_towns'
 export const MODAL_INSTITUTE = 'modal_institute'

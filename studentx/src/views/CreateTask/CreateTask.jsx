@@ -33,6 +33,7 @@ const CreateTask = ({ id }) => {
   const [dateTo, setDateTo] = useState();
 
   const createState = useSelector((state) => state.create);
+  const filterState = useSelector((state) => state.filter);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -92,19 +93,19 @@ const CreateTask = ({ id }) => {
           <div className="create__filter">
             <h2 className="filter-modal__title">Предмет</h2>
             <FilterItem
-              subTitle={createState.discipline}
+              subTitle={filterState.discipline}
               setDiscipline={setDiscipline}
               subModal={MODAL_DISCIPLINE}
             />
             <h2 className="filter-modal__title">Город</h2>
             <FilterItem
-              subTitle={createState.town}
+              subTitle={filterState.town}
               setDiscipline={setDiscipline}
               subModal={MODAL_TOWNS}
             />
             <h2 className="filter-modal__title">Учебное заведение</h2>
             <FilterItem
-              subTitle={createState.institute}
+              subTitle={filterState.institute}
               setDiscipline={setDiscipline}
               subModal={MODAL_INSTITUTE}
             />
