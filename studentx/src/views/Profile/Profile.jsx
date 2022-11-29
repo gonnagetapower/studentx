@@ -5,7 +5,7 @@ import { Panel, PanelHeader } from '@vkontakte/vkui';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 
-import { Navigation } from '../../components';
+import { Header, Navigation } from '../../components';
 import { Works, Payments, Assistance } from './components';
 
 import './Profile.css';
@@ -20,11 +20,12 @@ const Profile = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader>
-        <div className="header-profile">
-          <h1 className="header-profile__title">Профиль</h1>
-        </div>
-      </PanelHeader>
+      <Header>
+        {/* <div className="header-profile">
+            <h1 className="header-profile__title">Пример</h1>
+          </div> */}
+        <h1>Профильлллллллллллл111</h1>
+      </Header>
       <div className="profile-container">
         <div className="user-info-container">
           <img src={nullPhoto} className="user__photo" alt="user photo" />
