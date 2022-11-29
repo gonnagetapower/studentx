@@ -106,13 +106,12 @@
     position: relative;
     display: flex;
     background-color: #F5F5F5;
-    margin-top: 43px;
+    margin-top: 35px;
 }
 
 .content {
     margin: 0 auto;
-    margin-top: -50px;
-    padding-bottom: 30px;
+    margin-top: -45px;
     padding-bottom: 85px;
 }
 
