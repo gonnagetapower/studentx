@@ -50,7 +50,7 @@
 }
 
 .toggle-btn {
-    padding: 10px 34px;
+    padding: 10px 15px;
     cursor: pointer;
     background: transparent;
     border: 0;
@@ -58,9 +58,6 @@
     position: relative;
     text-align: center;
     width: 50%;
-    -webkit-border-radius: 0px;
-    -webkit-appearance: button;
-    -webkit-font-smoothing: antialiased;
 }
 
 #btn {

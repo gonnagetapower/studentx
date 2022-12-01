@@ -10,6 +10,8 @@ import { router } from './router';
 
 import App from './App';
 
+import './img/Normalize/Normalize.css';
+
 // Init VK  Mini App
 bridge.send('VKWebAppInit');
 
