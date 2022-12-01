@@ -1,26 +1,18 @@
-.main-wrapper {
-    background-color: #F5F5F5;
-    padding-bottom: 15px;
-    width: 100vw;
-    margin: 0 auto;
-}
-
 .wrapper {
     background: #8E95C7;
     border-radius: 0px 0px 10px 10px;
-    height: 210px;
+    height: auto;
+    padding-top: 20px;
 }
 
 .search-container {
     width: 312px;
     margin: 0 auto;
-    padding-top: 47px;
 }
 
 .search {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
     margin-top: 15px;
 }
 
@@ -69,6 +61,7 @@
 }
 
 #btn {
+    -webkit-appearance: none;
     left: 0;
     top: 0;
     position: absolute;
@@ -106,12 +99,12 @@
     position: relative;
     display: flex;
     background-color: #F5F5F5;
-    margin-top: 35px;
+    padding-top: 35px;
 }
 
 .content {
     margin: 0 auto;
-    margin-top: -45px;
+    margin-top: -65px;
     padding-bottom: 85px;
 }
 
