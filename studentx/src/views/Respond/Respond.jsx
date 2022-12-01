@@ -49,8 +49,8 @@ const Respond = () => {
           </PanelHeaderButton>
         }
         before={<PanelHeaderBack />}>
-        <div className="header">
-          <h2 className="header__title">Объявления</h2>
+        <div className="respond-header">
+          <h2 className="respond-header__title">Объявления</h2>
         </div>
       </PanelHeader>
       {respond.data.map((obj) => (

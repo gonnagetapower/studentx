@@ -1,14 +1,14 @@
-import { PanelHeader } from '@vkontakte/vkui';
+import { Div, PanelHeader, usePlatform } from '@vkontakte/vkui';
 import React from 'react';
 
 import './Header.css';
 
 const Header = (props) => {
+  const platform = usePlatform();
+  console.log(platform);
   return (
-    <div>
-      <PanelHeader separator={false}>
-        <div className="header">{props.children}</div>
-      </PanelHeader>
+    <div className={platform === 'ios' ? 'header-wrapper header-wrapper--ios' : 'header-wrapper'}>
+      <div className="header">{props.children}</div>
     </div>
   );
 };

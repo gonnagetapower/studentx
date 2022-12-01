@@ -21,10 +21,7 @@ const Profile = ({ id }) => {
   return (
     <Panel id={id}>
       <Header>
-        {/* <div className="header-profile">
-            <h1 className="header-profile__title">Пример</h1>
-          </div> */}
-        <h1>Профильлллллллллллл111</h1>
+        <h1 className="header__title">Профиль</h1>
       </Header>
       <div className="profile-container">
         <div className="user-info-container">

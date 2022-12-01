@@ -1,0 +1,19 @@
+.header-wrapper {
+    background: #8E95C7;
+    border-radius: 0px 0px 10px 10px;
+    height: auto;
+}
+
+.header-wrapper--ios {
+    padding-top: 20px;
+}
+
+.header__title {
+    text-align: center;
+    font-family: 'Open Sans', 'sans-serif';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 130%;
+    color: #ffffff;
+}
