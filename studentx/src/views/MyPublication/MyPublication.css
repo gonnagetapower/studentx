@@ -1,15 +1,3 @@
-.publication__header {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    background: #8E95C7;
-    border-radius: 0px 0px 10px 10px;
-    height: 70px;
-    padding-top: 5px;
-}
-
 .publication__title {
     text-align: center;
     font-family: 'Open Sans';
@@ -20,13 +8,8 @@
     color: #fff;
 }
 
-.publication__dots {
-    position: absolute;
-    right: 35px;
-}
-
 .publication__container {
-    padding-top: 75px;
+    padding-top: 35px;
     margin: 0 auto;
 }
 

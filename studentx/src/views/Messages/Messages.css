@@ -1,14 +1,7 @@
-.messages-wrapper {
-    height: 150px;
-}
-
 .messages-container {
     padding-left: 24px;
     padding-right: 24px;
-}
-
-.messages-header {
-    padding-top: 14px;
+    padding-top: 15px;
 }
 
 .messages-header__title {
@@ -16,7 +9,7 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 130%;
     color: #FFFFFF;
 }
@@ -25,6 +18,7 @@
     position: relative;
     padding-left: 24px;
     padding-right: 24px;
+    padding-bottom: 15px;
 }
 
 .search-messages__input {
