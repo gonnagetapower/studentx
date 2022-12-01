@@ -12,6 +12,7 @@ import {
   Avatar,
   ModalRoot,
   ModalPage,
+  usePlatform,
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -138,9 +139,15 @@ const App = () => {
     }
   })();
 
+  const platfrom = usePlatform();
+
   return (
     <AppRoot>
-      <ConfigProvider webviewType={'INTERNAL'} appearance={'light'} transitionMotionEnabled={true}>
+      <ConfigProvider
+        platfrom={platfrom}
+        webviewType={'INTERNAL'}
+        appearance={'light'}
+        transitionMotionEnabled={true}>
         <SplitLayout modal={modal} popout={popouts}>
           <SplitCol>
             <div className="container">
