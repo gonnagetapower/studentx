@@ -1,11 +1,11 @@
 .header-wrapper {
-    background: #8E95C7;
+    background: #c7958e;
     border-radius: 0px 0px 10px 10px;
     height: auto;
 }
 
 .header-wrapper--ios {
-    padding-top: 20px;
+    padding-top: 50px;
 }
 
 .header__title {
