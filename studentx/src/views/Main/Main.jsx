@@ -9,13 +9,13 @@ import { fetchTasks } from '../../redux/slices/taskSlice';
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
 import infoIcon from './../../img/infoIcon.svg';
-import { Task, Navigation, AddButton, Header } from '../../components/';
+import { Task, Navigation, AddButton, Header, SkeletonCard } from '../../components/';
 import { MODAL_FILTER, PAGE_CREATE } from '../../router';
 
 import './Main.css';
 
 const Main = ({ id, go, ROUTES }) => {
-  const [buttonActive, setButtonActive] = useState('1');
+  const [buttonActive, setButtonActive] = useState('2');
   const router = useRouter();
 
   const onClickButton = (e) => {
@@ -93,18 +93,20 @@ const Main = ({ id, go, ROUTES }) => {
         <div className="content-container">
           <AddButton router={router} createPanel={PAGE_CREATE} />
           <div className="content">
-            {tasksData.map((obj) => (
-              <Task
-                go={go}
-                ROUTES={ROUTES}
-                key={obj.id}
-                title={obj.title}
-                descr={obj.description}
-                dateOrder={obj.orderDate}
-                price={obj.price}
-                id={obj.id}
-              />
-            ))}
+            {status === 'loading'
+              ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
+              : tasksData.map((obj) => (
+                  <Task
+                    go={go}
+                    ROUTES={ROUTES}
+                    key={obj.id}
+                    title={obj.title}
+                    descr={obj.description}
+                    dateOrder={obj.orderDate}
+                    price={obj.price}
+                    id={obj.id}
+                  />
+                ))}
           </div>
         </div>
       )}

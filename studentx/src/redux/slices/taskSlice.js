@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchTasks = createAsyncThunk(
     'tasks/fetchTasksStatus',
-    async() => {
+    async () => {
         const res = await axios.get(
             `https://635c0281fc2595be263e82f3.mockapi.io/tasks`
         );

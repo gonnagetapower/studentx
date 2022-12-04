@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 11%;
     right: 8%;
+    z-index: 100;
 }
 
 .plus {
