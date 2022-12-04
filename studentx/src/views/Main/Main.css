@@ -86,13 +86,14 @@
 
 .filter {
     display: flex;
+    padding-bottom: 5px;
 }
 
 .filter__title {
     font-style: normal;
     margin-left: 5px;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 130%;
     /* identical to box height, or 16px */
     text-align: center;
