@@ -3,6 +3,7 @@
     border-radius: 0px 0px 10px 10px;
     height: auto;
     padding-top: 20px;
+    padding-bottom: 25px;
 }
 
 .search-container {
@@ -13,7 +14,7 @@
 .search {
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    padding-top: 15px;
 }
 
 .search__input {
@@ -86,7 +87,10 @@
 
 .filter {
     display: flex;
-    padding-bottom: 5px;
+}
+
+.filter--hidden {
+    display: none;
 }
 
 .filter__title {
@@ -105,7 +109,6 @@
     position: relative;
     display: flex;
     background-color: #F5F5F5;
-    padding-top: 35px;
 }
 
 .content {
