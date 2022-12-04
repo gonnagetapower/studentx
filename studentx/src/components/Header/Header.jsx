@@ -7,8 +7,10 @@ const Header = (props) => {
   const platform = usePlatform();
   console.log(platform);
   return (
-    <div className={platform === 'ios' ? 'header-wrapper header-wrapper--ios' : 'header-wrapper'}>
-      <div className="header">{props.children}</div>
+    <div className={props.fixed === true ? 'fixed' : ''}>
+      <div className={platform === 'ios' ? 'header-wrapper header-wrapper--ios' : 'header-wrapper'}>
+        <div className="header">{props.children}</div>
+      </div>
     </div>
   );
 };

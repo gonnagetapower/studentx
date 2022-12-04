@@ -1,6 +1,6 @@
 import React from 'react';
 import { FixedLayout, Panel } from '@vkontakte/vkui';
-import { Navigation, Person } from '../../components';
+import { Header, Navigation, Person } from '../../components';
 
 import { useRouter } from '@happysanta/router';
 
@@ -12,11 +12,13 @@ const ChatRoom = ({ id }) => {
   const router = useRouter();
   return (
     <Panel id={id}>
-      <div className="chatRoom__header">
-        <div onClick={() => router.popPage()} className="arrow-left"></div>
-        <Person colorText={'white'} name={'Наташа Ростова'} descr={''} status={'Online'} />
-        <img className="chatRoom__dots" src={dots} alt="" />
-      </div>
+      <Header fixed={true}>
+        <div className="chatRoom__header">
+          <div onClick={() => router.popPage()} className="arrow-left"></div>
+          <Person colorText={'white'} name={'Наташа Ростова'} descr={''} status={'Online'} />
+          <img className="chatRoom__dots" src={dots} alt="" />
+        </div>
+      </Header>
       <div className="chatRoom">
         <div className="chatRoom-messages">
           <div className="first-msg">
