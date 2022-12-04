@@ -63,11 +63,16 @@ const Main = ({ id, go, ROUTES }) => {
               <input type="text" placeholder="Поиск" className="search__input" />
               <img src={bellIcon} alt="search" className="search__info-bell" />
             </div>
-            <div
-              className={buttonActive === '1' ? 'filter--hidden' : 'filter'}
-              onClick={() => router.pushModal(MODAL_FILTER)}>
-              <img className="filter__icon" src={filterIcon} alt="filter" />
-              <h2 className="filter__title">Фильтры</h2>
+            <div className={buttonActive === '1' ? 'filter--hidden' : 'filter'}>
+              <img
+                onClick={() => router.pushModal(MODAL_FILTER)}
+                className="filter__icon"
+                src={filterIcon}
+                alt="filter"
+              />
+              <h2 onClick={() => router.pushModal(MODAL_FILTER)} className="filter__title">
+                Фильтры
+              </h2>
             </div>
           </div>
         </div>
