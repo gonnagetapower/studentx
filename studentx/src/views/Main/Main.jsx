@@ -4,7 +4,7 @@ import { Panel } from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTasks } from '../../redux/slices/taskSlice';
+import { fetchTasks, setCurrentPage } from '../../redux/slices/taskSlice';
 
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
@@ -26,14 +26,35 @@ const Main = ({ id, go, ROUTES }) => {
 
   const tasksData = useSelector((state) => state.tasks.items);
   const status = useSelector((state) => state.tasks.status);
+  const currentPage = useSelector((state) => state.tasks.currentPage);
+  const firstFetch = useSelector((state) => state.tasks.firstFetch);
 
   const getTasks = async () => {
-    dispatch(fetchTasks());
+    dispatch(fetchTasks(currentPage));
   };
 
   useEffect(() => {
-    getTasks();
+    if (currentPage < 5) {
+      getTasks();
+    }
+  }, [currentPage]);
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+    return function () {
+      document.removeEventListener('scroll', scrollHandler);
+    };
   }, []);
+
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+      100
+    ) {
+      dispatch(setCurrentPage());
+    }
+  };
 
   return (
     <Panel id={id}>
@@ -47,7 +68,9 @@ const Main = ({ id, go, ROUTES }) => {
                 key={1}
                 id={'1'}
                 onClick={onClickButton}
-                className={buttonActive === '1' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'}>
+                className={
+                  buttonActive === '1' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'
+                }>
                 Главная
               </button>
               <button
@@ -55,7 +78,9 @@ const Main = ({ id, go, ROUTES }) => {
                 id={'2'}
                 onClick={onClickButton}
                 type="button"
-                className={buttonActive === '2' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'}>
+                className={
+                  buttonActive === '2' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'
+                }>
                 Публикации
               </button>
             </div>
@@ -70,7 +95,9 @@ const Main = ({ id, go, ROUTES }) => {
                 src={filterIcon}
                 alt="filter"
               />
-              <h2 onClick={() => router.pushModal(MODAL_FILTER)} className="filter__title">
+              <h2
+                onClick={() => router.pushModal(MODAL_FILTER)}
+                className="filter__title">
                 Фильтры
               </h2>
             </div>
@@ -97,7 +124,7 @@ const Main = ({ id, go, ROUTES }) => {
         <div className="content-container">
           <AddButton router={router} createPanel={PAGE_CREATE} />
           <div className="content">
-            {status === 'loading'
+            {firstFetch
               ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
               : tasksData.map((obj) => (
                   <Task
@@ -111,6 +138,12 @@ const Main = ({ id, go, ROUTES }) => {
                     id={obj.id}
                   />
                 ))}
+            {status === 'loading' ? (
+              <div>
+                <SkeletonCard />
+                <SkeletonCard />
+              </div>
+            ) : null}
           </div>
         </div>
       )}
@@ -118,5 +151,7 @@ const Main = ({ id, go, ROUTES }) => {
     </Panel>
   );
 };
+
+// [...new Array(6)].map((index) => <SkeletonCard key={index} />
 
 export default Main;

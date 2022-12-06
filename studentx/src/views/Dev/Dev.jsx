@@ -1,54 +1,65 @@
 import React from 'react';
 import axios from 'axios';
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { Navigation } from '../../components';
-import usePosts from '../../hooks/useFetch';
 
-import Post from './Post';
+import { useEffect } from 'react';
+import { useState } from 'react';
+
+import { Navigation, Task } from '../../components';
 
 const Dev = () => {
-  const [pageNum, setPageNum] = useState(1);
-  const { isLoading, isError, error, results, hasNextPage } = usePosts(pageNum);
+  const [tasks, setTasks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [fetching, setFetching] = useState(true);
 
-  const intObserver = useRef();
-  const lastPostRef = useCallback(
-    (post) => {
-      if (isLoading) return;
-
-      if (intObserver.current) intObserver.current.disconnect();
-
-      intObserver.current = new IntersectionObserver((posts) => {
-        if (posts[0].isIntersecting && hasNextPage) {
-          console.log('We are near the last post!');
-          setPageNum((prev) => prev + 1);
-        }
-      });
-
-      if (post) intObserver.current.observe(post);
-    },
-    [isLoading, hasNextPage],
-  );
-
-  if (isError) return <p className="center">Error: {error.message}</p>;
-
-  const content = results.map((post, i) => {
-    if (results.length === i + 1) {
-      return <Post ref={lastPostRef} key={post.id} post={post} />;
+  useEffect(() => {
+    if (fetching) {
+      axios
+        .get(
+          `https://635c0281fc2595be263e82f3.mockapi.io/tasks?page=${currentPage}&limit=5`,
+        )
+        .then((response) => {
+          setTasks([...tasks, ...response.data]);
+          setCurrentPage((prevPage) => prevPage + 1);
+        })
+        .finally(() => setFetching(false));
     }
-    return <Post key={post.id} post={post} />;
-  });
+  }, [fetching]);
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+    return function () {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
+
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+        100 &&
+      currentPage < 5
+    ) {
+      setFetching(true);
+    }
+  };
 
   return (
     <div className="content-container">
       <div className="content">
-        {content}
-        {isLoading && <p className="center">Loading More Posts...</p>}
-        <p className="center">
-          <a href="#top">Back to Top</a>
-        </p>
+        {tasks.map((obj) => (
+          <Task
+            key={obj.id}
+            title={obj.title}
+            descr={obj.description}
+            dateOrder={obj.orderDate}
+            price={obj.price}
+            id={obj.id}
+          />
+        ))}
       </div>
       <Navigation />
     </div>
   );
 };
+
 export default Dev;
