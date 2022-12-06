@@ -142,6 +142,11 @@ const Main = ({ id, go, ROUTES }) => {
               <div>
                 <SkeletonCard />
                 <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
               </div>
             ) : null}
           </div>
