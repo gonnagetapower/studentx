@@ -37,9 +37,10 @@ import {
   PANEL_CHATROOM,
   POPOUT_CONFIRM,
   PANEL_WELCOME,
+  PANEL_DEV,
 } from './router';
 
-import { Messages, Profile, Main, MyPublication, Respond, Intro } from './views';
+import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev } from './views';
 
 import { Filter, Discipline, Towns, Institute, Terms } from './modals/';
 
@@ -166,6 +167,7 @@ const App = () => {
                 <Respond id={PANEL_RESPOND} />
                 <CreateTask id={PANEL__CREATE} />
                 <ChatRoom id={PANEL_CHATROOM} />
+                <Dev id={PANEL_DEV} />
               </View>
             </div>
           </SplitCol>

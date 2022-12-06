@@ -10,7 +10,7 @@ import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
 import infoIcon from './../../img/infoIcon.svg';
 import { Task, Navigation, AddButton, Header, SkeletonCard } from '../../components/';
-import { MODAL_FILTER, PAGE_CREATE } from '../../router';
+import { MODAL_FILTER, PAGE_CREATE, PAGE_DEV } from '../../router';
 
 import './Main.css';
 
@@ -85,7 +85,11 @@ const Main = ({ id, go, ROUTES }) => {
                 <h1 className="create-card__title">Создай свою публикацию</h1>
                 <img className="create-card__img" src={infoIcon} alt="info" />
               </div>
-              <button className="button create-card--button">Начать</button>
+              <button
+                onClick={() => router.pushPage(PAGE_DEV)}
+                className="button create-card--button">
+                Начать
+              </button>
             </div>
           </div>
         </div>

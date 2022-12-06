@@ -31,6 +31,9 @@ export const PANEL_CHATROOM = 'panel_chat'
 export const PAGE_WELCOME = '/'
 export const PANEL_WELCOME = 'panel_welcome'
 
+export const PAGE_DEV = '/dev'
+export const PANEL_DEV = 'panel_dev'
+
 //modals
 export const MODAL_TERMS = 'modal_terms'
 export const MODAL_FILTER = 'modal_filter'
@@ -54,7 +57,8 @@ const routes = {
     [PAGE_PROFILE]: new Page(PANEL_PROFILE, VIEW_MAIN),
     [PAGE_RESPOND]: new Page(PANEL_RESPOND, VIEW_MAIN),
     [PAGE_CREATE]: new Page(PANEL__CREATE, VIEW_MAIN),
-    [PAGE_CHATROOM]: new Page(PANEL_CHATROOM, VIEW_MAIN)
+    [PAGE_CHATROOM]: new Page(PANEL_CHATROOM, VIEW_MAIN),
+    [PAGE_DEV]: new Page(PANEL_DEV, VIEW_MAIN)
 }
 
 export const router = new Router(routes)
