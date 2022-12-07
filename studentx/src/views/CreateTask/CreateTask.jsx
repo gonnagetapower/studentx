@@ -132,6 +132,7 @@ const CreateTask = ({ id }) => {
   const disciplineRef = useRef();
   const townRef = useRef();
   const insituteRef = useRef();
+  const dateRef = useRef();
   const priceRef = useRef();
 
   //textarea state
@@ -184,12 +185,12 @@ const CreateTask = ({ id }) => {
         instituteError: true,
       });
     } else if (dateValue === '') {
-      titleRef.current.scrollIntoView();
+      dateRef.current.scrollIntoView();
       setError({
         dateError: true,
       });
     } else if (createState.price === '') {
-      titleRef.current.scrollIntoView();
+      priceRef.current.scrollIntoView();
       setError({
         priceError: true,
       });
@@ -289,7 +290,7 @@ const CreateTask = ({ id }) => {
             {error.instituteError && <span className="errorMsg">{inputs[4].errMsg}</span>}
             <h2 className="filter-modal__title">Сроки</h2>
             <div className="filter-modal__datepicker">
-              <div className={error.dateError ? 'error-date' : ''}>
+              <div ref={dateRef} className={error.dateError ? 'error-date' : ''}>
                 <DateRangeInput
                   value={dateValue}
                   onChange={setDateValue}
@@ -301,7 +302,7 @@ const CreateTask = ({ id }) => {
               {error.dateError && <span className="errorMsg">{inputs[5].errMsg}</span>}
             </div>
             <h2 className="filter-modal__title">Желаемый бюджет</h2>
-            <div className={error.priceError ? 'error-price' : ''}>
+            <div ref={priceRef} className={error.priceError ? 'error-price' : ''}>
               <InputItem
                 price={createState.price}
                 dispatch={dispatch}
