@@ -85,6 +85,7 @@ const App = () => {
               if (data[key].userApplyPolicy) {
                 router.pushPage(PAGE_HOME);
                 setUserApplyPolicy(true);
+                setUser(user);
               }
               break;
             default:
@@ -98,7 +99,11 @@ const App = () => {
       setPopout(null);
     }
     fetchData();
-  }, [userApplyPolicy]);
+  }, []);
+
+  {
+    console.log(' user', fetchedUser);
+  }
 
   const go = (page) => {
     router.pushPage(PAGE_HOME);
@@ -128,7 +133,11 @@ const App = () => {
         onClose={() => router.popPage()}
       />
       <Filter id={MODAL_FILTER} discipline={discipline} setDiscipline={setDiscipline} />
-      <Discipline id={MODAL_DISCIPLINE} discipline={discipline} setDiscipline={setDiscipline} />
+      <Discipline
+        id={MODAL_DISCIPLINE}
+        discipline={discipline}
+        setDiscipline={setDiscipline}
+      />
       <Towns id={MODAL_TOWNS} />
       <Institute id={MODAL_INSTITUTE} />
     </ModalRoot>
