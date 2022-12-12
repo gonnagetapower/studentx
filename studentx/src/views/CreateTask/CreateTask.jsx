@@ -69,6 +69,13 @@ const CreateTask = ({ id }) => {
     ]);
   };
 
+  // handleState
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+    handleError('titleError');
+  };
+
   //validate form
 
   const [error, setError] = useState({
@@ -80,6 +87,12 @@ const CreateTask = ({ id }) => {
     dateError: false,
     priceError: false,
   });
+
+  const handleError = (error) => {
+    setError({
+      [error]: false,
+    });
+  };
 
   const inputs = [
     {
@@ -148,7 +161,8 @@ const CreateTask = ({ id }) => {
       descr === '' &&
       filterState.discipline === '' &&
       filterState.town === '' &&
-      filterState.institute === ''
+      filterState.institute === '' &&
+      createState.price === ''
     ) {
       window.scrollTo(0, 0);
       setError({
@@ -156,6 +170,77 @@ const CreateTask = ({ id }) => {
         descrError: true,
         disciplineError: true,
         townError: true,
+        instituteError: true,
+        priceError: true,
+      });
+    } else if (
+      descr === '' &&
+      filterState.discipline === '' &&
+      filterState.town === '' &&
+      filterState.institute === '' &&
+      createState.price === ''
+    ) {
+      window.scrollTo(0, 0);
+      setError({
+        descrError: true,
+        disciplineError: true,
+        townError: true,
+        instituteError: true,
+        priceError: true,
+      });
+    } else if (
+      descr === '' &&
+      filterState.discipline === '' &&
+      filterState.town === '' &&
+      filterState.institute === ''
+    ) {
+      window.scrollTo(0, 0);
+      setError({
+        descrError: true,
+        disciplineError: true,
+        townError: true,
+        instituteError: true,
+      });
+    } else if (descr === '' && filterState.discipline === '' && filterState.town === '') {
+      window.scrollTo(0, 0);
+      setError({
+        descrError: true,
+        disciplineError: true,
+        townError: true,
+      });
+    } else if (descr === '' && filterState.discipline === '') {
+      window.scrollTo(0, 0);
+      setError({
+        descrError: true,
+        disciplineError: true,
+      });
+    } else if (
+      filterState.discipline === '' &&
+      filterState.town === '' &&
+      filterState.institute === '' &&
+      createState.price === ''
+    ) {
+      disciplineRef.current.scrollIntoView();
+      setError({
+        disciplineError: true,
+        townError: true,
+        instituteError: true,
+        priceError: true,
+      });
+    } else if (
+      filterState.town === '' &&
+      filterState.institute === '' &&
+      createState.price === ''
+    ) {
+      disciplineRef.current.scrollIntoView();
+      setError({
+        townError: true,
+        instituteError: true,
+        priceError: true,
+      });
+    } else if (filterState.institute === '' && createState.price === '') {
+      disciplineRef.current.scrollIntoView();
+      setError({
         instituteError: true,
         priceError: true,
       });
@@ -194,6 +279,31 @@ const CreateTask = ({ id }) => {
       setError({
         priceError: true,
       });
+    } else if (
+      title !== '' &&
+      descr !== '' &&
+      filterState.discipline !== '' &&
+      filterState.town !== '' &&
+      filterState.institute !== '' &&
+      createState.price !== ''
+    ) {
+      setError({
+        titleError: false,
+        descrError: false,
+        disciplineError: false,
+        townError: false,
+        instituteError: false,
+        dateError: false,
+        priceError: false,
+      });
+      console.log(
+        title,
+        descr,
+        filterState.discipline,
+        filterState.town,
+        filterState.institute,
+        createState.price,
+      );
     }
   };
 
@@ -219,7 +329,7 @@ const CreateTask = ({ id }) => {
           <textarea
             ref={titleRef}
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => handleTitle(e)}
             placeholder="Обозначь тематику, например: написать курсовую"
             rows="1"
             className={
@@ -229,7 +339,6 @@ const CreateTask = ({ id }) => {
             }
             type="text"
           />
-          {console.log(title)}
           {error.titleError && <span className="errorMsg">{inputs[0].errMsg}</span>}
           <textarea
             ref={descrRef}

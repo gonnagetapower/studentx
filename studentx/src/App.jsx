@@ -85,7 +85,6 @@ const App = () => {
               if (data[key].userApplyPolicy) {
                 router.pushPage(PAGE_HOME);
                 setUserApplyPolicy(true);
-                setUser(user);
               }
               break;
             default:
