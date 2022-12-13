@@ -1,61 +1,47 @@
 import React from 'react';
-import axios from 'axios';
-
-import { useEffect } from 'react';
 import { useState } from 'react';
+
+import nullPhoto from './../../img/cameraIcon.svg';
 
 import { Navigation, Task } from '../../components';
 
+import './Dev.css';
+
 const Dev = () => {
-  const [tasks, setTasks] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [fetching, setFetching] = useState(true);
+  const [photoList, setPhotoList] = useState([]);
 
-  useEffect(() => {
-    if (fetching) {
-      axios
-        .get(
-          `https://635c0281fc2595be263e82f3.mockapi.io/tasks?page=${currentPage}&limit=5`,
-        )
-        .then((response) => {
-          setTasks([...tasks, ...response.data]);
-          setCurrentPage((prevPage) => prevPage + 1);
-        })
-        .finally(() => setFetching(false));
-    }
-  }, [fetching]);
-
-  useEffect(() => {
-    document.addEventListener('scroll', scrollHandler);
-    return function () {
-      document.removeEventListener('scroll', scrollHandler);
-    };
-  }, []);
-
-  const scrollHandler = (e) => {
-    if (
-      e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
-        100 &&
-      currentPage < 5
-    ) {
-      setFetching(true);
-    }
+  const handlePhoto = (e) => {
+    let newArray = [];
+    const [file] = e.target.files;
+    newArray.push({
+      url: URL.createObjectURL(file),
+    });
+    setPhotoList([...photoList, ...newArray]);
+    console.log('img', photoList);
+    console.log('array', newArray);
   };
 
+  // URL.createObjectURL(file)
+
   return (
-    <div className="content-container">
-      <div className="content">
-        {tasks.map((obj) => (
-          <Task
-            key={obj.id}
-            title={obj.title}
-            descr={obj.description}
-            dateOrder={obj.orderDate}
-            price={obj.price}
-            id={obj.id}
+    <div>
+      <h1>dev</h1>
+      <div className="dev-photo-block">
+        <div>{photoList.length >= 1 || <img src={nullPhoto} />}</div>
+        {photoList.map((photo, key) => (
+          <img
+            key={key}
+            id={photo.id}
+            className="dev-photo"
+            src={photo.url === '' ? nullPhoto : photo.url}
           />
         ))}
+        <input
+          onChange={(e) => handlePhoto(e)}
+          className="custom-file-input"
+          type="file"
+          accept=".png, .jpg, .jpeg"
+        />
       </div>
       <Navigation />
     </div>
