@@ -85,7 +85,6 @@ const CreateTask = ({ id }) => {
     titleError: false,
     descrError: false,
     disciplineError: false,
-    townError: false,
     instituteError: false,
     dateError: false,
     priceError: false,
@@ -116,20 +115,15 @@ const CreateTask = ({ id }) => {
     {
       id: 4,
       name: 'town',
-      errMsg: 'Выберите город',
-    },
-    {
-      id: 5,
-      name: 'town',
       errMsg: 'Выберите ВУЗ',
     },
     {
-      id: 6,
+      id: 5,
       name: 'date',
       errMsg: 'Укажите дату',
     },
     {
-      id: 7,
+      id: 6,
       name: 'price',
       errMsg: 'Введите цену',
     },
@@ -163,7 +157,6 @@ const CreateTask = ({ id }) => {
       title === '' &&
       descr === '' &&
       filterState.discipline === '' &&
-      filterState.town === '' &&
       filterState.institute === '' &&
       createState.price === ''
     ) {
@@ -172,14 +165,12 @@ const CreateTask = ({ id }) => {
         titleError: true,
         descrError: true,
         disciplineError: true,
-        townError: true,
         instituteError: true,
         priceError: true,
       });
     } else if (
       descr === '' &&
       filterState.discipline === '' &&
-      filterState.town === '' &&
       filterState.institute === '' &&
       createState.price === ''
     ) {
@@ -187,21 +178,75 @@ const CreateTask = ({ id }) => {
       setError({
         descrError: true,
         disciplineError: true,
-        townError: true,
         instituteError: true,
+        priceError: true,
+      });
+    } else if (title === '' && filterState.institute === '' && createState.price === '') {
+      window.scrollTo(0, 0);
+      setError({
+        titleError: true,
+        instituteError: true,
+        priceError: true,
+      });
+    } else if (
+      title === '' &&
+      filterState.discipline === '' &&
+      filterState.institute === '' &&
+      createState.price === ''
+    ) {
+      window.scrollTo(0, 0);
+      setError({
+        titleError: true,
+        disciplineError: true,
+        instituteError: true,
+        priceError: true,
+      });
+    } else if (
+      title === '' &&
+      filterState.discipline === '' &&
+      createState.price === ''
+    ) {
+      window.scrollTo(0, 0);
+      setError({
+        titleError: true,
+        disciplineError: true,
+        priceError: true,
+      });
+    } else if (
+      title === '' &&
+      descr === '' &&
+      filterState.institute === '' &&
+      createState.price === ''
+    ) {
+      window.scrollTo(0, 0);
+      setError({
+        titleError: true,
+        descrError: true,
+        instituteError: true,
+        priceError: true,
+      });
+    } else if (
+      title === '' &&
+      descr === '' &&
+      filterState.discipline === '' &&
+      createState.price === ''
+    ) {
+      window.scrollTo(0, 0);
+      setError({
+        titleError: true,
+        descrError: true,
+        disciplineError: true,
         priceError: true,
       });
     } else if (
       descr === '' &&
       filterState.discipline === '' &&
-      filterState.town === '' &&
       filterState.institute === ''
     ) {
       window.scrollTo(0, 0);
       setError({
         descrError: true,
         disciplineError: true,
-        townError: true,
         instituteError: true,
       });
     } else if (descr === '' && filterState.discipline === '' && filterState.town === '') {
@@ -209,7 +254,6 @@ const CreateTask = ({ id }) => {
       setError({
         descrError: true,
         disciplineError: true,
-        townError: true,
       });
     } else if (descr === '' && filterState.discipline === '') {
       window.scrollTo(0, 0);
@@ -219,7 +263,6 @@ const CreateTask = ({ id }) => {
       });
     } else if (
       filterState.discipline === '' &&
-      filterState.town === '' &&
       filterState.institute === '' &&
       createState.price === ''
     ) {
@@ -230,11 +273,7 @@ const CreateTask = ({ id }) => {
         instituteError: true,
         priceError: true,
       });
-    } else if (
-      filterState.town === '' &&
-      filterState.institute === '' &&
-      createState.price === ''
-    ) {
+    } else if (filterState.institute === '' && createState.price === '') {
       disciplineRef.current.scrollIntoView();
       setError({
         townError: true,
@@ -262,11 +301,6 @@ const CreateTask = ({ id }) => {
       setError({
         disciplineError: true,
       });
-    } else if (filterState.town === '') {
-      townRef.current.scrollIntoView();
-      setError({
-        townError: true,
-      });
     } else if (filterState.institute === '') {
       insituteRef.current.scrollIntoView();
       setError({
@@ -286,7 +320,6 @@ const CreateTask = ({ id }) => {
       title !== '' &&
       descr !== '' &&
       filterState.discipline !== '' &&
-      filterState.town !== '' &&
       filterState.institute !== '' &&
       createState.price !== ''
     ) {
@@ -294,7 +327,6 @@ const CreateTask = ({ id }) => {
         titleError: false,
         descrError: false,
         disciplineError: false,
-        townError: false,
         instituteError: false,
         dateError: false,
         priceError: false,
@@ -303,7 +335,6 @@ const CreateTask = ({ id }) => {
         title,
         descr,
         filterState.discipline,
-        filterState.town,
         filterState.institute,
         createState.price,
       );
@@ -383,15 +414,6 @@ const CreateTask = ({ id }) => {
             {error.disciplineError && (
               <span className="errorMsg">{inputs[2].errMsg}</span>
             )}
-            <h2 className="filter-modal__title">Город</h2>
-            <div ref={townRef} className={error.townError ? 'error' : ''}>
-              <FilterItem
-                subTitle={filterState.town}
-                setDiscipline={setDiscipline}
-                subModal={MODAL_TOWNS}
-              />
-            </div>
-            {error.townError && <span className="errorMsg">{inputs[3].errMsg}</span>}
             <h2 className="filter-modal__title">Учебное заведение</h2>
             <div ref={insituteRef} className={error.instituteError ? 'error' : ''}>
               <FilterItem
@@ -400,7 +422,7 @@ const CreateTask = ({ id }) => {
                 subModal={MODAL_INSTITUTE}
               />
             </div>
-            {error.instituteError && <span className="errorMsg">{inputs[4].errMsg}</span>}
+            {error.instituteError && <span className="errorMsg">{inputs[3].errMsg}</span>}
             <h2 className="filter-modal__title">Сроки</h2>
             <div className="filter-modal__datepicker">
               <div ref={dateRef} className={error.dateError ? 'error-date' : ''}>
@@ -412,7 +434,7 @@ const CreateTask = ({ id }) => {
                   disablePickers={disablePickers}
                 />
               </div>
-              {error.dateError && <span className="errorMsg">{inputs[5].errMsg}</span>}
+              {error.dateError && <span className="errorMsg">{inputs[4].errMsg}</span>}
             </div>
             <h2 className="filter-modal__title">Желаемый бюджет</h2>
             <div ref={priceRef} className={error.priceError ? 'error-price' : ''}>
@@ -423,7 +445,7 @@ const CreateTask = ({ id }) => {
                 title={'Цена, ₽ '}
               />
             </div>
-            {error.priceError && <span className="errorMsg">{inputs[6].errMsg}</span>}
+            {error.priceError && <span className="errorMsg">{inputs[5].errMsg}</span>}
             <div className="switch">
               <SimpleCell
                 style={{ color: '#232036' }}
