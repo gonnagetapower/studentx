@@ -2,12 +2,31 @@
     justify-content: center;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
-.dev-photo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+.addPhoto::before {
+    width: 22px;
+    content: url('./../../img/cameraIcon.svg');
+    text-align: center;
+    display: inline-block;
+    background: #F5F5F5;
+    background-position: center;
+    border: 1px solid #F5F5F5;
+    border-radius: 10px;
+    padding: 33px;
+    padding-bottom: 29px;
+    outline: none;
 }
 
-.dev-photo {}
+.custom-file-input::before {
+    content: url('./../../img/plusGreyIcon.svg');
+    display: inline-block;
+    background: #F5F5F5;
+    border: 1px solid #F5F5F5;
+    border-radius: 10px;
+    padding: 35px;
+    padding-bottom: 30px;
+    outline: none;
+    cursor: pointer;
+}

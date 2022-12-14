@@ -24,7 +24,7 @@ import { addDays } from '@vkontakte/vkjs/lib/date';
 
 import './CreateTask.css';
 
-import { Navigation, FilterItem, InputItem } from '../../components';
+import { Navigation, FilterItem, InputItem, TaskPhoto } from '../../components';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -37,12 +37,6 @@ import { useRef } from 'react';
 
 const CreateTask = ({ id }) => {
   const router = useRouter();
-  const [photoList, setPhotoList] = useState([
-    {
-      id: 1,
-      picture: [],
-    },
-  ]);
 
   const [picture, setPicture] = useState([]);
 
@@ -58,22 +52,31 @@ const CreateTask = ({ id }) => {
   const filterState = useSelector((state) => state.filter);
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    const id = photoList.length + 1;
-    setPhotoList((prev) => [
-      ...prev,
-      {
-        id: id,
-        photo: '',
-      },
-    ]);
-  };
-
   // handleState
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
     handleError('titleError');
+  };
+
+  //photoList
+
+  const [photoList, setPhotoList] = useState([]);
+
+  const handlePhoto = (e) => {
+    let newPhotoList = [];
+    const [file] = e.target.files;
+    newPhotoList.push({
+      url: URL.createObjectURL(file),
+    });
+    setPhotoList([...photoList, ...newPhotoList]);
+  };
+
+  const deletePhoto = (elem) => {
+    const newPhotoList = photoList.filter((photo) => {
+      return photo !== elem;
+    });
+    setPhotoList(newPhotoList);
   };
 
   //validate form
@@ -355,17 +358,18 @@ const CreateTask = ({ id }) => {
           />
           {error.descrError && <span className="errorMsg">{inputs[1].errMsg}</span>}
           <div className="photoList">
-            {photoList.map((photo, key) => (
+            <div>{photoList.length >= 1 || <div className="addPhoto"></div>}</div>
+            {photoList.map((photo, index) => (
+              <TaskPhoto photo={photo} key={index} deletePhoto={deletePhoto} />
+            ))}
+            {photoList.length <= 4 && (
               <input
-                key={key}
-                id={photo.id}
-                onChange={(e) => onChangePicture(e)}
+                onChange={(e) => handlePhoto(e)}
                 className="custom-file-input"
                 type="file"
                 accept=".png, .jpg, .jpeg"
               />
-            ))}
-            <div onClick={() => handleClick()} className="addPhoto"></div>
+            )}
           </div>
           <div className="create__filter">
             <h2 className="filter-modal__title">Предмет</h2>

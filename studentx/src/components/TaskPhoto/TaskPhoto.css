@@ -1,0 +1,29 @@
+.taskPhotoBlock {
+    position: relative;
+    border-radius: 10px;
+}
+
+.taskPhoto {
+    display: block;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+    width: 90px;
+    height: 85px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.exitTaskPhoto {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}
+
+.exitTaskPhoto::after {
+    content: url('./../../img/closeIcon.svg');
+    width: 5px;
+    height: 5px;
+    cursor: pointer;
+}
