@@ -105,7 +105,7 @@ const App = () => {
   }
 
   const go = (page) => {
-    router.pushPage(PAGE_HOME);
+    router.pushPage(page);
     setOpen(false);
   };
 
@@ -130,6 +130,7 @@ const App = () => {
         id={MODAL_TERMS}
         checked={checked}
         onClose={() => router.popPage()}
+        veiwIntro={veiwIntro}
       />
       <Filter id={MODAL_FILTER} discipline={discipline} setDiscipline={setDiscipline} />
       <Discipline

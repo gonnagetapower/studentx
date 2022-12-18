@@ -6,14 +6,16 @@ import './Intro.css';
 import { Panel, Div, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import { MODAL_TERMS, router } from './../../router';
 
-const Intro = ({ id, go, route, userApplyPolicy, setOpen, setActiveModal }) => {
+const Intro = ({ id, go, userApplyPolicy }) => {
   return (
     <Panel id={id} centered={true}>
       {!userApplyPolicy && (
         <Fragment>
           <div className="intro">
             <h2 className="intro__title">Твой персональный помощник</h2>
-            <p className="intro__descr">создан для содействия в написании учебных работ</p>
+            <p className="intro__descr">
+              создан для содействия в написании учебных работ
+            </p>
             <img className="intro__img" src={girl} alt="girl styding photo" />
           </div>
           <div>
