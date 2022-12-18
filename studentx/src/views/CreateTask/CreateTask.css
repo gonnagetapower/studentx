@@ -35,9 +35,35 @@
     border-radius: 10px;
     padding-top: 10px;
     padding-left: 15px;
-    padding-right: 30%;
-    min-height: 41px;
+    padding-right: 25%;
+    min-height: 45px;
     resize: none;
+}
+
+.create__input--descr {
+    height: 120px;
+}
+
+.create__input--price {
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    padding-left: 15px;
+}
+
+.addPhoto::before {
+    width: 22px;
+    content: url('./../../img/cameraIcon.svg');
+    text-align: center;
+    display: inline-block;
+    background: #F5F5F5;
+    background-position: center;
+    border: 1px solid #F5F5F5;
+    border-radius: 10px;
+    padding: 33px;
+    padding-bottom: 29px;
+    outline: none;
 }
 
 .photoList {
@@ -82,6 +108,13 @@
 
 .create__filter {
     padding-bottom: 160px;
+}
+
+.create-task__time {
+    font-size: 14px;
+    padding: 0;
+    padding-left: 8px;
+    margin: 2px;
 }
 
 .create__button {

@@ -1,63 +1,74 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from '@happysanta/router';
-import {
-  PAGE_HOME,
-  router,
-  MODAL_DISCIPLINE,
-  MODAL_TOWNS,
-  MODAL_INSTITUTE,
-  POPOUT_CONFIRM,
-} from '../../router';
-
-import { Icon28ChevronBack } from '@vkontakte/icons';
-import {
-  PanelHeader,
-  PanelHeaderBack,
-  PanelHeaderButton,
-  Panel,
-  SimpleCell,
-  Switch,
-  DateRangeInput,
-} from '@vkontakte/vkui';
-
-import { addDays } from '@vkontakte/vkjs/lib/date';
-
-import './CreateTask.css';
-
-import { Navigation, FilterItem, InputItem, TaskPhoto } from '../../components';
-
+import { Navigation, TaskPhoto } from '../../components';
+import { FilterItem } from '../../components';
+import { MODAL_DISCIPLINE, MODAL_INSTITUTE, POPOUT_CONFIRM } from '../../router';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  setPrice,
-  setDiscipline,
-  setPhotoList,
-} from '../../redux/slices/createTaskSlice';
-import { useRef } from 'react';
+  Panel,
+  PanelHeader,
+  PanelHeaderButton,
+  PanelHeaderBack,
+  DateInput,
+  SimpleCell,
+  Switch,
+} from '@vkontakte/vkui';
+import { Icon28ChevronBack } from '@vkontakte/icons';
 
-const CreateTask = ({ id }) => {
+import { validate } from '../../utils/validate';
+
+import { setFormValues } from '../../redux/slices/createTaskSlice';
+
+import './CreateTask.css';
+
+const CreateTask = () => {
   const router = useRouter();
-
-  const [picture, setPicture] = useState([]);
-
-  const onChangePicture = (e) => {
-    console.log('picture', picture);
-    setPicture([...picture, e.target.files[0]]);
-  };
-
-  const [dateFrom, setDateFrom] = useState();
-  const [dateTo, setDateTo] = useState();
-
-  const createState = useSelector((state) => state.create);
-  const filterState = useSelector((state) => state.filter);
   const dispatch = useDispatch();
+  const filterState = useSelector((state) => state.filter);
+  const formValues = useSelector((state) => state.create);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
-  // handleState
-
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
-    handleError('titleError');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    dispatch(setFormValues({ ...formValues, [name]: value }));
   };
+
+  const handleSubmit = () => {
+    setFormErrors(
+      validate(
+        formValues,
+        filterState.discipline,
+        filterState.institute,
+        dateFrom,
+        dateTo,
+      ),
+    );
+    setIsSubmit(true);
+  };
+
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(
+        formValues,
+        dateFrom,
+        dateTo,
+        filterState.discipline,
+        filterState.institute,
+        photoList,
+      );
+    }
+  }, [formErrors]);
+
+  //dateInput
+  const [dateFrom, setDateFrom] = useState(undefined);
+  const [disablePast, setDisablePast] = useState(false);
+  const [closeOnChange, setCloseOnChange] = useState(true);
+  const [showNeighboringMonth, setShowNeighboringMonth] = useState(false);
+
+  const [dateTo, setDateTo] = useState(undefined);
+  const [disablePastTo, setDisablePastTo] = useState(true);
 
   //photoList
 
@@ -79,270 +90,8 @@ const CreateTask = ({ id }) => {
     setPhotoList(newPhotoList);
   };
 
-  //validate form
-
-  const [error, setError] = useState({
-    titleError: false,
-    descrError: false,
-    disciplineError: false,
-    instituteError: false,
-    dateError: false,
-    priceError: false,
-  });
-
-  const handleError = (error) => {
-    setError({
-      [error]: false,
-    });
-  };
-
-  const inputs = [
-    {
-      id: 1,
-      name: 'title',
-      errMsg: 'Обозначьте тематику',
-    },
-    {
-      id: 2,
-      name: 'descr',
-      errMsg: 'Опишите задачу',
-    },
-    {
-      id: 3,
-      name: 'town',
-      errMsg: 'Выберите предмет',
-    },
-    {
-      id: 4,
-      name: 'town',
-      errMsg: 'Выберите ВУЗ',
-    },
-    {
-      id: 5,
-      name: 'date',
-      errMsg: 'Укажите дату',
-    },
-    {
-      id: 6,
-      name: 'price',
-      errMsg: 'Введите цену',
-    },
-  ];
-
-  // calendar
-  const [dateValue, setDateValue] = useState([new Date(), addDays(new Date(), 10)]);
-  const [disablePast, setDisablePast] = useState(false);
-  const [disablePickers, setDisablePickers] = useState(false);
-  const [closeOnChange, setCloseOnChange] = useState(true);
-
-  // refs
-
-  const titleRef = useRef();
-  const descrRef = useRef();
-  const disciplineRef = useRef();
-  const townRef = useRef();
-  const insituteRef = useRef();
-  const dateRef = useRef();
-  const priceRef = useRef();
-
-  //textarea state
-
-  const [title, setTitle] = useState('');
-  const [descr, setDescr] = useState('');
-
-  //submit button
-
-  const handleSubmut = () => {
-    if (
-      title === '' &&
-      descr === '' &&
-      filterState.discipline === '' &&
-      filterState.institute === '' &&
-      createState.price === ''
-    ) {
-      window.scrollTo(0, 0);
-      setError({
-        titleError: true,
-        descrError: true,
-        disciplineError: true,
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (
-      descr === '' &&
-      filterState.discipline === '' &&
-      filterState.institute === '' &&
-      createState.price === ''
-    ) {
-      window.scrollTo(0, 0);
-      setError({
-        descrError: true,
-        disciplineError: true,
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (title === '' && filterState.institute === '' && createState.price === '') {
-      window.scrollTo(0, 0);
-      setError({
-        titleError: true,
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (
-      title === '' &&
-      filterState.discipline === '' &&
-      filterState.institute === '' &&
-      createState.price === ''
-    ) {
-      window.scrollTo(0, 0);
-      setError({
-        titleError: true,
-        disciplineError: true,
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (
-      title === '' &&
-      filterState.discipline === '' &&
-      createState.price === ''
-    ) {
-      window.scrollTo(0, 0);
-      setError({
-        titleError: true,
-        disciplineError: true,
-        priceError: true,
-      });
-    } else if (
-      title === '' &&
-      descr === '' &&
-      filterState.institute === '' &&
-      createState.price === ''
-    ) {
-      window.scrollTo(0, 0);
-      setError({
-        titleError: true,
-        descrError: true,
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (
-      title === '' &&
-      descr === '' &&
-      filterState.discipline === '' &&
-      createState.price === ''
-    ) {
-      window.scrollTo(0, 0);
-      setError({
-        titleError: true,
-        descrError: true,
-        disciplineError: true,
-        priceError: true,
-      });
-    } else if (
-      descr === '' &&
-      filterState.discipline === '' &&
-      filterState.institute === ''
-    ) {
-      window.scrollTo(0, 0);
-      setError({
-        descrError: true,
-        disciplineError: true,
-        instituteError: true,
-      });
-    } else if (descr === '' && filterState.discipline === '' && filterState.town === '') {
-      window.scrollTo(0, 0);
-      setError({
-        descrError: true,
-        disciplineError: true,
-      });
-    } else if (descr === '' && filterState.discipline === '') {
-      window.scrollTo(0, 0);
-      setError({
-        descrError: true,
-        disciplineError: true,
-      });
-    } else if (
-      filterState.discipline === '' &&
-      filterState.institute === '' &&
-      createState.price === ''
-    ) {
-      disciplineRef.current.scrollIntoView();
-      setError({
-        disciplineError: true,
-        townError: true,
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (filterState.institute === '' && createState.price === '') {
-      disciplineRef.current.scrollIntoView();
-      setError({
-        townError: true,
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (filterState.institute === '' && createState.price === '') {
-      disciplineRef.current.scrollIntoView();
-      setError({
-        instituteError: true,
-        priceError: true,
-      });
-    } else if (title === '') {
-      window.scrollTo(0, 0);
-      setError({
-        titleError: true,
-      });
-    } else if (descr === '') {
-      titleRef.current.scrollIntoView();
-      setError({
-        descrError: true,
-      });
-    } else if (filterState.discipline === '') {
-      disciplineRef.current.scrollIntoView();
-      setError({
-        disciplineError: true,
-      });
-    } else if (filterState.institute === '') {
-      insituteRef.current.scrollIntoView();
-      setError({
-        instituteError: true,
-      });
-    } else if (dateValue === '') {
-      dateRef.current.scrollIntoView();
-      setError({
-        dateError: true,
-      });
-    } else if (createState.price === '') {
-      priceRef.current.scrollIntoView();
-      setError({
-        priceError: true,
-      });
-    } else if (
-      title !== '' &&
-      descr !== '' &&
-      filterState.discipline !== '' &&
-      filterState.institute !== '' &&
-      createState.price !== ''
-    ) {
-      setError({
-        titleError: false,
-        descrError: false,
-        disciplineError: false,
-        instituteError: false,
-        dateError: false,
-        priceError: false,
-      });
-      console.log(
-        title,
-        descr,
-        filterState.discipline,
-        filterState.institute,
-        createState.price,
-      );
-    }
-  };
-
   return (
-    <Panel id={id}>
+    <Panel id={'dev'}>
       <PanelHeader
         left={
           <PanelHeaderButton
@@ -361,33 +110,43 @@ const CreateTask = ({ id }) => {
       <div className="create-container">
         <div className="create">
           <textarea
-            ref={titleRef}
-            value={title}
-            onChange={(e) => handleTitle(e)}
+            type="text"
+            name="title"
             placeholder="Обозначь тематику, например: написать курсовую"
-            rows="1"
+            value={formValues.title}
+            onChange={(e) => handleChange(e)}
+            onFocus={(e) => setFormErrors({ ...formErrors, [e.target.name]: false })}
+            onBlur={
+              formValues.title === ''
+                ? (e) => setFormErrors({ ...formErrors, [e.target.name]: true })
+                : ''
+            }
             className={
-              error.titleError
+              formErrors.title
                 ? 'create__input create__input--title error'
                 : 'create__input create__input--title'
             }
-            type="text"
           />
-          {error.titleError && <span className="errorMsg">{inputs[0].errMsg}</span>}
+          {formErrors.title && <span className="errorMsg">{formErrors.title}</span>}
           <textarea
-            ref={descrRef}
-            value={descr}
-            onChange={(e) => setDescr(e.target.value)}
-            placeholder="Опиши задачу, чем больше подробностей, тем лучше результат :)"
-            rows="5"
-            className={
-              error.descrError
-                ? 'create__input create__input--title error'
-                : 'create__input create__input--title'
-            }
             type="text"
+            name="descr"
+            placeholder="Опиши задачу, чем больше подробностей, тем лучше результат :)"
+            value={formValues.descr}
+            onChange={handleChange}
+            onFocus={(e) => setFormErrors({ ...formErrors, [e.target.name]: false })}
+            onBlur={
+              formValues.title === ''
+                ? (e) => setFormErrors({ ...formErrors, [e.target.name]: true })
+                : ''
+            }
+            className={
+              formErrors.descr
+                ? 'create__input create__input--descr error'
+                : 'create__input create__input--descr'
+            }
           />
-          {error.descrError && <span className="errorMsg">{inputs[1].errMsg}</span>}
+          {formErrors.descr && <span className="errorMsg">{formErrors.descr}</span>}
           <div className="photoList">
             <div>{photoList.length >= 1 || <div className="addPhoto"></div>}</div>
             {photoList.map((photo, index) => (
@@ -398,54 +157,68 @@ const CreateTask = ({ id }) => {
                 onChange={(e) => handlePhoto(e)}
                 className="custom-file-input"
                 type="file"
-                accept=".png, .jpg, .jpeg"
               />
             )}
           </div>
           <div className="create__filter">
             <h2 className="filter-modal__title">Предмет</h2>
-            <div ref={disciplineRef} className={error.disciplineError ? 'error' : ''}>
-              <FilterItem
-                subTitle={filterState.discipline}
-                setDiscipline={setDiscipline}
-                subModal={MODAL_DISCIPLINE}
-              />
+            <div className={formErrors.discipline ? 'error' : ''}>
+              <FilterItem subTitle={filterState.discipline} subModal={MODAL_DISCIPLINE} />
             </div>
-            {error.disciplineError && (
-              <span className="errorMsg">{inputs[2].errMsg}</span>
+            {formErrors.discipline && (
+              <span className="errorMsg">{formErrors.discipline}</span>
             )}
             <h2 className="filter-modal__title">Учебное заведение</h2>
-            <div ref={insituteRef} className={error.instituteError ? 'error' : ''}>
-              <FilterItem
-                subTitle={filterState.institute}
-                setDiscipline={setDiscipline}
-                subModal={MODAL_INSTITUTE}
-              />
+            <div className={formErrors.institute ? 'error' : ''}>
+              <FilterItem subTitle={filterState.institute} subModal={MODAL_INSTITUTE} />
             </div>
-            {error.instituteError && <span className="errorMsg">{inputs[3].errMsg}</span>}
+            {formErrors.institute && (
+              <span className="errorMsg">{formErrors.institute}</span>
+            )}
             <h2 className="filter-modal__title">Сроки</h2>
-            <div className="filter-modal__datepicker">
-              <div ref={dateRef} className={error.dateError ? 'error-date' : ''}>
-                <DateRangeInput
-                  value={dateValue}
-                  onChange={setDateValue}
-                  disablePast={disablePast}
-                  closeOnChange={closeOnChange}
-                  disablePickers={disablePickers}
-                />
-              </div>
-              {error.dateError && <span className="errorMsg">{inputs[4].errMsg}</span>}
-            </div>
-            <h2 className="filter-modal__title">Желаемый бюджет</h2>
-            <div ref={priceRef} className={error.priceError ? 'error-price' : ''}>
-              <InputItem
-                price={createState.price}
-                dispatch={dispatch}
-                setPrice={setPrice}
-                title={'Цена, ₽ '}
+            <h3 className="create-task__time">С</h3>
+            <div className={formErrors.dateFrom ? 'error-date' : ''}>
+              <DateInput
+                value={dateFrom}
+                onChange={setDateFrom}
+                disablePast={disablePast}
+                closeOnChange={closeOnChange}
+                showNeighboringMonth={showNeighboringMonth}
               />
             </div>
-            {error.priceError && <span className="errorMsg">{inputs[5].errMsg}</span>}
+            {formErrors.dateFrom && (
+              <span className="errorMsg">{formErrors.dateFrom}</span>
+            )}
+            <h3 className="create-task__time">До</h3>
+            <div className={formErrors.dateTo ? 'error-date' : ''}>
+              <DateInput
+                value={dateTo}
+                onChange={setDateTo}
+                disablePast={disablePastTo}
+                closeOnChange={closeOnChange}
+                showNeighboringMonth={showNeighboringMonth}
+              />
+            </div>
+            {formErrors.dateTo && <span className="errorMsg">{formErrors.dateTo}</span>}
+            <input
+              type="text"
+              name="price"
+              placeholder="Укажите цену"
+              value={formValues.price}
+              onChange={handleChange}
+              onFocus={(e) => setFormErrors({ ...formErrors, [e.target.name]: false })}
+              onBlur={
+                formValues.price === ''
+                  ? (e) => setFormErrors({ ...formErrors, [e.target.name]: true })
+                  : ''
+              }
+              className={
+                formErrors.price
+                  ? 'create__input create__input--price error'
+                  : 'create__input create__input--price'
+              }
+            />
+            {formErrors.price && <span className="errorMsg">{formErrors.price}</span>}
             <div className="switch">
               <SimpleCell
                 style={{ color: '#232036' }}
@@ -456,7 +229,7 @@ const CreateTask = ({ id }) => {
             </div>
           </div>
           <div className="create__button">
-            <button onClick={() => handleSubmut()} className="button">
+            <button onClick={() => handleSubmit()} className="button">
               Опубликовать
             </button>
           </div>
