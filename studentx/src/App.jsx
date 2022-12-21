@@ -40,14 +40,14 @@ import {
   PANEL_DEV,
 } from './router';
 
-import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev } from './views';
+import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev } from './panels';
 
 import { Filter, Discipline, Towns, Institute, Terms } from './modals/';
 
-import CreateTask from './views/CreateTask/CreateTask';
-import ChatRoom from './views/ChatRoom/ChatRoom';
+import CreateTask from './panels/CreateTask/CreateTask';
+import ChatRoom from './panels/ChatRoom/ChatRoom';
 import Confirm from './popouts/Confirm';
-import Welcome from './views/Welcome/Welcome';
+import Welcome from './panels/Welcome/Welcome';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
