@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Panel, PullToRefresh } from '@vkontakte/vkui';
+import { Panel, PullToRefresh, Snackbar } from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -28,6 +28,8 @@ const Main = ({ id, go, ROUTES }) => {
   const status = useSelector((state) => state.tasks.status);
   const currentPage = useSelector((state) => state.tasks.currentPage);
   const firstFetch = useSelector((state) => state.tasks.firstFetch);
+
+  // const [snackBar, setSnackBar] = useState(null);
 
   const getTasks = async () => {
     dispatch(fetchTasks(currentPage));

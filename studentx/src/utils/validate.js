@@ -1,14 +1,14 @@
 export const validate = (values, dateFrom, dateTo) => {
     const errors = {};
     if (!values.title) {
-        errors.title = 'Введите название';
+        errors.title = 'Обозначьте задачу';
     } else if (values.title.length <= 6) {
         errors.title = 'Слишком короткое описание'
     } else if (values.title.length >= 48) {
         errors.title = 'Слишком длинное описание'
     }
     if (!values.descr) {
-        errors.descr = 'Введите описание';
+        errors.descr = 'Укажите описание';
     } else if (values.descr.length <= 6) {
         errors.descr = 'Слишком короткое описание';
     } else if (values.descr.length >= 200) {

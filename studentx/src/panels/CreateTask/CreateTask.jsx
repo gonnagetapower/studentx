@@ -18,14 +18,17 @@ import { Icon28ChevronBack } from '@vkontakte/icons';
 
 import { validate } from '../../utils/validate';
 
-import { setFormValues } from '../../redux/slices/createTaskSlice';
+import {
+  setFormValues,
+  setPhotoList,
+  setPublish,
+} from '../../redux/slices/createTaskSlice';
 
 import './CreateTask.css';
 
 const CreateTask = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const filterState = useSelector((state) => state.filter);
   const formValues = useSelector((state) => state.create);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -42,30 +45,16 @@ const CreateTask = () => {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(
-        formValues,
-        dateFrom,
-        dateTo,
-        filterState.discipline,
-        filterState.institute,
-        photoList,
-      );
+      console.log(formValues);
     }
     console.log(formErrors);
   }, [formErrors]);
 
   //dateInput
   const [dateFrom, setDateFrom] = useState(undefined);
-  const [disablePast, setDisablePast] = useState(false);
-  const [closeOnChange, setCloseOnChange] = useState(true);
-  const [showNeighboringMonth, setShowNeighboringMonth] = useState(false);
-
   const [dateTo, setDateTo] = useState(undefined);
-  const [disablePastTo, setDisablePastTo] = useState(true);
 
   //photoList
-
-  const [photoList, setPhotoList] = useState([]);
 
   const handlePhoto = (e) => {
     let newPhotoList = [];
@@ -73,7 +62,7 @@ const CreateTask = () => {
     newPhotoList.push({
       url: URL.createObjectURL(file),
     });
-    setPhotoList([...photoList, ...newPhotoList]);
+    dispatch(setPhotoList([...formValues.photoList, ...newPhotoList]));
   };
 
   const deletePhoto = (elem) => {
@@ -141,11 +130,13 @@ const CreateTask = () => {
           />
           {formErrors.descr && <span className="errorMsg">{formErrors.descr}</span>}
           <div className="photoList">
-            <div>{photoList.length >= 1 || <div className="addPhoto"></div>}</div>
-            {photoList.map((photo, index) => (
+            <div>
+              {formValues.photoList.length >= 1 || <div className="addPhoto"></div>}
+            </div>
+            {formValues.photoList.map((photo, index) => (
               <TaskPhoto photo={photo} key={index} deletePhoto={deletePhoto} />
             ))}
-            {photoList.length <= 4 && (
+            {formValues.photoList.length <= 4 && (
               <input
                 onChange={(e) => handlePhoto(e)}
                 className="custom-file-input"
@@ -180,9 +171,9 @@ const CreateTask = () => {
               <DateInput
                 value={dateFrom}
                 onChange={setDateFrom}
-                disablePast={disablePast}
-                closeOnChange={closeOnChange}
-                showNeighboringMonth={showNeighboringMonth}
+                disablePast={true}
+                closeOnChange={true}
+                showNeighboringMonth={true}
               />
             </div>
             {formErrors.dateFrom && (
@@ -195,9 +186,9 @@ const CreateTask = () => {
               <DateInput
                 value={dateTo}
                 onChange={setDateTo}
-                disablePast={disablePastTo}
-                closeOnChange={closeOnChange}
-                showNeighboringMonth={showNeighboringMonth}
+                disablePast={true}
+                closeOnChange={true}
+                showNeighboringMonth={true}
               />
             </div>
             {formErrors.dateTo && <span className="errorMsg">{formErrors.dateTo}</span>}
@@ -224,7 +215,12 @@ const CreateTask = () => {
               <SimpleCell
                 style={{ color: '#232036' }}
                 Component="label"
-                after={<Switch />}>
+                after={
+                  <Switch
+                    onChange={() => dispatch(setPublish())}
+                    checked={formValues.publish}
+                  />
+                }>
                 Публиковать пост
               </SimpleCell>
             </div>
