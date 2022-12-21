@@ -59,6 +59,7 @@ const CreateTask = () => {
         photoList,
       );
     }
+    console.log(formErrors);
   }, [formErrors]);
 
   //dateInput
@@ -162,14 +163,18 @@ const CreateTask = () => {
           </div>
           <div className="create__filter">
             <h2 className="filter-modal__title">Предмет</h2>
-            <div className={formErrors.discipline ? 'error' : ''}>
+            <div
+              onClick={() => setFormErrors({ ...formErrors, discipline: false })}
+              className={formErrors.discipline ? 'error' : ''}>
               <FilterItem subTitle={filterState.discipline} subModal={MODAL_DISCIPLINE} />
             </div>
             {formErrors.discipline && (
               <span className="errorMsg">{formErrors.discipline}</span>
             )}
             <h2 className="filter-modal__title">Учебное заведение</h2>
-            <div className={formErrors.institute ? 'error' : ''}>
+            <div
+              onClick={() => setFormErrors({ ...formErrors, institute: false })}
+              className={formErrors.institute ? 'error' : ''}>
               <FilterItem subTitle={filterState.institute} subModal={MODAL_INSTITUTE} />
             </div>
             {formErrors.institute && (
@@ -177,7 +182,9 @@ const CreateTask = () => {
             )}
             <h2 className="filter-modal__title">Сроки</h2>
             <h3 className="create-task__time">С</h3>
-            <div className={formErrors.dateFrom ? 'error-date' : ''}>
+            <div
+              onClick={() => setFormErrors({ ...formErrors, dateFrom: false })}
+              className={formErrors.dateFrom ? 'error-date' : ''}>
               <DateInput
                 value={dateFrom}
                 onChange={setDateFrom}
@@ -190,7 +197,9 @@ const CreateTask = () => {
               <span className="errorMsg">{formErrors.dateFrom}</span>
             )}
             <h3 className="create-task__time">До</h3>
-            <div className={formErrors.dateTo ? 'error-date' : ''}>
+            <div
+              onClick={() => setFormErrors({ ...formErrors, dateTo: false })}
+              className={formErrors.dateTo ? 'error-date' : ''}>
               <DateInput
                 value={dateTo}
                 onChange={setDateTo}

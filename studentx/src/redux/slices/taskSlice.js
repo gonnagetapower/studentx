@@ -31,7 +31,6 @@ export const tasksSlice = createSlice({
         [fetchTasks.pending]: (state, action) => {
             state.items = [...state.items];
             state.status = 'loading';
-            console.log('fetch')
         },
         [fetchTasks.fulfilled]: (state, action) => {
             state.items.push(...action.payload)

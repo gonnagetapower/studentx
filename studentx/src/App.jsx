@@ -73,36 +73,33 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       const user = await bridge.send('VKWebAppGetUserInfo');
-      const storageData = await bridge.send('VKWebAppStorageGet', {
-        keys: Object.values(STORAGE_KEYS),
-      });
-      const data = {};
-      storageData.keys.forEach(({ key, value }) => {
-        try {
-          data[key] = value ? JSON.parse(value) : {};
-          switch (key) {
-            case STORAGE_KEYS.STATUS:
-              if (data[key].userApplyPolicy) {
-                router.pushPage(PAGE_HOME);
-                setUserApplyPolicy(true);
-              }
-              break;
-            default:
-              break;
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      });
-      setUser(user);
-      setPopout(null);
+      console.log(user);
+      //   const storageData = await bridge.send('VKWebAppStorageGet', {
+      //     keys: Object.values(STORAGE_KEYS),
+      //   });
+      //   const data = {};
+      //   storageData.keys.forEach(({ key, value }) => {
+      //     try {
+      //       data[key] = value ? JSON.parse(value) : {};
+      //       switch (key) {
+      //         case STORAGE_KEYS.STATUS:
+      //           if (data[key].userApplyPolicy) {
+      //             router.pushPage(PAGE_HOME);
+      //             setUserApplyPolicy(true);
+      //           }
+      //           break;
+      //         default:
+      //           break;
+      //       }
+      //     } catch (error) {
+      //       console.log(error);
+      //     }
+      //   });
+      //   setUser(user);
+      //   setPopout(null);
     }
     fetchData();
   }, []);
-
-  {
-    console.log(' user', fetchedUser);
-  }
 
   const go = (page) => {
     router.pushPage(page);
@@ -176,7 +173,6 @@ const App = () => {
                 <Respond id={PANEL_RESPOND} />
                 <CreateTask id={PANEL__CREATE} />
                 <ChatRoom id={PANEL_CHATROOM} />
-                <Dev id={PANEL_DEV} />
               </View>
             </div>
           </SplitCol>
