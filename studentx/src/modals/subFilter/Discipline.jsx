@@ -1,19 +1,28 @@
+import { useLocation } from '@happysanta/router';
 import { ModalPage, Title } from '@vkontakte/vkui';
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDiscipline } from '../../redux/slices/filterSlice';
+import { setTaskDiscipline } from '../../redux/slices/createTaskSlice';
 import { router } from '../../router';
 
 import './subFilter.css';
 
 const Discipline = ({ id, subTitle }) => {
+  const location = useLocation();
+
   const discipline = useSelector((state) => state.filter.discipline);
   const dispatch = useDispatch();
 
   const handleDiscipline = (dis) => {
-    dispatch(setDiscipline(dis));
-    router.popPage();
+    if (location.route.pageId.includes('/create')) {
+      dispatch(setTaskDiscipline(dis));
+      router.popPage();
+    } else {
+      dispatch(setDiscipline(dis));
+      router.popPage();
+    }
   };
 
   const [searchValue, setSearchValue] = useState('');

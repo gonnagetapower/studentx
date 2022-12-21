@@ -1,4 +1,4 @@
-export const validate = (values, discipline, institute, dateFrom, dateTo) => {
+export const validate = (values, dateFrom, dateTo) => {
     const errors = {};
     if (!values.title) {
         errors.title = 'Введите название';
@@ -14,10 +14,10 @@ export const validate = (values, discipline, institute, dateFrom, dateTo) => {
     } else if (values.descr.length >= 200) {
         errors.descr = 'Слишком длинное описание'
     }
-    if (!discipline) {
+    if (!values.discipline) {
         errors.discipline = 'Выберите предмет';
     }
-    if (!institute) {
+    if (!values.institute) {
         errors.institute = 'Выберите ВУЗ';
     }
     if (!dateFrom) {

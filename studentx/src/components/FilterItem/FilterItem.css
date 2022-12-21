@@ -7,7 +7,7 @@
 
 .filterItem {
     cursor: pointer;
-    padding-top: 1px;
+    padding-top: 2px;
     padding-bottom: 4px;
     padding-left: 20px;
     display: flex;

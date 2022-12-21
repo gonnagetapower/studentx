@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setInstitute } from '../../redux/slices/filterSlice';
+import { setTaskInstitute } from '../../redux/slices/createTaskSlice';
 import { router } from '../../router';
 
 import { ModalPage } from '@vkontakte/vkui';
+import { useLocation } from '@happysanta/router';
 
 const Institute = ({ id, subTitle }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -12,9 +14,21 @@ const Institute = ({ id, subTitle }) => {
   const discipline = useSelector((state) => state.filter.discipline);
   const dispatch = useDispatch();
 
+  // const handleInstitute = (item) => {
+  //   dispatch(setInstitute(item));
+  //   router.popPage();
+  // };
+
+  const location = useLocation();
+
   const handleInstitute = (item) => {
-    dispatch(setInstitute(item));
-    router.popPage();
+    if (location.route.pageId.includes('/create')) {
+      dispatch(setTaskInstitute(item));
+      router.popPage();
+    } else {
+      dispatch(setInstitute(item));
+      router.popPage();
+    }
   };
 
   const itemsArray = [

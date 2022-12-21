@@ -4,7 +4,13 @@ import React, { useState } from 'react';
 import './Filter.css';
 import FilterItem from '../../components/FilterItem/FilterItem';
 import InputItem from '../../components/InputItem/InputItem';
-import { PAGE_HOME, router, MODAL_DISCIPLINE, MODAL_TOWNS, MODAL_INSTITUTE } from '../../router';
+import {
+  PAGE_HOME,
+  router,
+  MODAL_DISCIPLINE,
+  MODAL_TOWNS,
+  MODAL_INSTITUTE,
+} from '../../router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPrice } from '../../redux/slices/filterSlice';
 
@@ -13,7 +19,6 @@ const Filter = ({ id, discipline, setDiscipline }) => {
   const dispatch = useDispatch();
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
-  console.log(filterState);
 
   return (
     <ModalPage id={id} settlingHeight={100}>
@@ -60,7 +65,9 @@ const Filter = ({ id, discipline, setDiscipline }) => {
           title={'Цена, ₽ '}
         />
         <div className="filter-modal__acceptbtn">
-          <button onClick={() => router.pushPage(PAGE_HOME)} className="button filter-btn">
+          <button
+            onClick={() => router.pushPage(PAGE_HOME)}
+            className="button filter-btn">
             Применить
           </button>
         </div>

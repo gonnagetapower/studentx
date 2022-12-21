@@ -36,15 +36,7 @@ const CreateTask = () => {
   };
 
   const handleSubmit = () => {
-    setFormErrors(
-      validate(
-        formValues,
-        filterState.discipline,
-        filterState.institute,
-        dateFrom,
-        dateTo,
-      ),
-    );
+    setFormErrors(validate(formValues, dateFrom, dateTo));
     setIsSubmit(true);
   };
 
@@ -166,7 +158,7 @@ const CreateTask = () => {
             <div
               onClick={() => setFormErrors({ ...formErrors, discipline: false })}
               className={formErrors.discipline ? 'error' : ''}>
-              <FilterItem subTitle={filterState.discipline} subModal={MODAL_DISCIPLINE} />
+              <FilterItem subTitle={formValues.discipline} subModal={MODAL_DISCIPLINE} />
             </div>
             {formErrors.discipline && (
               <span className="errorMsg">{formErrors.discipline}</span>
@@ -175,7 +167,7 @@ const CreateTask = () => {
             <div
               onClick={() => setFormErrors({ ...formErrors, institute: false })}
               className={formErrors.institute ? 'error' : ''}>
-              <FilterItem subTitle={filterState.institute} subModal={MODAL_INSTITUTE} />
+              <FilterItem subTitle={formValues.institute} subModal={MODAL_INSTITUTE} />
             </div>
             {formErrors.institute && (
               <span className="errorMsg">{formErrors.institute}</span>
