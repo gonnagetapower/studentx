@@ -10,6 +10,9 @@ import {
   setRefreshStatus,
 } from '../../redux/slices/taskSlice';
 
+// import { errorIcon } from '@vkontakte/icons/src/svg/28/cancel_circle_fill_red';
+import { Icon28CancelCircleFillRed } from '@vkontakte/icons';
+
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
 import infoIcon from './../../img/infoIcon.svg';
@@ -41,7 +44,11 @@ const Main = ({ id, go, ROUTES }) => {
       await dispatch(fetchTasks(currentPage)).unwrap();
     } catch (err) {
       setSnackBar(
-        <Snackbar layout="vertical" duration={900} onClose={() => setSnackBar(null)}>
+        <Snackbar
+          before={<Icon28CancelCircleFillRed />}
+          layout="vertical"
+          duration={900}
+          onClose={() => setSnackBar(null)}>
           Ошибка сервера
         </Snackbar>,
       );
@@ -82,7 +89,11 @@ const Main = ({ id, go, ROUTES }) => {
       setTimeout(
         () =>
           setSnackBar(
-            <Snackbar layout="vertical" duration={1500} onClose={() => setSnackBar(null)}>
+            <Snackbar
+              before={<Icon28CancelCircleFillRed />}
+              layout="vertical"
+              duration={1700}
+              onClose={() => setSnackBar(null)}>
               Ошибка сервера
             </Snackbar>,
           ),
