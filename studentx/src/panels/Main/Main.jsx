@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Panel } from '@vkontakte/vkui';
+import { Panel, PullToRefresh } from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -55,6 +55,10 @@ const Main = ({ id, go, ROUTES }) => {
       dispatch(setCurrentPage());
     }
   };
+
+  const onRefresh = React.useCallback(() => {
+    getTasks();
+  });
 
   return (
     <Panel id={id}>
@@ -124,31 +128,35 @@ const Main = ({ id, go, ROUTES }) => {
         <div className="content-container">
           <AddButton router={router} createPanel={PAGE_CREATE} />
           <div className="content">
-            {firstFetch
-              ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
-              : tasksData.map((obj) => (
-                  <Task
-                    go={go}
-                    ROUTES={ROUTES}
-                    key={obj.id}
-                    title={obj.title}
-                    descr={obj.description}
-                    dateOrder={obj.orderDate}
-                    price={obj.price}
-                    id={obj.id}
-                  />
-                ))}
-            {status === 'loading' ? (
-              <div>
-                <SkeletonCard />
-                <SkeletonCard />
-                <SkeletonCard />
-                <SkeletonCard />
-                <SkeletonCard />
-                <SkeletonCard />
-                <SkeletonCard />
-              </div>
-            ) : null}
+            <PullToRefresh
+              onRefresh={onRefresh}
+              isFetching={status ? 'success' : 'loading'}>
+              {firstFetch
+                ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
+                : tasksData.map((obj) => (
+                    <Task
+                      go={go}
+                      ROUTES={ROUTES}
+                      key={obj.id}
+                      title={obj.title}
+                      descr={obj.description}
+                      dateOrder={obj.orderDate}
+                      price={obj.price}
+                      id={obj.id}
+                    />
+                  ))}
+              {status === 'loading' ? (
+                <div>
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                  <SkeletonCard />
+                </div>
+              ) : null}
+            </PullToRefresh>
           </div>
         </div>
       )}

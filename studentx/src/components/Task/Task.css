@@ -1,6 +1,8 @@
 .content-item {
+    margin: 0 auto;
     width: 312px;
-    height: 150px;
+    min-height: 100px;
+    max-height: 150px;
     background-color: #fff;
     border-radius: 10px;
     padding-top: 12px;
@@ -30,7 +32,6 @@
     /* or 13px */
     /* dark grey */
     color: #686868;
-    margin-bottom: 20px;
     -webkit-line-clamp: 3;
     /* количество строк */
     -webkit-box-orient: vertical;
@@ -72,9 +73,6 @@
     font-style: normal;
     font-weight: 600;
     font-size: 8px;
-    line-height: 130%;
-    /* or 10px */
     text-align: center;
-    /* new black */
     color: #232036;
 }

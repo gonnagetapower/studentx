@@ -13,6 +13,7 @@ import {
   ModalRoot,
   ModalPage,
   usePlatform,
+  PullToRefresh,
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -148,6 +149,14 @@ const App = () => {
 
   const platfrom = usePlatform();
 
+  const [reloading, setReloading] = useState(false);
+
+  // const reload = () => {
+  //   setReloading(true);
+  //   window.location.reload();
+  //   setReloading(false);
+  // };
+
   return (
     <AppRoot>
       <ConfigProvider
@@ -158,6 +167,7 @@ const App = () => {
         <SplitLayout modal={modal} popout={popouts}>
           <SplitCol>
             <div className="container">
+              {/* <PullToRefresh onRefresh={reload} isFetching={reloading}> */}
               <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
                 <Welcome id={PANEL_WELCOME} userApplyPolicy={userApplyPolicy} />
                 <Intro
@@ -174,6 +184,7 @@ const App = () => {
                 <CreateTask id={PANEL__CREATE} />
                 <ChatRoom id={PANEL_CHATROOM} />
               </View>
+              {/* </PullToRefresh> */}
             </div>
           </SplitCol>
         </SplitLayout>

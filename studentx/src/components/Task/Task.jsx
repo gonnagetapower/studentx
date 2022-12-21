@@ -14,7 +14,7 @@ const Task = ({ title, descr, dateOrder, price, id, go, ROUTES }) => {
         <button
           onClick={() => router.pushPage(PAGE_RESPOND, { id: id })}
           className="content-info__button">
-          откликнуться
+          Откликнуться
         </button>
       </div>
     </div>

@@ -108,12 +108,10 @@
 
 .content-container {
     position: relative;
-    display: flex;
     background-color: #F5F5F5;
 }
 
 .content {
-    margin: 0 auto;
     margin-top: -65px;
     padding-bottom: 85px;
 }
