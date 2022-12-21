@@ -18,6 +18,7 @@ export const tasksSlice = createSlice({
         firstFetch: true,
         status: "loading", // loading | success | error,
         currentPage: 1,
+        refreshStatus: false,
     },
     reducers: {
         setItems: (state, action) => {
@@ -25,6 +26,9 @@ export const tasksSlice = createSlice({
         },
         setCurrentPage: (state) => {
             state.currentPage = state.currentPage + 1;
+        },
+        setRefreshStatus: (state, action) => {
+            state.refreshStatus = action.payload
         }
     },
     extraReducers: {
@@ -44,6 +48,6 @@ export const tasksSlice = createSlice({
     }
 })
 
-export const { setItems, setCurrentPage } = tasksSlice.actions;
+export const { setItems, setCurrentPage, setRefreshStatus } = tasksSlice.actions;
 
 export default tasksSlice.reducer

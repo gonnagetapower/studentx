@@ -4,7 +4,11 @@ import { Panel, PullToRefresh, Snackbar } from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTasks, setCurrentPage } from '../../redux/slices/taskSlice';
+import {
+  fetchTasks,
+  setCurrentPage,
+  setRefreshStatus,
+} from '../../redux/slices/taskSlice';
 
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
@@ -28,11 +32,20 @@ const Main = ({ id, go, ROUTES }) => {
   const status = useSelector((state) => state.tasks.status);
   const currentPage = useSelector((state) => state.tasks.currentPage);
   const firstFetch = useSelector((state) => state.tasks.firstFetch);
+  const refreshStatus = useSelector((state) => state.tasks.refreshStatus);
 
-  // const [snackBar, setSnackBar] = useState(null);
+  const [snackBar, setSnackBar] = useState(null);
 
   const getTasks = async () => {
-    dispatch(fetchTasks(currentPage));
+    try {
+      await dispatch(fetchTasks(currentPage)).unwrap();
+    } catch (err) {
+      setSnackBar(
+        <Snackbar layout="vertical" duration={900} onClose={() => setSnackBar(null)}>
+          Ошибка сервера
+        </Snackbar>,
+      );
+    }
   };
 
   useEffect(() => {
@@ -58,9 +71,25 @@ const Main = ({ id, go, ROUTES }) => {
     }
   };
 
-  const onRefresh = React.useCallback(() => {
-    getTasks();
-  });
+  const onRefresh = async () => {
+    try {
+      dispatch(setRefreshStatus(true));
+      await dispatch(fetchTasks(currentPage)).unwrap();
+      dispatch(setRefreshStatus(false));
+    } catch (err) {
+      console.log(err);
+      setTimeout(() => dispatch(setRefreshStatus(false)), 2000);
+      setTimeout(
+        () =>
+          setSnackBar(
+            <Snackbar layout="vertical" duration={1500} onClose={() => setSnackBar(null)}>
+              Ошибка сервера
+            </Snackbar>,
+          ),
+        1500,
+      );
+    }
+  };
 
   return (
     <Panel id={id}>
@@ -130,9 +159,7 @@ const Main = ({ id, go, ROUTES }) => {
         <div className="content-container">
           <AddButton router={router} createPanel={PAGE_CREATE} />
           <div className="content">
-            <PullToRefresh
-              onRefresh={onRefresh}
-              isFetching={status ? 'success' : 'loading'}>
+            <PullToRefresh onRefresh={onRefresh} isFetching={refreshStatus}>
               {firstFetch
                 ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
                 : tasksData.map((obj) => (
@@ -162,6 +189,7 @@ const Main = ({ id, go, ROUTES }) => {
           </div>
         </div>
       )}
+      {snackBar}
       <Navigation />
     </Panel>
   );
