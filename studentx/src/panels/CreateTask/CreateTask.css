@@ -28,6 +28,22 @@
     height: auto;
 }
 
+.create__input {
+    border: none;
+    margin-bottom: 20px;
+    background: #F5F5F5;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 25%;
+    min-height: 45px;
+    resize: none;
+}
+
+.create__input--descr {
+    height: 120px;
+}
+
 .create__input--price {
     margin-top: 10px;
     box-sizing: border-box;

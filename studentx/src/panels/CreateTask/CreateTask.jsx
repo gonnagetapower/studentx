@@ -175,7 +175,7 @@ const CreateTask = () => {
             </div>
             {formErrors.dateTo && <span className="errorMsg">{formErrors.dateTo}</span>}
             <input
-              type="text"
+              type="number"
               name="price"
               placeholder="Укажите цену"
               value={formValues.price}
