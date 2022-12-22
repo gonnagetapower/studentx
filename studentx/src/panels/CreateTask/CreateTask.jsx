@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from '@happysanta/router';
 import { Navigation, TaskPhoto } from '../../components';
-import { FilterItem } from '../../components';
+import { FilterItem, FormTextarea } from '../../components';
 import { MODAL_DISCIPLINE, MODAL_INSTITUTE, POPOUT_CONFIRM } from '../../router';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -91,44 +91,26 @@ const CreateTask = () => {
       </PanelHeader>
       <div className="create-container">
         <div className="create">
-          <textarea
-            type="text"
-            name="title"
-            placeholder="Обозначь тематику, например: написать курсовую"
+          <FormTextarea
+            name={'title'}
+            placeholder={'Обозначь тематику, например: написать курсовую'}
+            errorMsg={'Обозначьте задачу'}
             value={formValues.title}
-            onChange={(e) => handleChange(e)}
-            onFocus={(e) => setFormErrors({ ...formErrors, [e.target.name]: false })}
-            onBlur={
-              formValues.title === ''
-                ? (e) => setFormErrors({ ...formErrors, [e.target.name]: true })
-                : ''
-            }
-            className={
-              formErrors.title
-                ? 'create__input create__input--title error'
-                : 'create__input create__input--title'
-            }
+            handleChange={handleChange}
+            setFormErrors={setFormErrors}
+            formErrors={formErrors}
+            error={formErrors.title}
           />
-          {formErrors.title && <span className="errorMsg">{formErrors.title}</span>}
-          <textarea
-            type="text"
-            name="descr"
-            placeholder="Опиши задачу, чем больше подробностей, тем лучше результат :)"
+          <FormTextarea
+            name={'descr'}
+            placeholder={'Опиши задачу, чем больше подробностей, тем лучше результат!'}
+            errorMsg={'Укажите описание'}
             value={formValues.descr}
-            onChange={handleChange}
-            onFocus={(e) => setFormErrors({ ...formErrors, [e.target.name]: false })}
-            onBlur={
-              formValues.title === ''
-                ? (e) => setFormErrors({ ...formErrors, [e.target.name]: true })
-                : ''
-            }
-            className={
-              formErrors.descr
-                ? 'create__input create__input--descr error'
-                : 'create__input create__input--descr'
-            }
+            handleChange={handleChange}
+            setFormErrors={setFormErrors}
+            formErrors={formErrors}
+            error={formErrors.descr}
           />
-          {formErrors.descr && <span className="errorMsg">{formErrors.descr}</span>}
           <div className="photoList">
             <div>
               {formValues.photoList.length >= 1 || <div className="addPhoto"></div>}

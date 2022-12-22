@@ -1,0 +1,21 @@
+.form-textarea {
+    border: none;
+    margin-bottom: 20px;
+    background: #F5F5F5;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 25%;
+    min-height: 45px;
+    resize: none;
+}
+
+.form-textarea--descr {
+    height: 120px;
+}
+
+.error {
+    border: 1px solid rgba(243, 12, 12, 0.623);
+    border-radius: 11px;
+    margin-bottom: 5px;
+}
