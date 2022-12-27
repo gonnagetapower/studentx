@@ -2,6 +2,7 @@ import { Page, Router } from '@happysanta/router'
 
 //view
 export const VIEW_MAIN = 'view_main'
+export const VIEW_WELCOME = 'view_welcome'
 
 //pages
 export const PAGE_MAIN = '/main'
@@ -49,7 +50,7 @@ export const POPOUT_CONFIRM = 'popout_confirm'
 
 //router
 const routes = {
-    [PAGE_WELCOME]: new Page(PANEL_WELCOME, VIEW_MAIN),
+    [PAGE_WELCOME]: new Page(PANEL_WELCOME, VIEW_WELCOME),
     [PAGE_MAIN]: new Page(PANEL_MAIN, VIEW_MAIN),
     [PAGE_HOME]: new Page(PANEL_HOME, VIEW_MAIN),
     [PAGE_MESSAGES]: new Page(PANEL_MESSAGES, VIEW_MAIN),

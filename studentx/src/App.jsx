@@ -14,6 +14,7 @@ import {
   ModalPage,
   usePlatform,
   PullToRefresh,
+  Root,
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -39,6 +40,7 @@ import {
   POPOUT_CONFIRM,
   PANEL_WELCOME,
   PANEL_DEV,
+  VIEW_WELCOME,
 } from './router';
 
 import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev } from './panels';
@@ -168,23 +170,41 @@ const App = () => {
           <SplitCol>
             <div className="container">
               {/* <PullToRefresh onRefresh={reload} isFetching={reloading}> */}
-              <View id={VIEW_MAIN} activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-                <Welcome id={PANEL_WELCOME} userApplyPolicy={userApplyPolicy} />
-                <Intro
-                  id={PANEL_MAIN}
-                  go={veiwIntro}
-                  userApplyPolicy={userApplyPolicy}
-                  setOpen={setOpen}
-                />
-                <Main id={PANEL_HOME} />
-                <Messages id={PANEL_MESSAGES} />
-                <Profile id={PANEL_PROFILE} />
-                <MyPublication id={PANEL_PUBLICATIONS} />
-                <Respond id={PANEL_RESPOND} />
-                <CreateTask id={PANEL__CREATE} />
-                <ChatRoom id={PANEL_CHATROOM} />
-              </View>
-              {/* </PullToRefresh> */}
+              <Root activeView={location.getViewId()}>
+                <View
+                  id={VIEW_WELCOME}
+                  history={
+                    location.hasOverlay() ? [] : location.getViewHistory(VIEW_WELCOME)
+                  }
+                  activePanel={location.getViewActivePanel(VIEW_WELCOME)}>
+                  <Welcome
+                    id={PANEL_WELCOME}
+                    userApplyPolicy={userApplyPolicy}
+                    activePanel={location.getViewActivePanel(VIEW_WELCOME)}
+                  />
+                </View>
+                <View
+                  id={VIEW_MAIN}
+                  activePanel={location.getViewActivePanel(VIEW_MAIN)}
+                  history={
+                    location.hasOverlay() ? [] : location.getViewHistory(VIEW_MAIN)
+                  }>
+                  <Intro
+                    id={PANEL_MAIN}
+                    go={veiwIntro}
+                    userApplyPolicy={userApplyPolicy}
+                    setOpen={setOpen}
+                  />
+                  <Main id={PANEL_HOME} />
+                  <Messages id={PANEL_MESSAGES} />
+                  <Profile id={PANEL_PROFILE} />
+                  <MyPublication id={PANEL_PUBLICATIONS} />
+                  <Respond id={PANEL_RESPOND} />
+                  <CreateTask id={PANEL__CREATE} />
+                  <ChatRoom id={PANEL_CHATROOM} />
+                </View>
+                {/* </PullToRefresh> */}
+              </Root>
             </div>
           </SplitCol>
         </SplitLayout>
