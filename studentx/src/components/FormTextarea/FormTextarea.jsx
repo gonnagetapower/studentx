@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import useAutosize from '../../hooks/useAutosize.ts';
 
 import './FormTextarea.css';
 
@@ -12,6 +13,8 @@ const FormTextarea = ({
   placeholder,
   errorMsg,
 }) => {
+  const textAreaRef = useRef(null);
+  useAutosize(textAreaRef.current, value);
   return (
     <>
       <textarea
@@ -31,6 +34,7 @@ const FormTextarea = ({
             ? `form-textarea form-textarea--${name} error`
             : `form-textarea form-textarea--${name}`
         }
+        ref={textAreaRef}
       />
       {error && <span className="errorMsg">{error}</span>}
     </>

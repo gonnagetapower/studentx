@@ -11,7 +11,7 @@
 }
 
 .form-textarea--descr {
-    height: 120px;
+    min-height: 120px;
 }
 
 .error {
