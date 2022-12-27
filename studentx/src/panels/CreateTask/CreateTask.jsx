@@ -81,10 +81,10 @@ const CreateTask = () => {
             onClick={() => {
               router.pushPopup(POPOUT_CONFIRM);
             }}>
-            <Icon28ChevronBack />
+            <Icon28ChevronBack fill="black" />
           </PanelHeaderButton>
         }
-        before={<PanelHeaderBack />}>
+        before={<PanelHeaderBack color="black" />}>
         <div className="header-create">
           <h1 className="header-create__title">Создай свое объявление</h1>
         </div>
