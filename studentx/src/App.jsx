@@ -163,11 +163,10 @@ const App = () => {
     <AppRoot>
       <ConfigProvider
         platfrom={platfrom}
-        webviewType={'INTERNAL'}
         appearance={'light'}
         transitionMotionEnabled={true}>
         <SplitLayout modal={modal} popout={popouts}>
-          <SplitCol>
+          <SplitCol animate={true}>
             <div className="container">
               {/* <PullToRefresh onRefresh={reload} isFetching={reloading}> */}
               <Root activeView={location.getViewId()}>
@@ -196,9 +195,9 @@ const App = () => {
                     setOpen={setOpen}
                   />
                   <Main id={PANEL_HOME} />
+                  <MyPublication id={PANEL_PUBLICATIONS} />
                   <Messages id={PANEL_MESSAGES} />
                   <Profile id={PANEL_PROFILE} />
-                  <MyPublication id={PANEL_PUBLICATIONS} />
                   <Respond id={PANEL_RESPOND} />
                   <CreateTask id={PANEL__CREATE} />
                   <ChatRoom id={PANEL_CHATROOM} />

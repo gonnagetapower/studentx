@@ -3,7 +3,12 @@ import React, { useEffect, useState } from 'react';
 
 import { useParams, useRouter } from '@happysanta/router';
 import { Icon24Back, Icon28ChevronBack } from '@vkontakte/icons';
-import { PanelHeader, PanelHeaderBack, PanelHeaderButton, FixedLayout } from '@vkontakte/vkui';
+import {
+  PanelHeader,
+  PanelHeaderBack,
+  PanelHeaderButton,
+  FixedLayout,
+} from '@vkontakte/vkui';
 
 import { Navigation, Person } from './../../components';
 
@@ -17,13 +22,17 @@ const Respond = () => {
   const { id } = useParams();
 
   const [respond, setRespond] = useState();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const fetchRespond = async () => {
       try {
         console.log(id);
-        const data = await axios.get(`https://635c0281fc2595be263e82f3.mockapi.io/tasks?id=${id}`);
+        const data = await axios.get(
+          `https://635c0281fc2595be263e82f3.mockapi.io/tasks?id=${id}`,
+        );
         setRespond(data);
+        setMounted(true);
       } catch (error) {
         console.log(error);
       }
@@ -32,7 +41,7 @@ const Respond = () => {
   }, []);
 
   if (!respond) {
-    return <>'Загрузка'</>;
+    return null;
   }
 
   return (
