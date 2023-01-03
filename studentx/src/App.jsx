@@ -74,50 +74,77 @@ const App = () => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      const user = await bridge.send('VKWebAppGetUserInfo');
-      console.log(user);
-      //   const storageData = await bridge.send('VKWebAppStorageGet', {
-      //     keys: Object.values(STORAGE_KEYS),
-      //   });
-      //   const data = {};
-      //   storageData.keys.forEach(({ key, value }) => {
-      //     try {
-      //       data[key] = value ? JSON.parse(value) : {};
-      //       switch (key) {
-      //         case STORAGE_KEYS.STATUS:
-      //           if (data[key].userApplyPolicy) {
-      //             router.pushPage(PAGE_HOME);
-      //             setUserApplyPolicy(true);
-      //           }
-      //           break;
-      //         default:
-      //           break;
-      //       }
-      //     } catch (error) {
-      //       console.log(error);
-      //     }
-      //   });
-      //   setUser(user);
-      //   setPopout(null);
-    }
-    fetchData();
+    // async function fetchData() {
+    //   const user = await bridge.send('VKWebAppGetUserInfo');
+    //   console.log(user);
+    //   const storageData = await bridge
+    //     .send('VKWebAppStorageGet', {
+    //       keys: ['applyPolicy'],
+    //     })
+    //     .then((data) => {
+    //       if (data.keys) {
+    //         console.log('Данные получены');
+    //         router.pushPage(PAGE_HOME);
+    //       }
+    //     });
+    //   console.log(storageData);
+    //   // const data = {};
+    //   // storageData.keys.forEach(({ key, value }) => {
+    //   //   try {
+    //   //     data[key] = value ? JSON.parse(value) : {};
+    //   //     switch (key) {
+    //   //       case STORAGE_KEYS.STATUS:
+    //   //         if (data[key].hasSeenIntro) {
+    //   //           router.pushPage(PAGE_HOME);
+    //   //           setUserApplyPolicy(true);
+    //   //         }
+    //   //         break;
+    //   //       default:
+    //   //         break;
+    //   //     }
+    //   // } catch (error) {
+    //   //   console.log(error);
+    //   // }
+    //   // });
+    //   setUser(user);
+    //   setPopout(null);
+    // }
+    // fetchData();
   }, []);
 
-  const go = (page) => {
-    router.pushPage(page);
-    setOpen(false);
-  };
+  // const go = (page) => {
+  //   router.pushPage(page);
+  //   setOpen(false);
+  // };
 
-  const veiwIntro = async function () {
+  // const viewIntro = async () => {
+  //   try {
+  //     await bridge.send('VKWebAppStorageSet', {
+  //       key: STORAGE_KEYS.STATUS,
+  //       value: JSON.stringify({
+  //         hasSeenIntro: true,
+  //       }),
+  //     });
+  //     router.pushPage(PAGE_HOME);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const viewIntro = async () => {
     try {
-      await bridge.send('VKWebAppStorageSet', {
-        key: STORAGE_KEYS.STATUS,
-        value: JSON.stringify({
-          userApplyPolicy: true,
-        }),
-      });
-      go(PAGE_HOME);
+      await bridge
+        .send('VKWebAppStorageSet', {
+          key: 'applyPolicy',
+          value: 'true',
+        })
+        .then((data) => {
+          if (data.result) {
+            console.log('Успешно задано');
+            setUserApplyPolicy(true);
+            router.pushPage(PAGE_HOME);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +157,7 @@ const App = () => {
         id={MODAL_TERMS}
         checked={checked}
         onClose={() => router.popPage()}
-        veiwIntro={veiwIntro}
+        viewIntro={viewIntro}
       />
       <Filter id={MODAL_FILTER} discipline={discipline} setDiscipline={setDiscipline} />
       <Discipline
@@ -190,7 +217,7 @@ const App = () => {
                   }>
                   <Intro
                     id={PANEL_MAIN}
-                    go={veiwIntro}
+                    go={viewIntro}
                     userApplyPolicy={userApplyPolicy}
                     setOpen={setOpen}
                   />

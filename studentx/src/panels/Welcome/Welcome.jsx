@@ -1,22 +1,36 @@
 import { Panel } from '@vkontakte/vkui';
 import React, { useEffect } from 'react';
 import { PAGE_HOME, PAGE_MAIN, router } from '../../router';
+import bridge from '@vkontakte/vk-bridge';
 
 import WelcomeIcon from './../../img/Welcome.svg';
 
 import './Welcome.css';
 
-const Welcome = ({ id, userApplyPolicy }) => {
+const Welcome = ({ id }) => {
   useEffect(() => {
-    if (userApplyPolicy) {
-      setTimeout(() => {
-        router.pushPage(PAGE_HOME);
-      }, 3200);
-    } else {
-      setTimeout(() => {
-        router.pushPage(PAGE_MAIN);
-      }, 3200);
+    async function fetchData() {
+      const user = await bridge.send('VKWebAppGetUserInfo');
+      console.log(user);
+      const storageData = await bridge
+        .send('VKWebAppStorageGet', {
+          keys: ['applyPolicy'],
+        })
+        .then((data) => {
+          if (data.keys) {
+            console.log('Данные получены');
+            setTimeout(() => {
+              router.pushPage(PAGE_HOME);
+            }, 3200);
+          } else {
+            setTimeout(() => {
+              router.pushPage(PAGE_MAIN);
+            }, 3200);
+          }
+        });
+      console.log(storageData);
     }
+    fetchData();
   }, []);
 
   return (

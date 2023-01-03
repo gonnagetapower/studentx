@@ -5,7 +5,7 @@ import { PAGE_HOME } from '../../router';
 
 import './Terms.css';
 
-const Terms = ({ checked, onCheckBoxChecked, id, veiwIntro }) => {
+const Terms = ({ checked, onCheckBoxChecked, id, viewIntro }) => {
   const router = useRouter();
   return (
     <ModalPage id={id} settlingHeight={100}>
@@ -72,7 +72,7 @@ const Terms = ({ checked, onCheckBoxChecked, id, veiwIntro }) => {
           <button
             disabled={!checked ? true : false}
             className={checked ? 'button modal__button' : 'button--off modal__button'}
-            onClick={() => veiwIntro()}>
+            onClick={() => viewIntro()}>
             Понятно
           </button>
         </div>
