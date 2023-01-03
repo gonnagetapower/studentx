@@ -8,6 +8,7 @@ import {
   PanelHeaderBack,
   PanelHeaderButton,
   FixedLayout,
+  ScreenSpinner,
 } from '@vkontakte/vkui';
 
 import { Navigation, Person } from './../../components';
@@ -41,7 +42,7 @@ const Respond = () => {
   }, []);
 
   if (!respond) {
-    return null;
+    return <ScreenSpinner></ScreenSpinner>;
   }
 
   return (
