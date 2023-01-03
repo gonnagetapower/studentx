@@ -17,7 +17,7 @@ const Welcome = ({ id }) => {
           keys: ['applyPolicy'],
         })
         .then((data) => {
-          if (data.keys) {
+          if (data.keys[0].value === 'true') {
             console.log('Данные получены');
             setTimeout(() => {
               router.pushPage(PAGE_HOME);
@@ -28,7 +28,6 @@ const Welcome = ({ id }) => {
             }, 3200);
           }
         });
-      console.log(storageData);
     }
     fetchData();
   }, []);
