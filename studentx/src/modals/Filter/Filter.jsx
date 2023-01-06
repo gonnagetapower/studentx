@@ -21,7 +21,7 @@ const Filter = ({ id, discipline, setDiscipline }) => {
   const [dateTo, setDateTo] = useState();
 
   return (
-    <ModalPage id={id} settlingHeight={100}>
+    <ModalPage id={id} settlingHeight={100} onClose={() => router.popPage()}>
       <div className="filter-modal">
         <span className="swipe-line"></span>
         <ModalPageHeader>
