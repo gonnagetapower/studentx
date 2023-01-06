@@ -26,7 +26,7 @@ import {
 
 import './CreateTask.css';
 
-const CreateTask = () => {
+const CreateTask = ({ id }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const formValues = useSelector((state) => state.create);
@@ -73,7 +73,7 @@ const CreateTask = () => {
   };
 
   return (
-    <Panel id={'dev'}>
+    <Panel id={id}>
       <PanelHeader
         left={
           <PanelHeaderButton

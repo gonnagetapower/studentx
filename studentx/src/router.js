@@ -32,8 +32,7 @@ export const PANEL_CHATROOM = 'panel_chat'
 export const PAGE_WELCOME = '/'
 export const PANEL_WELCOME = 'panel_welcome'
 
-export const PAGE_DEV = '/dev'
-export const PANEL_DEV = 'panel_dev'
+
 
 //modals
 export const MODAL_TERMS = 'modal_terms'
@@ -47,6 +46,11 @@ export const MODAL_INSTITUTE = 'modal_institute'
 //popout
 
 export const POPOUT_CONFIRM = 'popout_confirm'
+
+
+//dev
+export const PAGE_DEV = '/dev'
+export const PANEL_DEV = 'panel_dev'
 
 //router
 const routes = {

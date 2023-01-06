@@ -135,7 +135,7 @@ const App = () => {
     try {
       await bridge
         .send('VKWebAppStorageSet', {
-          key: 'applyPolicy',
+          key: 'policy',
           value: 'true',
         })
         .then((data) => {
@@ -228,6 +228,7 @@ const App = () => {
                   <Respond id={PANEL_RESPOND} />
                   <CreateTask id={PANEL__CREATE} />
                   <ChatRoom id={PANEL_CHATROOM} />
+                  <Dev id={PANEL_DEV} />
                 </View>
                 {/* </PullToRefresh> */}
               </Root>

@@ -12,9 +12,9 @@ const Welcome = ({ id }) => {
     async function fetchData() {
       const user = await bridge.send('VKWebAppGetUserInfo');
       console.log(user);
-      const storageData = await bridge
+      await bridge
         .send('VKWebAppStorageGet', {
-          keys: ['applyPolicy'],
+          keys: ['policy'],
         })
         .then((data) => {
           if (data.keys[0].value === 'true') {

@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 export const fetchTasks = createAsyncThunk(
     'tasks/fetchTasksStatus',
-    async(currentPage) => {
+    async (currentPage) => {
         const res = await axios.get(
             `https://635c0281fc2595be263e82f3.mockapi.io/tasks?page=${currentPage}&limit=5`
         );
