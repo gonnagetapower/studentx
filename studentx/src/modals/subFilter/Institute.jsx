@@ -5,8 +5,10 @@ import { setInstitute } from '../../redux/slices/filterSlice';
 import { setTaskInstitute } from '../../redux/slices/createTaskSlice';
 import { router } from '../../router';
 
-import { ModalPage } from '@vkontakte/vkui';
+import { ModalPage, SimpleCell } from '@vkontakte/vkui';
 import { useLocation } from '@happysanta/router';
+
+import './subFilter.css';
 
 const Institute = ({ id, subTitle }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -46,35 +48,39 @@ const Institute = ({ id, subTitle }) => {
   ];
 
   return (
-    <div>
-      <ModalPage id={id} settlingHeight={100}>
-        <div className="subFilter">
-          <span className="swipe-line"></span>
-          <h1 className="subFilter__title">Институт</h1>
-          <div className="subFilter__search">
-            <input
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="subFilter__input"
-              type="text"
-              placeholder="Поиск"
-            />
-          </div>
-          {itemsArray
-            .filter((item) => {
-              if (searchValue === '') {
-                return item;
-              } else if (item.toLowerCase().includes(searchValue.toLowerCase())) {
-                return item;
-              }
-            })
-            .map((item) => (
-              <h1 className="subFilter__item" onClick={() => handleInstitute(item)}>
-                {item}
-              </h1>
-            ))}
+    <ModalPage id={id} settlingHeight={100}>
+      <div className="subFilter">
+        <span className="swipe-line"></span>
+        <h1 className="subFilter__title">Институт</h1>
+        <div className="subFilter__search">
+          <input
+            onChange={(e) => setSearchValue(e.target.value)}
+            className="subFilter__input"
+            type="text"
+            placeholder="Поиск"
+          />
         </div>
-      </ModalPage>
-    </div>
+        {itemsArray
+          .filter((item) => {
+            if (searchValue === '') {
+              return item;
+            } else if (item.toLowerCase().includes(searchValue.toLowerCase())) {
+              return item;
+            }
+          })
+          .map((item) => (
+            <div className="subFilter__item">
+              <SimpleCell
+                Component="label"
+                activeMode="activeItem"
+                multiline={true}
+                onClick={() => handleInstitute(item)}>
+                {item}
+              </SimpleCell>
+            </div>
+          ))}
+      </div>
+    </ModalPage>
   );
 };
 

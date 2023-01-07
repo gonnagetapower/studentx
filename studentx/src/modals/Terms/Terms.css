@@ -19,13 +19,15 @@
 }
 
 .modal {
-    height: 500px;
+    max-height: 470px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 35px;
+    padding-right: 5px;
 }
 
 .modal__title {
+    text-align: center;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -42,6 +44,11 @@
     color: #686868;
 }
 
+.modal__descr-title {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #E7E7E7;
+}
+
 .modal__checkbox {
     margin-bottom: 28px;
     font-family: 'Open Sans';
@@ -51,6 +58,10 @@
     line-height: 20px;
     letter-spacing: -0.24px;
     color: #686868;
+}
+
+.policy--label {
+    padding-left: 14px;
 }
 
 .modal__button {

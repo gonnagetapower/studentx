@@ -187,56 +187,59 @@ const App = () => {
   // };
 
   return (
-    <AppRoot>
-      <ConfigProvider
-        platfrom={platfrom}
-        appearance={'light'}
-        transitionMotionEnabled={true}>
-        <SplitLayout modal={modal} popout={popouts}>
-          <SplitCol animate={true}>
-            <div className="container">
-              {/* <PullToRefresh onRefresh={reload} isFetching={reloading}> */}
-              <Root activeView={location.getViewId()}>
-                <View
-                  id={VIEW_WELCOME}
-                  history={
-                    location.hasOverlay() ? [] : location.getViewHistory(VIEW_WELCOME)
-                  }
-                  activePanel={location.getViewActivePanel(VIEW_WELCOME)}>
-                  <Welcome
-                    id={PANEL_WELCOME}
-                    userApplyPolicy={userApplyPolicy}
-                    activePanel={location.getViewActivePanel(VIEW_WELCOME)}
-                  />
-                </View>
-                <View
-                  id={VIEW_MAIN}
-                  activePanel={location.getViewActivePanel(VIEW_MAIN)}
-                  history={
-                    location.hasOverlay() ? [] : location.getViewHistory(VIEW_MAIN)
-                  }>
-                  <Intro
-                    id={PANEL_MAIN}
-                    go={viewIntro}
-                    userApplyPolicy={userApplyPolicy}
-                    setOpen={setOpen}
-                  />
-                  <Main id={PANEL_HOME} />
-                  <MyPublication id={PANEL_PUBLICATIONS} />
-                  <Messages id={PANEL_MESSAGES} />
-                  <Profile id={PANEL_PROFILE} />
-                  <Respond id={PANEL_RESPOND} />
-                  <CreateTask id={PANEL__CREATE} />
-                  <ChatRoom id={PANEL_CHATROOM} />
-                  <Dev id={PANEL_DEV} />
-                </View>
-                {/* </PullToRefresh> */}
-              </Root>
-            </div>
-          </SplitCol>
-        </SplitLayout>
-      </ConfigProvider>
-    </AppRoot>
+    <ConfigProvider
+      platfrom={platfrom}
+      appearance={'light'}
+      transitionMotionEnabled={true}>
+      <AdaptivityProvider>
+        <AppRoot scroll="contain">
+          <SplitLayout modal={modal} popout={popouts}>
+            <SplitCol animate={true}>
+              <div className="container">
+                {console.log(platfrom)}
+                {/* <PullToRefresh onRefresh={reload} isFetching={reloading}> */}
+                <Root activeView={location.getViewId()}>
+                  <View
+                    id={VIEW_WELCOME}
+                    history={
+                      location.hasOverlay() ? [] : location.getViewHistory(VIEW_WELCOME)
+                    }
+                    activePanel={location.getViewActivePanel(VIEW_WELCOME)}>
+                    <Welcome
+                      id={PANEL_WELCOME}
+                      userApplyPolicy={userApplyPolicy}
+                      activePanel={location.getViewActivePanel(VIEW_WELCOME)}
+                    />
+                  </View>
+                  <View
+                    id={VIEW_MAIN}
+                    activePanel={location.getViewActivePanel(VIEW_MAIN)}
+                    history={
+                      location.hasOverlay() ? [] : location.getViewHistory(VIEW_MAIN)
+                    }>
+                    <Intro
+                      id={PANEL_MAIN}
+                      go={viewIntro}
+                      userApplyPolicy={userApplyPolicy}
+                      setOpen={setOpen}
+                    />
+                    <Main id={PANEL_HOME} />
+                    <MyPublication id={PANEL_PUBLICATIONS} />
+                    <Messages id={PANEL_MESSAGES} />
+                    <Profile id={PANEL_PROFILE} />
+                    <Respond id={PANEL_RESPOND} />
+                    <CreateTask id={PANEL__CREATE} />
+                    <ChatRoom id={PANEL_CHATROOM} />
+                    <Dev id={PANEL_DEV} />
+                  </View>
+                  {/* </PullToRefresh> */}
+                </Root>
+              </div>
+            </SplitCol>
+          </SplitLayout>
+        </AppRoot>
+      </AdaptivityProvider>
+    </ConfigProvider>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useLocation } from '@happysanta/router';
-import { ModalPage, Title } from '@vkontakte/vkui';
+import { ModalPage, SimpleCell, Title } from '@vkontakte/vkui';
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -69,9 +69,14 @@ const Discipline = ({ id, subTitle }) => {
               }
             })
             .map((item) => (
-              <h1 className="subFilter__item" onClick={() => handleDiscipline(item)}>
-                {item}
-              </h1>
+              <div className="subFilter__item">
+                <SimpleCell
+                  Component="label"
+                  activeMode="activeItem"
+                  onClick={() => handleDiscipline(item)}>
+                  {item}
+                </SimpleCell>
+              </div>
             ))}
         </div>
       </ModalPage>

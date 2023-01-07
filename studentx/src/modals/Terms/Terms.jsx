@@ -12,7 +12,16 @@ const Terms = ({ checked, onCheckBoxChecked, id, viewIntro }) => {
       <div>
         <div className="modal-container">
           <div className="modal">
-            <h1 className="modal__title">Условия пользования</h1>
+            <div>
+              <h1 className="modal__title">Условия пользования</h1>
+              <p className="modal__descr modal__descr-title--first">
+                Данное приложение создано для помощи студентам в написании учебных работ.
+              </p>
+              <p className="modal__descr modal__descr-title">
+                Пожалуйста, ознакомьтесь с полным текстом пользовательского соглашения на
+                отдельной странице, или в этом окне
+              </p>
+            </div>
             <p className="modal__descr">
               Данное приложение создано для помощи студентам. Если вы хотите зарабатывать,
               перейдите во вкладку “Исполнитель”, если желаете получить услугу - то
@@ -67,7 +76,9 @@ const Terms = ({ checked, onCheckBoxChecked, id, viewIntro }) => {
               id="policy"
               name="policy"
             />
-            Согласен с правилами
+            <label className="policy--label" for="policy">
+              Я согласен(а) с условиями пользования и политикой конфиденциальности
+            </label>
           </div>
           <button
             disabled={!checked ? true : false}

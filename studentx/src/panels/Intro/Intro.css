@@ -11,7 +11,7 @@
 .intro__title {
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 100%;
     color: #232036;
 }
@@ -23,6 +23,24 @@
     line-height: 100%;
     color: #686868;
     margin-bottom: 100px;
+}
+
+.intro__image {
+    position: relative;
+    min-height: 292px;
+    flex-grow: 4;
+}
+
+.puggle-small {
+    position: absolute;
+    left: 2px;
+    top: 150px;
+}
+
+.puggle-large {
+    position: absolute;
+    left: 15px;
+    top: -30px;
 }
 
 .intro__img {

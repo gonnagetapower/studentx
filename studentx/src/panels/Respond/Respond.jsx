@@ -92,7 +92,7 @@ const Respond = () => {
               <li>до 12.12.2022</li>
             </ul>
             <ul className="list">
-              <li className="list-title">Предмет</li>
+              <li className="list-title">Цена</li>
               <li>{obj.price}</li>
             </ul>
           </div>
