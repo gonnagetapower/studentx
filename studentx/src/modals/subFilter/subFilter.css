@@ -21,7 +21,8 @@
 }
 
 .subFilter__input {
-    width: 310px;
+    box-sizing: border-box;
+    width: 100%;
     height: 34px;
     padding-left: 30px;
     border: none;

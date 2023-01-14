@@ -66,10 +66,10 @@ const CreateTask = ({ id }) => {
   };
 
   const deletePhoto = (elem) => {
-    const newPhotoList = photoList.filter((photo) => {
+    const newPhotoList = formValues.photoList.filter((photo) => {
       return photo !== elem;
     });
-    setPhotoList(newPhotoList);
+    dispatch(setPhotoList(newPhotoList));
   };
 
   return (

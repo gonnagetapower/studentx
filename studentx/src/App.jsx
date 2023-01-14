@@ -192,7 +192,7 @@ const App = () => {
       appearance={'light'}
       transitionMotionEnabled={true}>
       <AdaptivityProvider>
-        <AppRoot scroll="contain">
+        <AppRoot scroll="global">
           <SplitLayout modal={modal} popout={popouts}>
             <SplitCol animate={true}>
               <div className="container">
