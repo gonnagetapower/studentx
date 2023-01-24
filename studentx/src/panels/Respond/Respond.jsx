@@ -80,20 +80,20 @@ const Respond = () => {
           <div className="discipline-container">
             <ul className="list">
               <li className="list-title">Предмет</li>
-              <li>{obj.taskType}</li>
+              <li className="list-title">{obj.taskType}</li>
             </ul>
             <ul className="list">
               <li className="list-title">Учебное заведение</li>
-              <li>УрФУ</li>
-              <li>Угму</li>
+              <li className="list-title">УрФУ</li>
+              <li className="list-title">Угму</li>
             </ul>
             <ul className="list">
               <li className="list-title">Желаемые сроки</li>
-              <li>до 12.12.2022</li>
+              <li className="list-title">до 12.12.2022</li>
             </ul>
             <ul className="list">
               <li className="list-title">Цена</li>
-              <li>{obj.price}</li>
+              <li className="list-title">{obj.price}</li>
             </ul>
           </div>
         </div>

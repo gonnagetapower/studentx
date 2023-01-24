@@ -41,11 +41,12 @@ import {
   PANEL_WELCOME,
   PANEL_DEV,
   VIEW_WELCOME,
+  MODAL_FAQ,
 } from './router';
 
 import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev } from './panels';
 
-import { Filter, Discipline, Towns, Institute, Terms } from './modals/';
+import { Filter, Discipline, Towns, Institute, Terms, FAQ } from './modals/';
 
 import CreateTask from './panels/CreateTask/CreateTask';
 import ChatRoom from './panels/ChatRoom/ChatRoom';
@@ -167,6 +168,7 @@ const App = () => {
       />
       <Towns id={MODAL_TOWNS} />
       <Institute id={MODAL_INSTITUTE} />
+      <FAQ id={MODAL_FAQ} />
     </ModalRoot>
   );
 
