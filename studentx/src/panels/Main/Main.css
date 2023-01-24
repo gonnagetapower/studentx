@@ -145,3 +145,12 @@
 .create-card--button {
     width: 100%;
 }
+
+.viewed-card {
+    margin-top: 10px;
+    background: rgba(95, 3, 138, 0.589);
+    border-radius: 10px;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
