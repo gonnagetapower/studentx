@@ -17,7 +17,7 @@ import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
 import infoIcon from './../../img/infoIcon.svg';
 import { Task, Navigation, AddButton, Header, SkeletonCard } from '../../components/';
-import { MODAL_FILTER, PAGE_CREATE, PAGE_DEV } from '../../router';
+import { MODAL_FILTER, PAGE_CREATE, PAGE_DEV, PAGE_NOTICE } from '../../router';
 
 import './Main.css';
 
@@ -132,7 +132,7 @@ const Main = ({ id, go, ROUTES }) => {
             </div>
             <div className="search">
               <input type="text" placeholder="Поиск" className="search__input" />
-              <img src={bellIcon} alt="search" className="search__info-bell" />
+              <img onClick={() => router.pushPage(PAGE_NOTICE)} src={bellIcon} alt="search" className="search__info-bell" />
             </div>
             <div className={buttonActive === '1' ? 'filter--hidden' : 'filter'}>
               <img

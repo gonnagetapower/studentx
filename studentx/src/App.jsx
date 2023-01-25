@@ -42,9 +42,10 @@ import {
   PANEL_DEV,
   VIEW_WELCOME,
   MODAL_FAQ,
+  PANEL_NOTICE,
 } from './router';
 
-import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev } from './panels';
+import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev, Notice } from './panels';
 
 import { Filter, Discipline, Towns, Institute, Terms, FAQ } from './modals/';
 
@@ -232,6 +233,7 @@ const App = () => {
                     <Respond id={PANEL_RESPOND} />
                     <CreateTask id={PANEL__CREATE} />
                     <ChatRoom id={PANEL_CHATROOM} />
+                    <Notice id={PANEL_NOTICE} />
                     <Dev id={PANEL_DEV} />
                   </View>
                   {/* </PullToRefresh> */}
