@@ -167,7 +167,7 @@ const Main = ({ id, go, ROUTES }) => {
             <HorizontalScroll>
               <div style={{ display: 'flex' }}>
                 {[...new Array(16)].map((_, index) =>
-                  <h1 style={{padding: '5px'}}>ппп</h1>
+                  <h1 style={{ padding: '5px' }}>ппп</h1>
                 )}
               </div>
             </HorizontalScroll>
