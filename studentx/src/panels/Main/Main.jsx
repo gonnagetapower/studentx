@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Panel, PullToRefresh, Snackbar } from '@vkontakte/vkui';
+import { HorizontalScroll, Panel, PullToRefresh, Snackbar } from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,7 +17,7 @@ import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
 import infoIcon from './../../img/infoIcon.svg';
 import { Task, Navigation, AddButton, Header, SkeletonCard } from '../../components/';
-import { MODAL_FILTER, PAGE_CREATE, PAGE_DEV } from '../../router';
+import { MODAL_FILTER, PAGE_CREATE, PAGE_DEV, PAGE_NOTICE } from '../../router';
 
 import './Main.css';
 
@@ -71,7 +71,7 @@ const Main = ({ id, go, ROUTES }) => {
   const scrollHandler = (e) => {
     if (
       e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
+      (e.target.documentElement.scrollTop + window.innerHeight) <
       100
     ) {
       dispatch(setCurrentPage());
@@ -132,7 +132,7 @@ const Main = ({ id, go, ROUTES }) => {
             </div>
             <div className="search">
               <input type="text" placeholder="Поиск" className="search__input" />
-              <img src={bellIcon} alt="search" className="search__info-bell" />
+              <img onClick={() => router.pushPage(PAGE_NOTICE)} src={bellIcon} alt="search" className="search__info-bell" />
             </div>
             <div className={buttonActive === '1' ? 'filter--hidden' : 'filter'}>
               <img
@@ -164,6 +164,13 @@ const Main = ({ id, go, ROUTES }) => {
                 Начать
               </button>
             </div>
+            <HorizontalScroll>
+              <div style={{ display: 'flex' }}>
+                {[...new Array(16)].map((_, index) =>
+                  <h1 style={{ padding: '5px' }}>ппп</h1>
+                )}
+              </div>
+            </HorizontalScroll>
           </div>
         </div>
       ) : (
@@ -174,17 +181,17 @@ const Main = ({ id, go, ROUTES }) => {
               {firstFetch
                 ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
                 : tasksData.map((obj) => (
-                    <Task
-                      go={go}
-                      ROUTES={ROUTES}
-                      key={obj.id}
-                      title={obj.title}
-                      descr={obj.description}
-                      dateOrder={obj.orderDate}
-                      price={obj.price}
-                      id={obj.id}
-                    />
-                  ))}
+                  <Task
+                    go={go}
+                    ROUTES={ROUTES}
+                    key={obj.id}
+                    title={obj.title}
+                    descr={obj.description}
+                    dateOrder={obj.orderDate}
+                    price={obj.price}
+                    id={obj.id}
+                  />
+                ))}
               {status === 'loading' ? (
                 <div>
                   <SkeletonCard />

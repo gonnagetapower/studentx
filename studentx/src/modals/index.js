@@ -1,3 +1,6 @@
+export { default as FAQ }
+    from "./FAQ/FAQ.jsx";
+
 export { default as Filter }
     from "./Filter/Filter.jsx";
 
@@ -12,3 +15,4 @@ export { default as Towns }
 
 export { default as Terms }
     from "./Terms/Terms.jsx";
+

@@ -63,7 +63,7 @@
     margin-bottom: 49px;
 }
 
-li {
+.list-title {
     list-style-type: none;
     display: inline;
     margin-right: 8px;
@@ -78,7 +78,7 @@ li {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-ul {
+.list {
     padding-left: 0;
 }
 

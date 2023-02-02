@@ -9,12 +9,15 @@ import {
   PanelHeaderButton,
   FixedLayout,
   ScreenSpinner,
+  Snackbar
 } from '@vkontakte/vkui';
 
 import { Navigation, Person } from './../../components';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 import emptyPhotoLogo from './../../img/emptyPhotoLogo.svg';
+
+import { Icon28CancelCircleFillRed } from '@vkontakte/icons';
 
 import './Respond.css';
 
@@ -24,18 +27,27 @@ const Respond = () => {
 
   const [respond, setRespond] = useState();
   const [mounted, setMounted] = useState(false);
+  const [snackBar, setSnackBar] = useState(null);
 
   useEffect(() => {
     const fetchRespond = async () => {
       try {
-        console.log(id);
-        const data = await axios.get(
-          `https://635c0281fc2595be263e82f3.mockapi.io/tasks?id=${id}`,
+        const { data } = await axios.get(
+          `https://mtimofeev.fun/api/v2/tasks/${id}`,
         );
         setRespond(data);
         setMounted(true);
+        console.log(data)
       } catch (error) {
-        console.log(error);
+        setSnackBar(
+          <Snackbar
+            before={<Icon28CancelCircleFillRed />}
+            layout="vertical"
+            duration={900}
+            onClose={() => setSnackBar(null)}>
+            Ошибка сервера
+          </Snackbar>,
+        );
       }
     };
     fetchRespond();
@@ -63,41 +75,38 @@ const Respond = () => {
           <h2 className="respond-header__title">Объявления</h2>
         </div>
       </PanelHeader>
-      {respond.data.map((obj) => (
-        <div key={obj.id} className="respond-container">
-          <div className="respond-user">
-            <Person name={'Наташа Ростова'} />
-          </div>
-          <div className="respond-text">
-            <h1 className="respond__title">{obj.title}</h1>
-            <p className="respond__descr">{obj.description}</p>
-          </div>
-          <div className="photo-container">
-            <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
-            <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
-            <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
-          </div>
-          <div className="discipline-container">
-            <ul className="list">
-              <li className="list-title">Предмет</li>
-              <li>{obj.taskType}</li>
-            </ul>
-            <ul className="list">
-              <li className="list-title">Учебное заведение</li>
-              <li>УрФУ</li>
-              <li>Угму</li>
-            </ul>
-            <ul className="list">
-              <li className="list-title">Желаемые сроки</li>
-              <li>до 12.12.2022</li>
-            </ul>
-            <ul className="list">
-              <li className="list-title">Цена</li>
-              <li>{obj.price}</li>
-            </ul>
-          </div>
+      <div key={respond.id} className="respond-container">
+        <div className="respond-user">
+          <Person name={respond.owner} />
         </div>
-      ))}
+        <div className="respond-text">
+          <h1 className="respond__title">{respond.title}</h1>
+          <p className="respond__descr">{respond.description}</p>
+        </div>
+        <div className="photo-container">
+          <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
+          <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
+          <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
+        </div>
+        <div className="discipline-container">
+          <ul className="list">
+            <li className="list-title">Предмет</li>
+            <li className="list-title">{respond.category}</li>
+          </ul>
+          <ul className="list">
+            <li className="list-title">Учебное заведение</li>
+            <li className="list-title">{respond.university}</li>
+          </ul>
+          <ul className="list">
+            <li className="list-title">Желаемые сроки</li>
+            <li className="list-title">до {respond.orderDate}</li>
+          </ul>
+          <ul className="list">
+            <li className="list-title">Цена</li>
+            <li className="list-title">{1100}</li>
+          </ul>
+        </div>
+      </div>
       <div className="contactAuthor">
         <button className="button button--write">Написать</button>
         <button className="button button--respond">Откликнуться</button>

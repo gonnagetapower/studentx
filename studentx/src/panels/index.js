@@ -16,6 +16,9 @@ from "./Messages/Messages.jsx";
 export { default as MyPublication }
 from "./MyPublication/MyPublication.jsx";
 
+export { default as Notice} 
+from './Notice/Notice.jsx'
+
 export { default as Profile }
 from "./Profile/Profile.jsx";
 
