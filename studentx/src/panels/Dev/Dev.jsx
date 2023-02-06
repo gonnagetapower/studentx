@@ -12,19 +12,26 @@ import { Navigation } from '../../components';
 const Dev = () => {
   const [watch, setWatch] = useState([]);
 
-  const responce = [];
-
   const lastWatchedId = useSelector((state) => state.app.lastWatch);
 
   console.log(lastWatchedId);
 
+  const responce = [];
+
   useEffect(() => {
-    for (let i = 0; i < lastWatchedId.length; i++) {
-      axios.get(`https://mtimofeev.fun/api/v2/tasks/${lastWatchedId[i]}`).then((data) => {
-        responce.push(data.data);
-        // setWatch([...watch, data.data]);
-        setWatch(responce);
-      });
+    let unicLastWatched = lastWatchedId.filter((item, pos) => {
+      return lastWatchedId.indexOf(item) === pos;
+    });
+
+    for (let i = 0; i < unicLastWatched.length; i++) {
+      axios
+        .get(`https://mtimofeev.fun/api/v2/tasks/${unicLastWatched[i]}`)
+        .then((data) => {
+          responce.push(data.data);
+          setWatch([...responce]);
+          // setWatch([...watch, data.data]);
+          console.log(responce);
+        });
     }
   }, []);
 

@@ -6,7 +6,7 @@ export const fetchTasks = createAsyncThunk(
     'tasks/fetchTasksStatus',
     async (currentPage) => {
         const res = await axios.get(
-            `https://mtimofeev.fun/api/v2/tasks`
+            `https://mtimofeev.fun/api/v2/tasks?limit=5&page=${currentPage}`
         );
         return res.data
     }

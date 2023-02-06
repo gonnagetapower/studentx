@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import { HorizontalScroll, Panel, PullToRefresh, Snackbar } from '@vkontakte/vkui';
+import {
+  Group,
+  HorizontalCell,
+  HorizontalScroll,
+  Panel,
+  PullToRefresh,
+  Snackbar,
+} from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -102,6 +110,33 @@ const Main = ({ id, go, ROUTES }) => {
     }
   };
 
+  /// MainSwitch
+
+  const [watch, setWatch] = useState([]);
+
+  const lastWatchedId = useSelector((state) => state.app.lastWatch);
+
+  console.log(lastWatchedId);
+
+  const responce = [];
+
+  useEffect(() => {
+    let unicLastWatched = lastWatchedId.filter((item, pos) => {
+      return lastWatchedId.indexOf(item) === pos;
+    });
+
+    for (let i = 0; i < unicLastWatched.length; i++) {
+      axios
+        .get(`https://mtimofeev.fun/api/v2/tasks/${unicLastWatched[i]}`)
+        .then((data) => {
+          responce.push(data.data);
+          setWatch([...responce]);
+          // setWatch([...watch, data.data]);
+          console.log(responce);
+        });
+    }
+  }, []);
+
   return (
     <Panel id={id}>
       <Header>
@@ -169,13 +204,24 @@ const Main = ({ id, go, ROUTES }) => {
                 Начать
               </button>
             </div>
-            <HorizontalScroll>
-              <div style={{ display: 'flex' }}>
-                {[...new Array(16)].map((_, index) => (
-                  <h1 style={{ padding: '5px' }}>ппп</h1>
-                ))}
-              </div>
-            </HorizontalScroll>
+            <Group>
+              <h1 className="create-card__title">Просмотренные посты</h1>
+              <HorizontalScroll>
+                <div style={{ display: 'flex' }}>
+                  {watch.map((watch) => (
+                    <HorizontalCell size="l">
+                      <Task
+                        key={watch.id}
+                        title={watch.title}
+                        descr={watch.description}
+                        dateOrder={watch.deliveryDate}
+                        id={watch.id}
+                      />
+                    </HorizontalCell>
+                  ))}
+                </div>
+              </HorizontalScroll>
+            </Group>
           </div>
         </div>
       ) : (
