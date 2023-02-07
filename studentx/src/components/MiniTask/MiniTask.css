@@ -1,0 +1,47 @@
+.mini-task {
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 120px;
+    width: 120px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mini-task__title {
+    margin: 0;
+    margin-bottom: 2px;
+    display: -webkit-box;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    color: #454545;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-task__descr {
+    margin: 0;
+    margin-bottom: 2px;
+    display: -webkit-box;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    /* or 13px */
+    /* dark grey */
+    color: #686868;
+    -webkit-line-clamp: 3;
+    /* количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

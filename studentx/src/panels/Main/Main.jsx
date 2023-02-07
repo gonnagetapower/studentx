@@ -1,141 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
-import {
-  Group,
-  HorizontalCell,
-  HorizontalScroll,
-  Panel,
-  PullToRefresh,
-  Snackbar,
-} from '@vkontakte/vkui';
+import { Panel } from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
-
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  fetchTasks,
-  setCurrentPage,
-  setRefreshStatus,
-} from '../../redux/slices/taskSlice';
-
-// import { errorIcon } from '@vkontakte/icons/src/svg/28/cancel_circle_fill_red';
-import { Icon28CancelCircleFillRed } from '@vkontakte/icons';
 
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
-import infoIcon from './../../img/infoIcon.svg';
-import { Task, Navigation, AddButton, Header, SkeletonCard } from '../../components/';
-import { MODAL_FILTER, PAGE_CREATE, PAGE_DEV, PAGE_NOTICE } from '../../router';
+
+import { Navigation, Header } from '../../components/';
+import { MODAL_FILTER, PAGE_NOTICE } from '../../router';
+
+import Home from './components/Home/Home';
+import Publication from './components/Publication/Publication';
 
 import './Main.css';
 
-const Main = ({ id, go, ROUTES }) => {
+const Main = ({ id }) => {
   const [buttonActive, setButtonActive] = useState('2');
   const router = useRouter();
+
+  const [snackBar, setSnackBar] = useState(null);
 
   const onClickButton = (e) => {
     setButtonActive(e.target.id);
   };
-
-  const dispatch = useDispatch();
-
-  const tasksData = useSelector((state) => state.tasks.items);
-  const status = useSelector((state) => state.tasks.status);
-  const currentPage = useSelector((state) => state.tasks.currentPage);
-  const firstFetch = useSelector((state) => state.tasks.firstFetch);
-  const refreshStatus = useSelector((state) => state.tasks.refreshStatus);
-
-  const [snackBar, setSnackBar] = useState(null);
-
-  const getTasks = async () => {
-    try {
-      await dispatch(fetchTasks(currentPage)).unwrap();
-    } catch (err) {
-      setSnackBar(
-        <Snackbar
-          before={<Icon28CancelCircleFillRed />}
-          layout="vertical"
-          duration={900}
-          onClose={() => setSnackBar(null)}>
-          Ошибка сервера
-        </Snackbar>,
-      );
-    }
-  };
-
-  useEffect(() => {
-    if (currentPage < 5) {
-      getTasks();
-    }
-  }, [currentPage]);
-
-  useEffect(() => {
-    document.addEventListener('scroll', scrollHandler);
-    return function () {
-      document.removeEventListener('scroll', scrollHandler);
-    };
-  }, []);
-
-  const scrollHandler = (e) => {
-    if (
-      e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
-      100
-    ) {
-      dispatch(setCurrentPage());
-    }
-  };
-
-  const onRefresh = async () => {
-    try {
-      dispatch(setRefreshStatus(true));
-      await dispatch(fetchTasks(currentPage)).unwrap();
-      dispatch(setRefreshStatus(false));
-    } catch (err) {
-      console.log(err);
-      setTimeout(() => dispatch(setRefreshStatus(false)), 2000);
-      setTimeout(
-        () =>
-          setSnackBar(
-            <Snackbar
-              before={<Icon28CancelCircleFillRed />}
-              layout="vertical"
-              duration={1700}
-              onClose={() => setSnackBar(null)}>
-              Ошибка сервера
-            </Snackbar>,
-          ),
-        1500,
-      );
-    }
-  };
-
-  /// MainSwitch
-
-  const [watch, setWatch] = useState([]);
-
-  const lastWatchedId = useSelector((state) => state.app.lastWatch);
-
-  console.log(lastWatchedId);
-
-  const responce = [];
-
-  useEffect(() => {
-    let unicLastWatched = lastWatchedId.filter((item, pos) => {
-      return lastWatchedId.indexOf(item) === pos;
-    });
-
-    for (let i = 0; i < unicLastWatched.length; i++) {
-      axios
-        .get(`https://mtimofeev.fun/api/v2/tasks/${unicLastWatched[i]}`)
-        .then((data) => {
-          responce.push(data.data);
-          setWatch([...responce]);
-          // setWatch([...watch, data.data]);
-          console.log(responce);
-        });
-    }
-  }, []);
 
   return (
     <Panel id={id}>
@@ -191,70 +78,9 @@ const Main = ({ id, go, ROUTES }) => {
         </div>
       </Header>
       {buttonActive === '1' ? (
-        <div className="content-container">
-          <div className="content">
-            <div className="create-card">
-              <div className="create-card--flex">
-                <h1 className="create-card__title">Создай свою публикацию</h1>
-                <img className="create-card__img" src={infoIcon} alt="info" />
-              </div>
-              <button
-                onClick={() => router.pushPage(PAGE_DEV)}
-                className="button create-card--button">
-                Начать
-              </button>
-            </div>
-            <Group>
-              <h1 className="create-card__title">Просмотренные посты</h1>
-              <HorizontalScroll>
-                <div style={{ display: 'flex' }}>
-                  {watch.map((watch) => (
-                    <HorizontalCell size="l">
-                      <Task
-                        key={watch.id}
-                        title={watch.title}
-                        descr={watch.description}
-                        dateOrder={watch.deliveryDate}
-                        id={watch.id}
-                      />
-                    </HorizontalCell>
-                  ))}
-                </div>
-              </HorizontalScroll>
-            </Group>
-          </div>
-        </div>
+        <Home />
       ) : (
-        <div className="content-container">
-          <AddButton router={router} createPanel={PAGE_CREATE} />
-          <div className="content">
-            <PullToRefresh onRefresh={onRefresh} isFetching={refreshStatus}>
-              {firstFetch
-                ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
-                : tasksData.map((obj) => (
-                    <Task
-                      key={obj.id}
-                      title={obj.title}
-                      descr={obj.description}
-                      dateOrder={obj.orderDate}
-                      price={obj.price}
-                      id={obj.id}
-                    />
-                  ))}
-              {status === 'loading' ? (
-                <div>
-                  <SkeletonCard />
-                  <SkeletonCard />
-                  <SkeletonCard />
-                  <SkeletonCard />
-                  <SkeletonCard />
-                  <SkeletonCard />
-                  <SkeletonCard />
-                </div>
-              ) : null}
-            </PullToRefresh>
-          </div>
-        </div>
+        <Publication setSnackBar={setSnackBar} snackBar={snackBar} />
       )}
       {snackBar}
       <Navigation />

@@ -16,6 +16,9 @@ from "./InputItem/InputItem.jsx";
 export { default as ListItem }
 from "./ListItem/ListItem.jsx";
 
+export { default as MiniTask }
+from './MiniTask/MiniTask.jsx'
+
 export { default as Navigation }
 from "./Navigation/Navigation.jsx";
 
