@@ -18,6 +18,8 @@ import {
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
+import axios from 'axios';
+
 import './App.css';
 import { useLocation } from '@happysanta/router';
 import {
@@ -45,7 +47,16 @@ import {
   PANEL_NOTICE,
 } from './router';
 
-import { Messages, Profile, Main, MyPublication, Respond, Intro, Dev, Notice } from './panels';
+import {
+  Messages,
+  Profile,
+  Main,
+  MyPublication,
+  Respond,
+  Intro,
+  Dev,
+  Notice,
+} from './panels';
 
 import { Filter, Discipline, Towns, Institute, Terms, FAQ } from './modals/';
 
@@ -53,6 +64,8 @@ import CreateTask from './panels/CreateTask/CreateTask';
 import ChatRoom from './panels/ChatRoom/ChatRoom';
 import Confirm from './popouts/Confirm';
 import Welcome from './panels/Welcome/Welcome';
+import { useDispatch } from 'react-redux';
+import { setJwtToken } from './redux/slices/appSlice';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -60,6 +73,8 @@ const STORAGE_KEYS = {
 
 const App = () => {
   const location = useLocation();
+
+  const dispatch = useDispatch();
 
   //filter-logic
   const [discipline, setDiscipline] = useState('');
@@ -76,6 +91,15 @@ const App = () => {
   };
 
   useEffect(() => {
+    axios
+      .post('https://mtimofeev.fun/auth/jwt/create', {
+        username: 'admin',
+        password: 'admin',
+      })
+      .then((data) => {
+        localStorage.setItem('token', data.data.access);
+        dispatch(setJwtToken(localStorage.getItem('token')));
+      });
     // async function fetchData() {
     //   const user = await bridge.send('VKWebAppGetUserInfo');
     //   console.log(user);
