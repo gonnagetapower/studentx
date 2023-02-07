@@ -13,7 +13,9 @@ import {
   DateInput,
   SimpleCell,
   Switch,
+  LocaleProviderContext,
 } from '@vkontakte/vkui';
+
 import { Icon28ChevronBack } from '@vkontakte/icons';
 
 import { validate } from '../../utils/validate';
@@ -25,6 +27,7 @@ import {
 } from '../../redux/slices/createTaskSlice';
 
 import './CreateTask.css';
+import axios from 'axios';
 
 const CreateTask = ({ id }) => {
   const router = useRouter();
@@ -45,7 +48,26 @@ const CreateTask = ({ id }) => {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
+      console.log(formValues, dateFrom.toLocaleDateString('ru'));
+      axios
+        .post('https://mtimofeev.fun/api/v2/tasks', {
+          title: formValues.title,
+          description: formValues.descr,
+          category: formValues.discipline,
+          university: formValues.institute,
+          orderDate: dateFrom.toLocaleDateString('ru'),
+          deliveryDate: dateTo.toLocaleDateString('ru'),
+          files: [],
+          is_published: true,
+          owner: '',
+          responces: [],
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     console.log(formErrors);
   }, [formErrors]);
