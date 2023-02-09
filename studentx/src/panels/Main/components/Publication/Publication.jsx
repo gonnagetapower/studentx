@@ -40,7 +40,7 @@ const Publication = ({ Snackbar, setSnackBar }) => {
   };
 
   useEffect(() => {
-    if (currentPage < 5) {
+    if (currentPage < 20) {
       getTasks();
     }
   }, [currentPage]);

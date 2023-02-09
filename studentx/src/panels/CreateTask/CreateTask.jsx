@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { useRouter } from '@happysanta/router';
 import { Navigation, TaskPhoto } from '../../components';
 import { FilterItem, FormTextarea } from '../../components';
-import { MODAL_DISCIPLINE, MODAL_INSTITUTE, POPOUT_CONFIRM } from '../../router';
+import {
+  MODAL_DISCIPLINE,
+  MODAL_INSTITUTE,
+  PAGE_HOME,
+  POPOUT_CONFIRM,
+} from '../../router';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -14,9 +19,10 @@ import {
   SimpleCell,
   Switch,
   LocaleProviderContext,
+  Snackbar,
 } from '@vkontakte/vkui';
 
-import { Icon28ChevronBack } from '@vkontakte/icons';
+import { Icon28ChevronBack, Icon28CancelCircleFillRed } from '@vkontakte/icons';
 
 import { validate } from '../../utils/validate';
 
@@ -36,6 +42,8 @@ const CreateTask = ({ id }) => {
   const formValues = useSelector((state) => state.create);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
+  const [snackbar, setSnackbar] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,8 +72,8 @@ const CreateTask = ({ id }) => {
       //     responces: [],
       //   })
       createTaskAPI({
-        title: 'Какой-то такск',
-        description: 'Тестовая отправка с клиента',
+        title: formValues.title,
+        description: formValues.descr,
         deliveryDate: '2023-03-01',
         is_published: true,
         owner: 'admin',
@@ -73,10 +81,26 @@ const CreateTask = ({ id }) => {
         university: '5',
       })
         .then((response) => {
-          console.log(response);
+          setSnackbar(
+            <Snackbar
+              // before={<Icon28CancelCircleFillRed />}
+              layout="vertical"
+              duration={1700}
+              onClose={() => router.pushPage(PAGE_HOME)}>
+              Таск успешно создан!
+            </Snackbar>,
+          );
         })
         .catch((error) => {
-          console.log(error);
+          setSnackbar(
+            <Snackbar
+              before={<Icon28CancelCircleFillRed />}
+              layout="vertical"
+              duration={1700}
+              onClose={() => setSnackBar(null)}>
+              Ошибка при создании таска
+            </Snackbar>,
+          );
         });
     }
     console.log(formErrors);
@@ -246,6 +270,7 @@ const CreateTask = ({ id }) => {
           </div>
         </div>
       </div>
+      <div>{snackbar}</div>
       <Navigation />
     </Panel>
   );

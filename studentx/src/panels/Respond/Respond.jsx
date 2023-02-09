@@ -9,10 +9,11 @@ import {
   PanelHeaderButton,
   FixedLayout,
   ScreenSpinner,
-  Snackbar
+  Snackbar,
+  Group,
 } from '@vkontakte/vkui';
 
-import { Navigation, Person } from './../../components';
+import { Navigation, Person, SkeletonCard } from './../../components';
 
 import nullPhoto from './../../img/nullPhotoIcon.svg';
 import emptyPhotoLogo from './../../img/emptyPhotoLogo.svg';
@@ -32,12 +33,10 @@ const Respond = () => {
   useEffect(() => {
     const fetchRespond = async () => {
       try {
-        const { data } = await axios.get(
-          `https://mtimofeev.fun/api/v2/tasks/${id}`,
-        );
+        const { data } = await axios.get(`https://mtimofeev.fun/api/v2/tasks/${id}`);
         setRespond(data);
         setMounted(true);
-        console.log(data)
+        console.log(data);
       } catch (error) {
         setSnackBar(
           <Snackbar
@@ -54,7 +53,13 @@ const Respond = () => {
   }, []);
 
   if (!respond) {
-    return <ScreenSpinner></ScreenSpinner>;
+    return (
+      <Group>
+        <div style={{ height: '100vh' }}>
+          <ScreenSpinner></ScreenSpinner>
+        </div>
+      </Group>
+    );
   }
 
   return (
