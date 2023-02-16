@@ -6,28 +6,35 @@ import bridge from '@vkontakte/vk-bridge';
 import WelcomeIcon from './../../img/Welcome.svg';
 
 import './Welcome.css';
+import { useSelector } from 'react-redux';
 
 const Welcome = ({ id }) => {
+
+  const isAuth = useSelector((state) => state.app.isAuth )
+
+  console.log(isAuth)
+
   useEffect(() => {
     async function fetchData() {
       const user = await bridge.send('VKWebAppGetUserInfo');
       console.log(user);
-      await bridge
-        .send('VKWebAppStorageGet', {
-          keys: ['policy'],
-        })
-        .then((data) => {
-          if (data.keys[0].value === 'true') {
-            console.log('Данные получены');
-            setTimeout(() => {
-              router.pushPage(PAGE_HOME);
-            }, 3200);
-          } else {
-            setTimeout(() => {
-              router.pushPage(PAGE_MAIN);
-            }, 3200);
-          }
-        });
+      router.pushPage(PAGE_MAIN)
+      // await bridge
+      //   .send('VKWebAppStorageGet', {
+      //     keys: ['policy'],
+      //   })
+      //   .then((data) => {
+      //     if (data.keys[0].value === 'true') {
+      //       console.log('Данные получены');
+      //       setTimeout(() => {
+      //         router.pushPage(PAGE_HOME);
+      //       }, 3200);
+      //     } else {
+      //       setTimeout(() => {
+      //         router.pushPage(PAGE_MAIN);
+      //       }, 3200);
+      //     }
+      //   });
     }
     fetchData();
   }, []);

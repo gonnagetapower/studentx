@@ -65,7 +65,7 @@ import ChatRoom from './panels/ChatRoom/ChatRoom';
 import Confirm from './popouts/Confirm';
 import Welcome from './panels/Welcome/Welcome';
 import { useDispatch } from 'react-redux';
-import { setJwtToken } from './redux/slices/appSlice';
+import { registration, setJwtToken } from './redux/slices/appSlice';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -176,6 +176,17 @@ const App = () => {
     }
   };
 
+  const enter = async () => {
+    const user = await bridge.send('VKWebAppGetUserInfo');
+    try {
+      await dispatch(registration(user.id, "test")).unwrap();
+      console.log('ok')
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
+
   const modal = (
     <ModalRoot activeModal={location.getModalId()} onClose={() => router.popPage()}>
       <Terms
@@ -183,7 +194,7 @@ const App = () => {
         id={MODAL_TERMS}
         checked={checked}
         onClose={() => router.popPage()}
-        viewIntro={viewIntro}
+        viewIntro={enter}
       />
       <Filter id={MODAL_FILTER} discipline={discipline} setDiscipline={setDiscipline} />
       <Discipline

@@ -4,16 +4,16 @@ import axios from 'axios'
 // const jwtToken = useSelector((state) => state.app.jwtToken)
 
 const $host = axios.create({
-    baseURL: 'http://mtimofeev.fun/api/v2/'
+    baseURL: 'http://mtimofeev.fun/'
 })
 
 const $authHost = axios.create({
-    baseURL: 'http://mtimofeev.fun/api/v2/'
+    baseURL: 'http://mtimofeev.fun/'
 })
 
 const authInterceptor = config => {
     // config.headers.authorization = `Bearer ${localStorage.getItem('token')}` vk storage
-    config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+    // config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
     return config
 }
 
