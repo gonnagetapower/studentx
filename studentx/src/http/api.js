@@ -10,7 +10,7 @@ const $authHost = axios.create({
 
 const authInterceptor = config => {
     // config.headers.authorization = `Bearer ${localStorage.getItem('token')}` vk storage
-    // config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+    config.headers.authorization = `Bearer ${localStorage.getItem('tokenAccess')}`
     return config
 }
 
