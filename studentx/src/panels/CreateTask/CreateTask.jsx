@@ -76,31 +76,15 @@ const CreateTask = ({ id }) => {
         description: formValues.descr,
         deliveryDate: '2023-03-01',
         is_published: true,
-        owner: 'admin',
+        owner: '12345',
         category: '2',
         university: '5',
       })
         .then((response) => {
-          setSnackbar(
-            <Snackbar
-              // before={<Icon28CancelCircleFillRed />}
-              layout="vertical"
-              duration={1700}
-              onClose={() => router.pushPage(PAGE_HOME)}>
-              Таск успешно создан!
-            </Snackbar>,
-          );
+          console.log('Успено создан!')
         })
         .catch((error) => {
-          setSnackbar(
-            <Snackbar
-              before={<Icon28CancelCircleFillRed />}
-              layout="vertical"
-              duration={1700}
-              onClose={() => setSnackBar(null)}>
-              Ошибка при создании таска
-            </Snackbar>,
-          );
+          console.log('Ошибка')
         });
     }
     console.log(formErrors);

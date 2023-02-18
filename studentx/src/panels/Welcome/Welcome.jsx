@@ -6,11 +6,13 @@ import bridge from '@vkontakte/vk-bridge';
 import WelcomeIcon from './../../img/Welcome.svg';
 
 import './Welcome.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../redux/slices/appSlice';
 
 const Welcome = ({ id }) => {
 
   const isAuth = useSelector((state) => state.app.isAuth )
+  const dispatch = useDispatch()
 
   console.log(isAuth)
 
@@ -18,23 +20,23 @@ const Welcome = ({ id }) => {
     async function fetchData() {
       const user = await bridge.send('VKWebAppGetUserInfo');
       console.log(user);
-      router.pushPage(PAGE_MAIN)
-      // await bridge
-      //   .send('VKWebAppStorageGet', {
-      //     keys: ['policy'],
-      //   })
-      //   .then((data) => {
-      //     if (data.keys[0].value === 'true') {
-      //       console.log('Данные получены');
-      //       setTimeout(() => {
-      //         router.pushPage(PAGE_HOME);
-      //       }, 3200);
-      //     } else {
-      //       setTimeout(() => {
-      //         router.pushPage(PAGE_MAIN);
-      //       }, 3200);
-      //     }
-      //   });
+      await bridge
+        .send('VKWebAppStorageGet', {
+          keys: ['login'],
+        })
+        .then((data) => {
+          if (data.keys[0].value === 'true') {
+            console.log('Данные получены');
+            setTimeout(() => {
+              dispatch(login(user.id, 'password')).unwrap()
+              router.pushPage(PAGE_HOME);
+            }, 3200);
+          } else {
+            setTimeout(() => {
+              router.pushPage(PAGE_MAIN);
+            }, 3200);
+          }
+        });
     }
     fetchData();
   }, []);

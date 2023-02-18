@@ -65,7 +65,7 @@ import ChatRoom from './panels/ChatRoom/ChatRoom';
 import Confirm from './popouts/Confirm';
 import Welcome from './panels/Welcome/Welcome';
 import { useDispatch } from 'react-redux';
-import { registration, setJwtToken } from './redux/slices/appSlice';
+import { registration, login, setJwtToken, check } from './redux/slices/appSlice';
 
 const STORAGE_KEYS = {
   STATUS: 'status',
@@ -91,96 +91,17 @@ const App = () => {
   };
 
   useEffect(() => {
-    axios
-      .post('https://mtimofeev.fun/auth/jwt/create', {
-        username: 'admin',
-        password: 'admin',
-      })
-      .then((data) => {
-        localStorage.setItem('token', data.data.access);
-        dispatch(setJwtToken(localStorage.getItem('token')));
-      });
-    // async function fetchData() {
-    //   const user = await bridge.send('VKWebAppGetUserInfo');
-    //   console.log(user);
-    //   const storageData = await bridge
-    //     .send('VKWebAppStorageGet', {
-    //       keys: ['applyPolicy'],
-    //     })
-    //     .then((data) => {
-    //       if (data.keys) {
-    //         console.log('Данные получены');
-    //         router.pushPage(PAGE_HOME);
-    //       }
-    //     });
-    //   console.log(storageData);
-    //   // const data = {};
-    //   // storageData.keys.forEach(({ key, value }) => {
-    //   //   try {
-    //   //     data[key] = value ? JSON.parse(value) : {};
-    //   //     switch (key) {
-    //   //       case STORAGE_KEYS.STATUS:
-    //   //         if (data[key].hasSeenIntro) {
-    //   //           router.pushPage(PAGE_HOME);
-    //   //           setUserApplyPolicy(true);
-    //   //         }
-    //   //         break;
-    //   //       default:
-    //   //         break;
-    //   //     }
-    //   // } catch (error) {
-    //   //   console.log(error);
-    //   // }
-    //   // });
-    //   setUser(user);
-    //   setPopout(null);
-    // }
-    // fetchData();
+    const token = localStorage.getItem('tokenRefresh')
+    dispatch(check(token))
   }, []);
 
-  // const go = (page) => {
-  //   router.pushPage(page);
-  //   setOpen(false);
-  // };
-
-  // const viewIntro = async () => {
-  //   try {
-  //     await bridge.send('VKWebAppStorageSet', {
-  //       key: STORAGE_KEYS.STATUS,
-  //       value: JSON.stringify({
-  //         hasSeenIntro: true,
-  //       }),
-  //     });
-  //     router.pushPage(PAGE_HOME);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const viewIntro = async () => {
-    try {
-      await bridge
-        .send('VKWebAppStorageSet', {
-          key: 'policy',
-          value: 'true',
-        })
-        .then((data) => {
-          if (data.result) {
-            console.log('Успешно задано');
-            setUserApplyPolicy(true);
-            router.pushPage(PAGE_HOME);
-          }
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const enter = async () => {
-    const user = await bridge.send('VKWebAppGetUserInfo');
     try {
-      await dispatch(registration(user.id, "test")).unwrap();
-      console.log('ok')
+      const user = await bridge.send('VKWebAppGetUserInfo');
+      await dispatch(registration(user.id, "password")).unwrap();
+      await dispatch(login(user.id, "password")).unwrap()
+      router.pushPage(PAGE_HOME)
     } catch (err) {
       console.log(err)
     }
@@ -215,15 +136,6 @@ const App = () => {
   })();
 
   const platfrom = usePlatform();
-
-  const [reloading, setReloading] = useState(false);
-
-  // const reload = () => {
-  //   setReloading(true);
-  //   window.location.reload();
-  //   setReloading(false);
-  // };
-
   return (
     <ConfigProvider
       platfrom={platfrom}
@@ -234,8 +146,6 @@ const App = () => {
           <SplitLayout modal={modal} popout={popouts}>
             <SplitCol animate={true}>
               <div className="container">
-                {console.log(platfrom)}
-                {/* <PullToRefresh onRefresh={reload} isFetching={reloading}> */}
                 <Root activeView={location.getViewId()}>
                   <View
                     id={VIEW_WELCOME}
@@ -257,7 +167,6 @@ const App = () => {
                     }>
                     <Intro
                       id={PANEL_MAIN}
-                      go={viewIntro}
                       userApplyPolicy={userApplyPolicy}
                       setOpen={setOpen}
                     />
@@ -271,7 +180,6 @@ const App = () => {
                     <Notice id={PANEL_NOTICE} />
                     <Dev id={PANEL_DEV} />
                   </View>
-                  {/* </PullToRefresh> */}
                 </Root>
               </div>
             </SplitCol>

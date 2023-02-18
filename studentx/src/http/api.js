@@ -1,7 +1,4 @@
 import axios from 'axios'
-// import { useSelector } from 'react-redux'
-
-// const jwtToken = useSelector((state) => state.app.jwtToken)
 
 const $host = axios.create({
     baseURL: 'http://mtimofeev.fun/'

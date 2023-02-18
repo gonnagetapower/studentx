@@ -46,6 +46,8 @@ const Publication = ({ Snackbar, setSnackBar }) => {
   }, [currentPage]);
 
   useEffect(() => {
+    console.log(localStorage.getItem('tokenAccess'))
+    console.log(localStorage.getItem('tokenRefresh'))
     document.addEventListener('scroll', scrollHandler);
     return function () {
       document.removeEventListener('scroll', scrollHandler);
@@ -93,7 +95,7 @@ const Publication = ({ Snackbar, setSnackBar }) => {
         <PullToRefresh onRefresh={onRefresh} isFetching={refreshStatus}>
           {firstFetch
             ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
-            : tasksData.map((obj) => (
+            : tasksData.map((obj, index) => (
                 <Task
                   key={obj.id}
                   title={obj.title}

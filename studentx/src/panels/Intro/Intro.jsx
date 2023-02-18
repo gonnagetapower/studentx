@@ -8,10 +8,9 @@ import './Intro.css';
 import { Panel, Div, SplitLayout, SplitCol } from '@vkontakte/vkui';
 import { MODAL_TERMS, router } from './../../router';
 
-const Intro = ({ id, go, userApplyPolicy }) => {
+const Intro = ({ id }) => {
   return (
     <Panel id={id} centered={true}>
-      {!userApplyPolicy && (
         <Fragment>
           <div className="intro">
             <h2 className="intro__title">Твой персональный помощник</h2>
@@ -30,7 +29,6 @@ const Intro = ({ id, go, userApplyPolicy }) => {
             </button>
           </div>
         </Fragment>
-      )}
     </Panel>
   );
 };

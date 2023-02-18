@@ -6,8 +6,8 @@ export const filterSlice = createSlice({
         discipline: "",
         town: "",
         institute: "",
-        dateFrom: new Date(),
-        dateTo: new Date(),
+        dateFrom: "",
+        dateTo: "",
         price: "",
     },
     reducers: {
