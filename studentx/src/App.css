@@ -1,3 +1,7 @@
+#root {
+    height: 100%;
+}
+
 body {
     background: #fff;
 }
@@ -13,5 +17,5 @@ button {
 
 .container {
     height: 100%;
-    background-color: #fff;
+    overflow: auto;
 }
