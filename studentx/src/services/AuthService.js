@@ -1,3 +1,4 @@
+import { $host } from "../http/api";
 import $auth from "../http/auth";
 
 export default class AuthService {
@@ -8,12 +9,12 @@ export default class AuthService {
         })
     }
     static async registration(username, password) {
-        return $auth.post('auth/users/', {
+        return $host.post('auth/users/', {
             username,
             password
         })
     }
     static async refresh(refresh) {
-        return $auth.post('auth/jwt/refresh', {refresh})
+        return $auth.post('auth/jwt/refresh', { refresh })
     }
 }
