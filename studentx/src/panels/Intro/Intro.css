@@ -5,7 +5,6 @@
     padding-bottom: 10%;
     padding-left: 65px;
     padding-right: 65px;
-    width: 230px;
 }
 
 .intro__title {
@@ -39,7 +38,7 @@
 
 .puggle-large {
     position: absolute;
-    left: 15px;
+    left: 55px;
     top: -30px;
 }
 
