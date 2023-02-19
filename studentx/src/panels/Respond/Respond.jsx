@@ -11,6 +11,7 @@ import {
   ScreenSpinner,
   Snackbar,
   Group,
+  Panel,
 } from '@vkontakte/vkui';
 
 import { Navigation, Person, SkeletonCard } from './../../components';
@@ -63,7 +64,7 @@ const Respond = () => {
   }
 
   return (
-    <div>
+    <Panel id={id}>
       <PanelHeader
         left={
           <PanelHeaderButton
@@ -117,7 +118,7 @@ const Respond = () => {
         <button className="button button--respond">Откликнуться</button>
       </div>
       <Navigation />
-    </div>
+    </Panel>
   );
 };
 
