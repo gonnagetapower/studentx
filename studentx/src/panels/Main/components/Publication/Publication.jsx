@@ -46,8 +46,8 @@ const Publication = ({ Snackbar, setSnackBar }) => {
   }, [currentPage]);
 
   useEffect(() => {
-    console.log(localStorage.getItem('tokenAccess'))
-    console.log(localStorage.getItem('tokenRefresh'))
+    console.log(localStorage.getItem('tokenAccess'));
+    console.log(localStorage.getItem('tokenRefresh'));
     document.addEventListener('scroll', scrollHandler);
     return function () {
       document.removeEventListener('scroll', scrollHandler);
@@ -97,7 +97,7 @@ const Publication = ({ Snackbar, setSnackBar }) => {
             ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
             : tasksData.map((obj, index) => (
                 <Task
-                  key={obj.id}
+                  key={index}
                   title={obj.title}
                   descr={obj.description}
                   dateOrder={obj.orderDate}

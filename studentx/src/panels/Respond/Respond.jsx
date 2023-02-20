@@ -64,24 +64,24 @@ const Respond = () => {
   }
 
   return (
-    <Panel id={id}>
-      <PanelHeader
-        left={
-          <PanelHeaderButton
-            style={{ color: 'black' }}
-            aria-label="кнопка"
-            onClick={() => {
-              router.popPage();
-            }}>
-            <Icon28ChevronBack />
-          </PanelHeaderButton>
-        }
-        before={<PanelHeaderBack />}>
-        <div className="respond-header">
-          <h2 className="respond-header__title">Объявления</h2>
-        </div>
-      </PanelHeader>
-      <div key={respond.id} className="respond-container">
+    <div key={respond.id} className="respond-container">
+      <Panel id={id}>
+        <PanelHeader
+          left={
+            <PanelHeaderButton
+              style={{ color: 'black' }}
+              aria-label="кнопка"
+              onClick={() => {
+                router.popPage();
+              }}>
+              <Icon28ChevronBack />
+            </PanelHeaderButton>
+          }
+          before={<PanelHeaderBack />}>
+          <div className="respond-header">
+            <h2 className="respond-header__title">Объявления</h2>
+          </div>
+        </PanelHeader>
         <div className="respond-user">
           <Person name={respond.owner} />
         </div>
@@ -112,13 +112,13 @@ const Respond = () => {
             <li className="list-title">{1100}</li>
           </ul>
         </div>
-      </div>
-      <div className="contactAuthor">
-        <button className="button button--write">Написать</button>
-        <button className="button button--respond">Откликнуться</button>
-      </div>
-      <Navigation />
-    </Panel>
+        <div className="contactAuthor">
+          <button className="button button--write">Написать</button>
+          <button className="button button--respond">Откликнуться</button>
+        </div>
+        <Navigation />
+      </Panel>
+    </div>
   );
 };
 
