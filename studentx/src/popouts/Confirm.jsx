@@ -20,24 +20,21 @@ const Confirm = () => {
       <Alert
         actions={[
           {
-            title: 'Отмена',
+            title: 'Выйти',
+            mode: 'destructive',
             autoclose: true,
-            mode: 'cancel',
+            action: () => router.popPage(),
           },
           {
             title: 'Сохранить черновик',
             autoclose: true,
-            action: () => {
-              actionSave();
-            },
+            action: () => router.popPage(),
+            mode: 'default',
           },
           {
-            title: 'Выйти',
-            mode: 'destructive',
+            title: 'Отмена',
             autoclose: true,
-            action: () => {
-              actionLeave();
-            },
+            mode: 'cancel',
           },
         ]}
         actionsLayout="vertical"
