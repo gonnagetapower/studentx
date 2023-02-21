@@ -1,19 +1,19 @@
 import React from 'react';
 import { Alert } from '@vkontakte/vkui';
-import { router } from '../router';
+import { PAGE_HOME, router } from '../router';
 
 import './Confirm.css';
 
 const Confirm = () => {
-  const actionCancel = () => {};
+  // const actionCancel = () => {};
 
-  const actionLeave = () => {
-    router.popPage();
-  };
+  // const actionLeave = () => {
+  //   router.popPage();
+  // };
 
-  const actionSave = () => {
-    router.popPage();
-  };
+  // const actionSave = () => {
+  //   router.popPage();
+  // };
 
   return (
     <div className="alert-container">
@@ -23,12 +23,12 @@ const Confirm = () => {
             title: 'Выйти',
             mode: 'destructive',
             autoclose: true,
-            action: () => router.popPage(),
+            action: () => router.pushPage(PAGE_HOME),
           },
           {
             title: 'Сохранить черновик',
             autoclose: true,
-            action: () => router.popPage(),
+            action: () => router.pushPage(PAGE_HOME),
             mode: 'default',
           },
           {
@@ -37,8 +37,7 @@ const Confirm = () => {
             mode: 'cancel',
           },
         ]}
-        actionsLayout="vertical"
-        onClose={() => router.popPage()}>
+        actionsLayout="vertical">
         <h1 className="alert-title">Вы уверены, что хотите выйти?</h1>
         <p className="alert-descr">Все изменения не сохранятся.</p>
       </Alert>
