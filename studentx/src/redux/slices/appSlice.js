@@ -5,26 +5,26 @@ import bridge from '@vkontakte/vk-bridge';
 
 export const login = createAsyncThunk(
     'app/login',
-    async (username,password) => {
-        const res = await AuthService.login(username,"12345");
+    async (username, password) => {
+        const res = await AuthService.login(username, "12345");
         await bridge
-        .send('VKWebAppStorageSet', {
-          key: 'login',
-          value: 'true',
-        })
-        .then((data) => {
-          if (data.result) {
-            localStorage.setItem('tokenAccess', res.data.access)
-            localStorage.setItem('tokenRefresh', res.data.refresh)
-          }
-        });
+            .send('VKWebAppStorageSet', {
+                key: 'login',
+                value: 'true',
+            })
+            .then((data) => {
+                if (data.result) {
+                    localStorage.setItem('tokenAccess', res.data.access)
+                    localStorage.setItem('tokenRefresh', res.data.refresh)
+                }
+            });
         return res.data
     }
 )
 
 export const registration = createAsyncThunk(
     'app/registration',
-    async (username,password) => {
+    async (username, password) => {
         const res = await AuthService.registration(username, "12345");
         return res.data.username
     }
@@ -51,6 +51,7 @@ export const appSlice = createSlice({
     reducers: {
         setLastWatch: (state, action) => {
             state.lastWatch = [...state.lastWatch, action.payload]
+            localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, action.payload]))
         },
         setJwtToken: (state, action) => {
             state.jwtToken = action.payload

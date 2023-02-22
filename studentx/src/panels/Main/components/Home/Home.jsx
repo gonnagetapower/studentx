@@ -19,7 +19,8 @@ const Home = () => {
 
   const [watch, setWatch] = useState([]);
 
-  const lastWatchedId = useSelector((state) => state.app.lastWatch);
+  // const lastWatchedId = useSelector((state) => state.app.lastWatch);
+  const lastWatchedId = JSON.parse(localStorage.getItem('lastWatchedPost'));
 
   console.log(lastWatchedId);
 

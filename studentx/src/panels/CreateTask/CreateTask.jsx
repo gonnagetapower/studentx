@@ -81,10 +81,10 @@ const CreateTask = ({ id }) => {
         university: '5',
       })
         .then((response) => {
-          console.log('Успено создан!')
+          console.log('Успено создан!');
         })
         .catch((error) => {
-          console.log('Ошибка')
+          console.log('Ошибка');
         });
     }
     console.log(formErrors);
