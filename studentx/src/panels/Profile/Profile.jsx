@@ -27,7 +27,11 @@ const Profile = ({ id }) => {
       </Header>
       <div className="profile-container">
         <div className="user-info-container">
-          <img src={myProfile.photo_100} className="user__photo" alt="user photo" />
+          <img
+            src={myProfile ? myProfile.photo_100 : nullPhoto}
+            className="user__photo"
+            alt="user photo"
+          />
           <div>
             <h1 className="user__name">
               {myProfile.first_name} {myProfile.last_name}
