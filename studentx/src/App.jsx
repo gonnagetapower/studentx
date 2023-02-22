@@ -18,8 +18,6 @@ import {
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
-import axios from 'axios';
-
 import './App.css';
 import { useLocation } from '@happysanta/router';
 import {
@@ -65,48 +63,52 @@ import ChatRoom from './panels/ChatRoom/ChatRoom';
 import Confirm from './popouts/Confirm';
 import Welcome from './panels/Welcome/Welcome';
 import { useDispatch } from 'react-redux';
-import { registration, login, setJwtToken, check } from './redux/slices/appSlice';
-
-const STORAGE_KEYS = {
-  STATUS: 'status',
-};
+import { registration, login, check } from './redux/slices/appSlice';
+import { fetchMe } from './redux/slices/profileSlice';
 
 const App = () => {
   const location = useLocation();
-
   const dispatch = useDispatch();
 
   //filter-logic
   const [discipline, setDiscipline] = useState('');
 
   const [checked, setChecked] = useState(false);
-  const [fetchedUser, setUser] = useState(null);
-  const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [userApplyPolicy, setUserApplyPolicy] = useState(false);
-  const [snackBar, setSnackBar] = useState(false);
   const [open, setOpen] = useState(false);
 
   const onCheckBoxChecked = () => {
     setChecked(!checked);
   };
 
+  // my profile
+
   useEffect(() => {
-    const token = localStorage.getItem('tokenRefresh')
-    dispatch(check(token))
+    const fetchUser = async () => {
+      await dispatch(fetchMe()).unwrap();
+    };
+    fetchUser();
   }, []);
 
+  //refreshToken
+
+  useEffect(() => {
+    const token = localStorage.getItem('tokenRefresh');
+    dispatch(check(token));
+  }, []);
+
+  //registration && login && createToken
 
   const enter = async () => {
     try {
       const user = await bridge.send('VKWebAppGetUserInfo');
-      await dispatch(registration(user.id, "password")).unwrap();
-      await dispatch(login(user.id, "password")).unwrap()
-      router.pushPage(PAGE_HOME)
+      await dispatch(registration(user.id, 'password')).unwrap();
+      await dispatch(login(user.id, 'password')).unwrap();
+      router.pushPage(PAGE_HOME);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
-
 
   const modal = (
     <ModalRoot activeModal={location.getModalId()} onClose={() => router.popPage()}>

@@ -24,6 +24,8 @@ const Main = ({ id }) => {
     setButtonActive(e.target.id);
   };
 
+  const [filterValue, setFilterValue] = useState('');
+
   return (
     <Panel id={id}>
       <Header>
@@ -53,7 +55,13 @@ const Main = ({ id }) => {
               </button>
             </div>
             <div className="search">
-              <input type="text" placeholder="Поиск" className="search__input" />
+              <input
+                type="text"
+                placeholder="Поиск"
+                className="search__input"
+                value={filterValue}
+                onChange={(e) => setFilterValue(e.target.value)}
+              />
               <img
                 onClick={() => router.pushPage(PAGE_NOTICE)}
                 src={bellIcon}
@@ -80,7 +88,11 @@ const Main = ({ id }) => {
       {buttonActive === '1' ? (
         <Home />
       ) : (
-        <Publication setSnackBar={setSnackBar} snackBar={snackBar} />
+        <Publication
+          filterValue={filterValue}
+          setSnackBar={setSnackBar}
+          snackBar={snackBar}
+        />
       )}
       {snackBar}
       <Navigation />

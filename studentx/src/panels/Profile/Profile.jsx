@@ -12,6 +12,8 @@ import './Profile.css';
 
 const Profile = ({ id }) => {
   const service = useSelector((state) => state.profile.service);
+  const myProfile = useSelector((state) => state.profile.myProfile);
+  console.log(myProfile);
   const dispatch = useDispatch();
 
   const handleService = (serviceState) => {
@@ -25,9 +27,11 @@ const Profile = ({ id }) => {
       </Header>
       <div className="profile-container">
         <div className="user-info-container">
-          <img src={nullPhoto} className="user__photo" alt="user photo" />
+          <img src={myProfile.photo_100} className="user__photo" alt="user photo" />
           <div>
-            <h1 className="user__name">Соня Мармеладова</h1>
+            <h1 className="user__name">
+              {myProfile.first_name} {myProfile.last_name}
+            </h1>
             <p className="user__status">Online</p>
           </div>
           <ul className="list">

@@ -22,12 +22,17 @@
     height: 28px;
     padding-left: 25px;
     background: #9DA4D8;
+    color: #fff;
     border: none;
     border-radius: 10px;
     background-image: url("./../../img/searchIcon.svg");
     background-repeat: no-repeat;
     background-position: 5px 50%;
     margin-right: 15px;
+}
+
+.search__input::placeholder {
+    color: #686868;
 }
 
 .search__input::after {
