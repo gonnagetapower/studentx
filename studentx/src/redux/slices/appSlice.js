@@ -45,7 +45,7 @@ export const appSlice = createSlice({
     initialState: {
         user: 0,
         isAuth: false,
-        lastWatch: [],
+        lastWatch: JSON.parse(localStorage.getItem('lastWatchedPost')),
         jwtToken: [],
     },
     reducers: {
