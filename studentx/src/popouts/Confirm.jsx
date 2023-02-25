@@ -17,24 +17,27 @@ const Confirm = () => {
 
   return (
     <div className="alert-container">
-      <Alert
+         <Alert
         actions={[
-          {
-            title: 'Выйти',
-            mode: 'destructive',
-            autoclose: true,
-            action: () => router.pushPage(PAGE_HOME),
-          },
-          {
-            title: 'Сохранить черновик',
-            autoclose: true,
-            action: () => router.pushPage(PAGE_HOME),
-            mode: 'default',
-          },
           {
             title: 'Отмена',
             autoclose: true,
             mode: 'cancel',
+          },
+          {
+            title: 'Сохранить черновик',
+            autoclose: true,
+            action: () => {
+              actionSave();
+            },
+          },
+          {
+            title: 'Выйти',
+            mode: 'destructive',
+            autoclose: true,
+            action: () => {
+              actionLeave();
+            },
           },
         ]}
         actionsLayout="vertical">
