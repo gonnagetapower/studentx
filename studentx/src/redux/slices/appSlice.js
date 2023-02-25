@@ -62,12 +62,7 @@ export const appSlice = createSlice({
     },
     reducers: {
         setLastWatch: (state, action) => {
-            if ( localStorage.getItem('lastWatchedPost')) {
-                state.lastWatch = JSON.parse(localStorage.getItem('lastWatchedPost'))
-                localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, action.payload]))
-            } else {
-                localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, action.payload]))
-            }
+            state.lastWatch = [...state.lastWatch , action.payload]
         },
         setJwtToken: (state, action) => {
             state.jwtToken = action.payload
