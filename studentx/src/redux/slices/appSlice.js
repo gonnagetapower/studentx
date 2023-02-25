@@ -39,19 +39,35 @@ export const check = createAsyncThunk(
         return res.data.access;
     }
 )
+// export const setLastWatch = createAsyncThunk(
+//     'app/setLastWatch',
+//     async (id) => {
+//         if ( localStorage.getItem('lastWatchedPost')) {
+//             // state.lastWatch = JSON.parse(localStorage.getItem('lastWatchedPost'))
+//             state.lastWatch = JSON.parse(localStorage.getItem('lastWatchedPost'))
+//             // localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, id]))
+//         } else {
+//             // localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, id]))
+//         }
+//     }
+// )
 
 export const appSlice = createSlice({
     name: 'app',
     initialState: {
         user: 0,
         isAuth: false,
-        lastWatch: JSON.parse(localStorage.getItem('lastWatchedPost')),
+        lastWatch: [],
         jwtToken: [],
     },
     reducers: {
         setLastWatch: (state, action) => {
-            state.lastWatch = [...state.lastWatch, action.payload]
-            localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, action.payload]))
+            if ( localStorage.getItem('lastWatchedPost')) {
+                state.lastWatch = JSON.parse(localStorage.getItem('lastWatchedPost'))
+                localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, action.payload]))
+            } else {
+                localStorage.setItem('lastWatchedPost', JSON.stringify([...state.lastWatch, action.payload]))
+            }
         },
         setJwtToken: (state, action) => {
             state.jwtToken = action.payload
@@ -71,6 +87,6 @@ export const appSlice = createSlice({
     }
 })
 
-export const { setLastWatch, setJwtToken } = appSlice.actions;
+export const {  setLastWatch, setJwtToken } = appSlice.actions;
 
 export default appSlice.reducer
