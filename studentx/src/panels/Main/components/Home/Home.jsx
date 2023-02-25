@@ -20,10 +20,11 @@ const Home = () => {
   const [watch, setWatch] = useState([]);
 
   // const lastWatchedId = useSelector((state) => state.app.lastWatch);
-  let lastWatchedId = JSON.parse(localStorage.getItem('lastWatchedPost'));
+  let lastWatchedId = []
 
   if (localStorage.getItem('lastWatchedPost')) {
     lastWatchedId = JSON.parse(localStorage.getItem('lastWatchedPost'));
+    console.log(lastWatchedId)
   } else {
     lastWatchedId = []
   }
