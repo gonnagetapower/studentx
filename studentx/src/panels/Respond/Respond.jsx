@@ -22,6 +22,7 @@ import emptyPhotoLogo from './../../img/emptyPhotoLogo.svg';
 import { Icon28CancelCircleFillRed } from '@vkontakte/icons';
 
 import './Respond.css';
+import { MODAL_WRITE } from '../../router';
 
 const Respond = () => {
   const router = useRouter();
@@ -113,7 +114,7 @@ const Respond = () => {
           </ul>
         </div>
         <div className="contactAuthor">
-          <button className="button button--write">Написать</button>
+          <button onClick={() => router.pushModal(MODAL_WRITE)} className="button button--write">Написать</button>
           <button className="button button--respond">Откликнуться</button>
         </div>
         <Navigation />

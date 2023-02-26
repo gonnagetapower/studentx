@@ -1,0 +1,21 @@
+.write-card__textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    margin-top: 30px;
+}
+
+.write-card__input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.write-card_btn {
+    display: block;
+    margin: 0 auto;
+}

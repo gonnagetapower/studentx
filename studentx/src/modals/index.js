@@ -16,3 +16,5 @@ export { default as Towns }
 export { default as Terms }
     from "./Terms/Terms.jsx";
 
+export { default as Write }
+    from "./Write/Write.jsx"    

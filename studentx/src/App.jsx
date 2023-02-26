@@ -43,6 +43,7 @@ import {
   VIEW_WELCOME,
   MODAL_FAQ,
   PANEL_NOTICE,
+  MODAL_WRITE,
 } from './router';
 
 import {
@@ -56,7 +57,7 @@ import {
   Notice,
 } from './panels';
 
-import { Filter, Discipline, Towns, Institute, Terms, FAQ } from './modals/';
+import { Filter, Discipline, Towns, Institute, Terms, FAQ, Write } from './modals/';
 
 import CreateTask from './panels/CreateTask/CreateTask';
 import ChatRoom from './panels/ChatRoom/ChatRoom';
@@ -119,6 +120,7 @@ const App = () => {
       <Towns id={MODAL_TOWNS} />
       <Institute id={MODAL_INSTITUTE} />
       <FAQ id={MODAL_FAQ} />
+      <Write id={MODAL_WRITE} />
     </ModalRoot>
   );
 

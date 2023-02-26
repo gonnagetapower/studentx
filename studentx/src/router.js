@@ -40,6 +40,7 @@ export const PANEL_NOTICE = 'panel_notice'
 //modals
 export const MODAL_TERMS = 'modal_terms'
 export const MODAL_FILTER = 'modal_filter'
+export const MODAL_WRITE = 'modal_write'
 
 //modals--subFilter
 export const MODAL_DISCIPLINE = 'modal_discipline'
