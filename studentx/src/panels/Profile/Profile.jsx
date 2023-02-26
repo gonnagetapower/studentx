@@ -28,7 +28,7 @@ const Profile = ({ id }) => {
       <div className="profile-container">
         <div className="user-info-container">
           <img
-            src={myProfile ? myProfile.photo_100 : nullPhoto}
+            src={myProfile ? myProfile.photo_200 : nullPhoto}
             className="user__photo"
             alt="user photo"
           />

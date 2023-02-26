@@ -5,19 +5,19 @@ import { PAGE_HOME, router } from '../router';
 import './Confirm.css';
 
 const Confirm = () => {
-  // const actionCancel = () => {};
+  const actionCancel = () => { };
 
-  // const actionLeave = () => {
-  //   router.popPage();
-  // };
+  const actionLeave = () => {
+    router.popPage();
+  };
 
-  // const actionSave = () => {
-  //   router.popPage();
-  // };
+  const actionSave = () => {
+    router.popPage();
+  };
 
   return (
     <div className="alert-container">
-         <Alert
+      <Alert
         actions={[
           {
             title: 'Отмена',
@@ -40,7 +40,8 @@ const Confirm = () => {
             },
           },
         ]}
-        actionsLayout="vertical">
+        actionsLayout="vertical"
+        onClose={() => router.popPage()}>
         <h1 className="alert-title">Вы уверены, что хотите выйти?</h1>
         <p className="alert-descr">Все изменения не сохранятся.</p>
       </Alert>

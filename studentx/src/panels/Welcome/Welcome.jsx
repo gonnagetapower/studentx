@@ -8,6 +8,7 @@ import WelcomeIcon from './../../img/Welcome.svg';
 import './Welcome.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/slices/appSlice';
+import { setMyProfile } from '../../redux/slices/profileSlice';
 
 const Welcome = ({ id }) => {
 
@@ -29,6 +30,7 @@ const Welcome = ({ id }) => {
             console.log('Данные получены');
             setTimeout(() => {
               dispatch(login(user.id, 'password')).unwrap()
+              dispatch(setMyProfile(user))
               router.pushPage(PAGE_HOME);
             }, 3200);
           } else {

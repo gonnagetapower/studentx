@@ -81,15 +81,6 @@ const App = () => {
     setChecked(!checked);
   };
 
-  // my profile
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      await dispatch(fetchMe()).unwrap();
-    };
-    fetchUser();
-  }, []);
-
   //refreshToken
 
   useEffect(() => {
