@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLastWatch } from '../../redux/slices/appSlice';
 import { PAGE_PUBLICATIONS, PAGE_RESPOND, router } from '../../router';
 
+import { Tappable } from '@vkontakte/vkui';
+
 import './Task.css';
 
 const Task = ({ title, descr, dateOrder, price, id }) => {
@@ -21,10 +23,10 @@ const Task = ({ title, descr, dateOrder, price, id }) => {
       <div className="content-info">
         <p className="content-info__date">{dateOrder}</p>
         <p className="content-info__price">от {1000} </p>
-        <button onClick={() => handleTask(id)} className="content-info__button">
-          Откликнуться
-        </button>
       </div>
+      <button onClick={() => handleTask(id)} className="content-info__button">
+        откликнуться
+      </button>
     </div>
   );
 };
