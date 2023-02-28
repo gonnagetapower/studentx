@@ -18,15 +18,19 @@ const Task = ({ title, descr, dateOrder, price, id }) => {
 
   return (
     <div className="content-item">
-      <h1 className="content-item__title">{title}</h1>
-      <p className="content-item__descr">{descr}</p>
-      <div className="content-info">
-        <p className="content-info__date">{dateOrder}</p>
-        <p className="content-info__price">от {1000} </p>
-      </div>
-      <button onClick={() => handleTask(id)} className="content-info__button">
-        откликнуться
-      </button>
+      <Tappable style={{borderRadius: '10px'}}>
+        <div className='task'>
+          <h1 className="content-item__title">{title}</h1>
+          <p className="content-item__descr">{descr}</p>
+          <div className="content-info">
+            <p className="content-info__date">{dateOrder}</p>
+            <p className="content-info__price">от {1000} </p>
+          </div>
+          <button onClick={() => handleTask(id)} className="content-info__button">
+            откликнуться
+          </button>
+        </div>
+      </Tappable>
     </div>
   );
 };

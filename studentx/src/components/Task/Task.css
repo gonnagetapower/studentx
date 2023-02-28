@@ -5,11 +5,14 @@
     max-height: 220px;
     background-color: #fff;
     border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.task {
     padding-top: 12px;
     padding-left: 20px;
     padding-right: 18px;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .content-item__title {
