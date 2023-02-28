@@ -3,7 +3,7 @@
     width: 100%;
     padding: 10px;
     margin: 5px;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .write-card__input {
@@ -18,4 +18,9 @@
 .write-card_btn {
     display: block;
     margin: 0 auto;
+}
+
+.swipe-line--padding {
+    margin-top: 7px;
+    margin-bottom: 5px;
 }

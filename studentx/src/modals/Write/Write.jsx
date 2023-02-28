@@ -29,6 +29,7 @@ const Write = ({ id }) => {
     return (
         <ModalCard id={id} >
             <div className='write-card'>
+            <span className="swipe-line swipe-line--padding"></span>
                 <textarea
                     type="text"
                     name='write'
