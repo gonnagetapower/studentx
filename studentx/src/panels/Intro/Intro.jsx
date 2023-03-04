@@ -23,7 +23,7 @@ const Intro = ({ id }) => {
               <img className="puggle-large" src={puddleLarge} />
             </div>
           </div>
-          <div>
+          <div style={{marginBottom: '150px'}}>
             <button className="button" onClick={() => router.pushModal(MODAL_TERMS)}>
               Хорошо
             </button>

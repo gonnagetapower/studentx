@@ -1,17 +1,17 @@
 .form-textarea {
     border: none;
-    margin-bottom: 20px;
-    background: #F5F5F5;
+    margin-bottom: 10px;
+    background: #fff;
     border-radius: 10px;
     padding-top: 10px;
     padding-left: 15px;
     padding-right: 25%;
-    min-height: 65px;
+    min-height: 85px;
     resize: none;
 }
 
 .form-textarea--descr {
-    min-height: 120px;
+    min-height: 100px;
 }
 
 .error {

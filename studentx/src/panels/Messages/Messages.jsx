@@ -21,10 +21,7 @@ const Messages = ({ id }) => {
           <span className="search-messages__icon"></span>
         </div>
       </Header>
-      <Group>
-        <div className="messages-container">
-          <Navigation />
-        </div>
+      <div className="messages-container">
         <div className="messages-content">
           <div onClick={() => router.pushPage(PAGE_CHATROOM)} className="messages">
             <img className="messages__icon" src={nullPhoto} alt="" />
@@ -86,56 +83,9 @@ const Messages = ({ id }) => {
               </p>
             </div>
           </div>
-          <div className="messages">
-            <img className="messages__icon" src={nullPhoto} alt="" />
-            <div className="person-message">
-              <h1 className="person-message__name">Наташа Ростова</h1>
-              <p className="person-message__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus
-                repellendus, iusto ullam culpa voluptatum expedita unde, accusamus,
-                molestiae ratione magnam obcaecati sit labore nesciunt qui commodi
-                possimus quia laudantium. A!
-              </p>
-            </div>
-          </div>
-          <div className="messages">
-            <img className="messages__icon" src={nullPhoto} alt="" />
-            <div className="person-message">
-              <h1 className="person-message__name">Наташа Ростова</h1>
-              <p className="person-message__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus
-                repellendus, iusto ullam culpa voluptatum expedita unde, accusamus,
-                molestiae ratione magnam obcaecati sit labore nesciunt qui commodi
-                possimus quia laudantium. A!
-              </p>
-            </div>
-          </div>
-          <div className="messages">
-            <img className="messages__icon" src={nullPhoto} alt="" />
-            <div className="person-message">
-              <h1 className="person-message__name">Наташа Ростова</h1>
-              <p className="person-message__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus
-                repellendus, iusto ullam culpa voluptatum expedita unde, accusamus,
-                molestiae ratione magnam obcaecati sit labore nesciunt qui commodi
-                possimus quia laudantium. A!
-              </p>
-            </div>
-          </div>
-          <div className="messages">
-            <img className="messages__icon" src={nullPhoto} alt="" />
-            <div className="person-message">
-              <h1 className="person-message__name">Наташа Ростова</h1>
-              <p className="person-message__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus
-                repellendus, iusto ullam culpa voluptatum expedita unde, accusamus,
-                molestiae ratione magnam obcaecati sit labore nesciunt qui commodi
-                possimus quia laudantium. A!
-              </p>
-            </div>
-          </div>
         </div>
-      </Group>
+      </div>
+      <Navigation />
     </Panel>
   );
 };

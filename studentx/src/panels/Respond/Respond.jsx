@@ -16,7 +16,7 @@ import {
 
 import { Navigation, Person, SkeletonCard } from './../../components';
 
-import nullPhoto from './../../img/nullPhotoIcon.svg';
+import nullImg from './../../img/nullImg.svg'
 import emptyPhotoLogo from './../../img/emptyPhotoLogo.svg';
 
 import { Icon28CancelCircleFillRed } from '@vkontakte/icons';
@@ -65,35 +65,39 @@ const Respond = () => {
   }
 
   return (
-    <div key={respond.id} className="respond-container">
-      <Panel id={id}>
-        <PanelHeader
-          left={
-            <PanelHeaderButton
-              style={{ color: 'black' }}
-              aria-label="кнопка"
-              onClick={() => {
-                router.popPage();
-              }}>
-              <Icon28ChevronBack />
-            </PanelHeaderButton>
-          }
-          before={<PanelHeaderBack />}>
-          <div className="respond-header">
-            <h2 className="respond-header__title">Объявления</h2>
-          </div>
-        </PanelHeader>
-        <div className="respond-user">
-          <Person name={respond.owner} />
+    <Panel id={id}>
+      <PanelHeader
+        fixed={false}
+        style={{ background: '#F6F7FF' }}
+        left={
+          <PanelHeaderButton
+            style={{ color: 'black' }}
+            aria-label="кнопка"
+            onClick={() => {
+              router.popPage();
+            }}>
+            <Icon28ChevronBack />
+          </PanelHeaderButton>
+        }
+        before={<PanelHeaderBack />}>
+        <div className="respond-header">
+          <h2 className="respond-header__title">Объявления</h2>
         </div>
-        <div className="respond-text">
-          <h1 className="respond__title">{respond.title}</h1>
-          <p className="respond__descr">{respond.description}</p>
+      </PanelHeader>
+      <div key={respond.id} className="respond-container">
+        <div className="respond-user">
+          <div className='user'>
+            <Person name={'Карпов Александр'} />
+          </div>
+          <div className="respond-text">
+            <h1 className="respond__title">{respond.title}</h1>
+            <p className="respond__descr">{respond.description}</p>
+          </div>
         </div>
         <div className="photo-container">
-          <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
-          <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
-          <img className="respond-photo" src={emptyPhotoLogo} alt="task photo" />
+          <img className="respond-photo" src={nullImg} alt="task photo" />
+          <img className="respond-photo" src={nullImg} alt="task photo" />
+          <img className="respond-photo" src={nullImg} alt="task photo" />
         </div>
         <div className="discipline-container">
           <ul className="list">
@@ -117,9 +121,9 @@ const Respond = () => {
           <button onClick={() => router.pushModal(MODAL_WRITE)} className="button button--write">Откликнуться</button>
           {/* <button className="button button--respond">Откликнуться</button> */}
         </div>
-        <Navigation />
-      </Panel>
-    </div>
+      </div>
+      <Navigation />
+    </Panel >
   );
 };
 

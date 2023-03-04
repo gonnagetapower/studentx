@@ -115,6 +115,7 @@ const CreateTask = ({ id }) => {
   return (
     <Panel id={id}>
       <PanelHeader
+        style={{ background: "#F6F7FF" }}
         left={
           <PanelHeaderButton
             aria-label="кнопка"
@@ -131,6 +132,7 @@ const CreateTask = ({ id }) => {
       </PanelHeader>
       <div className="create-container">
         <div className="create">
+        <h2 className="filter-modal__title">Укажите тему</h2>
           <FormTextarea
             name={'title'}
             placeholder={'Обозначь тематику, например: написать курсовую'}
@@ -141,6 +143,7 @@ const CreateTask = ({ id }) => {
             formErrors={formErrors}
             error={formErrors.title}
           />
+          <h2 className="filter-modal__title">Опишите задачу</h2>
           <FormTextarea
             name={'descr'}
             placeholder={'Опиши задачу, чем больше подробностей, тем лучше результат!'}

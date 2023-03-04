@@ -1,7 +1,7 @@
 .messages-container {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 15px;
+    background-color: #F6F7FF;
+    height: 100vh;
+    padding-top: 5px;
 }
 
 .messages-header__title {
@@ -79,6 +79,7 @@
 .messages__icon {
     width: 40px;
     height: 40px;
+    margin-right: 5px;
 }
 
 .person-message {
@@ -88,10 +89,10 @@
 .person-message__name {
     font-family: 'Open Sans';
     font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 6px;
-    color: #232036;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #2E2B41;
 }
 
 .person-message__content {
@@ -100,8 +101,8 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 11px;
+    line-height: 11px;
     color: #686868;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

@@ -1,9 +1,10 @@
 #root {
     height: 100%;
+    background: #F6F7FF;
 }
 
 body {
-    background: #fff;
+    background: #F6F7FF;
 }
 
 *,
@@ -14,8 +15,7 @@ button {
 button {
     cursor: pointer;
 }
-
 .container {
-    height: 100%;
-    background-color: #fff;
+    height: auto;
+    background: #F6F7FF;
 }

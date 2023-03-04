@@ -8,6 +8,7 @@
     border-radius: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .task {
@@ -24,8 +25,6 @@
     line-height: 130%;
     color: #232036;
 }
-
-
 
 .content-item__descr {
     display: -webkit-box;
@@ -46,19 +45,16 @@
 
 .content-info {
     display: flex;
+    align-items: center;
     gap: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .content-info__date {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
-    line-height: 130%;
-    /* identical to box height, or 13px */
-    text-align: center;
-    /* dark white */
+    font-size: 11px;
     color: #AEAEAE;
 }
 
@@ -66,9 +62,8 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
-    font-size: 10px;
-    line-height: 130%;
-    color: #232036;
+    font-size: 11px;
+    color: #686868;
 }
 
 .content-info__button {

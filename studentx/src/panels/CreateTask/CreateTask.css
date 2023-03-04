@@ -1,3 +1,7 @@
+.vkuiFormField__border  {
+    background: #fff;
+}
+
 .header-create {
     display: flex;
     justify-content: center;
@@ -15,6 +19,7 @@
 }
 
 .create-container {
+    background-color: #F6F7FF;
     padding-left: 24px;
     padding-right: 24px;
 }
@@ -31,7 +36,7 @@
 .create__input {
     border: none;
     margin-bottom: 20px;
-    background: #F5F5F5;
+    background: #fff;
     border-radius: 10px;
     padding-top: 10px;
     padding-left: 15px;
@@ -57,7 +62,7 @@
     content: url('./../../img/cameraIcon.svg');
     text-align: center;
     display: inline-block;
-    background: #F5F5F5;
+    background: #fff;
     background-position: center;
     border: 1px solid #F5F5F5;
     border-radius: 10px;
@@ -85,7 +90,7 @@
 .custom-file-input::before {
     content: url('./../../img/cameraIcon.svg');
     display: inline-block;
-    background: #F5F5F5;
+    background: #fff;
     border: 1px solid #F5F5F5;
     border-radius: 10px;
     padding: 35px;
@@ -97,7 +102,7 @@
 .custom-file-input::before {
     content: url('./../../img/plusGreyIcon.svg');
     display: inline-block;
-    background: #F5F5F5;
+    background: #fff;
     border: 1px solid #F5F5F5;
     border-radius: 10px;
     padding: 35px;
@@ -125,7 +130,7 @@
 }
 
 .switch {
-    background: #F5F5F5;
+    background: #fff;
     /* hard shadow */
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
