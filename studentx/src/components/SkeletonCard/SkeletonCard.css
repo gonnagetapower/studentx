@@ -1,0 +1,25 @@
+.skeleton__title {
+    max-width: 85%;
+    overflow: hidden;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.skeleton__descr {
+    padding: 0;
+    margin: 0;
+    max-width: 95%;
+    overflow: hidden;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.skeleton__info {
+    max-width: 25%;
+    overflow: hidden;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 5px;
+}

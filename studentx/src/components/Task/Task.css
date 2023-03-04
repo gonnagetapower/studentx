@@ -1,6 +1,7 @@
 .content-item {
     margin: 0 auto;
-    width: 312px;
+    width: 85%;
+    max-width: 600px;
     min-height: 100px;
     max-height: 220px;
     background-color: #fff;
@@ -23,6 +24,8 @@
     line-height: 130%;
     color: #232036;
 }
+
+
 
 .content-item__descr {
     display: -webkit-box;
