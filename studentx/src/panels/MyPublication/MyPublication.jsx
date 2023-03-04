@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Panel, Group } from '@vkontakte/vkui';
-import { Header, Navigation, Person, Task } from '../../components';
+import { Header, Navigation, Person, SwitchButton, Task } from '../../components';
 import { useRouter } from '@happysanta/router';
 
 import './MyPublication.css';
 
 const MyPublication = ({ id }) => {
+  const [buttonActive, setButtonActive] = useState('2');
+  const onClickButton = (e) => {
+    setButtonActive(e.target.id);
+  };
   const router = useRouter();
   return (
     <Panel id={id}>
       <Header>
         <h1 className="publication__title">Мои публикации</h1>
+        <SwitchButton
+          onClickButton={onClickButton}
+          buttonActive={buttonActive}
+          firtTitle={'Исполнитель'}
+          secondTitle={'Заказчик'} />
       </Header>
       <div className="content-container">
         <div className="publication__container">
