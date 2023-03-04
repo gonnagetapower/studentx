@@ -114,8 +114,8 @@ const Respond = () => {
           </ul>
         </div>
         <div className="contactAuthor">
-          <button onClick={() => router.pushModal(MODAL_WRITE)} className="button button--write">Написать</button>
-          <button className="button button--respond">Откликнуться</button>
+          <button onClick={() => router.pushModal(MODAL_WRITE)} className="button button--write">Откликнуться</button>
+          {/* <button className="button button--respond">Откликнуться</button> */}
         </div>
         <Navigation />
       </Panel>

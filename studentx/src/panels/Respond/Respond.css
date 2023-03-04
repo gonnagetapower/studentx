@@ -94,14 +94,15 @@
     padding-left: 29px;
     padding-right: 29px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
     padding-bottom: 80px;
 }
 
 .button--write {
-    width: 48%;
+    width: 88%;
+    max-width: 600px;
 }
 
 .button--respond {
