@@ -27,7 +27,7 @@ const Task = ({ title, descr, dateOrder, price, id }) => {
           <p className="content-item__descr">{descr}</p>
           <div className="content-info">
             <p className="content-info__date">{dateOrder}</p>
-            <p className="content-info__price">от {1000} </p>
+            <p className="content-info__price">цена {1000} ₽ </p>
           </div>
           {/* <button onClick={() => handleTask(id)} className="content-info__button">
             откликнуться
