@@ -85,3 +85,14 @@
     color: #fff;
     margin-bottom: 10px;
 }
+
+.tappable {
+    border-radius: 8px;
+}
+
+.tappable:hover {
+    background-color: #9ea9fc1c;
+}
+.tappable:active {
+    background-color: #d2d7f8;
+}

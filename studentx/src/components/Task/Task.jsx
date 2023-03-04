@@ -18,7 +18,10 @@ const Task = ({ title, descr, dateOrder, price, id }) => {
 
   return (
     <div className="content-item">
-      <Tappable style={{borderRadius: '10px'}}>
+      <Tappable
+        onClick={() => handleTask(id)}
+        hasActive={false}
+        className='tappable'>
         <div className='task'>
           <h1 className="content-item__title">{title}</h1>
           <p className="content-item__descr">{descr}</p>
