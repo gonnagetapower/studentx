@@ -6,7 +6,7 @@ import { useRouter } from '@happysanta/router';
 import bellIcon from './../../img/bellIcon.svg';
 import filterIcon from './../../img/filterIcon.svg';
 
-import { Navigation, Header } from '../../components/';
+import { Navigation, Header, SwitchButton } from '../../components/';
 import { MODAL_FILTER, PAGE_NOTICE } from '../../router';
 
 import Home from './components/Home/Home';
@@ -31,29 +31,11 @@ const Main = ({ id }) => {
       <Header>
         <div className="wrapper">
           <div className="search-container">
-            <div className="button-box">
-              <div id="btn"></div>
-              <button
-                type="button"
-                key={1}
-                id={'1'}
-                onClick={onClickButton}
-                className={
-                  buttonActive === '1' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'
-                }>
-                Главная
-              </button>
-              <button
-                key={2}
-                id={'2'}
-                onClick={onClickButton}
-                type="button"
-                className={
-                  buttonActive === '2' ? 'toggle-btn toggle-btn--active' : 'toggle-btn'
-                }>
-                Публикации
-              </button>
-            </div>
+            <SwitchButton
+              onClickButton={onClickButton}
+              buttonActive={buttonActive}
+              firtTitle={'Главная'}
+              secondTitle={'Публикации'} />
             <div className="search">
               <input
                 type="text"

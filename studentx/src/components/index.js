@@ -1,35 +1,38 @@
 export { default as AddButton }
-from "./AddButton/AddButton.jsx";
+    from "./AddButton/AddButton.jsx";
 
 export { default as FilterItem }
-from "./FilterItem/FilterItem.jsx";
+    from "./FilterItem/FilterItem.jsx";
 
 export { default as FormTextarea }
-from "./FormTextarea/FormTextarea.jsx"
+    from "./FormTextarea/FormTextarea.jsx"
 
 export { default as Header }
-from "./Header/Header.jsx";
+    from "./Header/Header.jsx";
 
 export { default as InputItem }
-from "./InputItem/InputItem.jsx";
+    from "./InputItem/InputItem.jsx";
 
 export { default as ListItem }
-from "./ListItem/ListItem.jsx";
+    from "./ListItem/ListItem.jsx";
 
 export { default as MiniTask }
-from './MiniTask/MiniTask.jsx'
+    from './MiniTask/MiniTask.jsx'
 
 export { default as Navigation }
-from "./Navigation/Navigation.jsx";
+    from "./Navigation/Navigation.jsx";
 
 export { default as Person }
-from "./Person/Person.jsx";
+    from "./Person/Person.jsx";
 
 export { default as SkeletonCard }
-from './SkeletonCard/SkeletonCard.jsx'
+    from './SkeletonCard/SkeletonCard.jsx'
+
+export { default as SwitchButton }
+    from './SwitchButton/SwitchButton.jsx'
 
 export { default as Task }
-from "./Task/Task.jsx";
+    from "./Task/Task.jsx";
 
 export { default as TaskPhoto }
-from './TaskPhoto/TaskPhoto.jsx'
+    from './TaskPhoto/TaskPhoto.jsx'
