@@ -26,9 +26,9 @@ const Task = ({ title, descr, dateOrder, price, id }) => {
             <p className="content-info__date">{dateOrder}</p>
             <p className="content-info__price">от {1000} </p>
           </div>
-          <button onClick={() => handleTask(id)} className="content-info__button">
+          {/* <button onClick={() => handleTask(id)} className="content-info__button">
             откликнуться
-          </button>
+          </button> */}
         </div>
       </Tappable>
     </div>

@@ -43,7 +43,8 @@
 
 .content-info {
     display: flex;
-    gap: 30px;
+    gap: 20px;
+    padding-bottom: 10px;
 }
 
 .content-info__date {
