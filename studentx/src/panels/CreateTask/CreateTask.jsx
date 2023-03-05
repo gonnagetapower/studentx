@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from '@happysanta/router';
+import { PAGE_MAIN, useRouter } from '@happysanta/router';
 import { Navigation, TaskPhoto } from '../../components';
 import { FilterItem, FormTextarea } from '../../components';
 import {
@@ -22,7 +22,7 @@ import {
   Snackbar,
 } from '@vkontakte/vkui';
 
-import { Icon28ChevronBack, Icon28CancelCircleFillRed } from '@vkontakte/icons';
+import { Icon28ChevronBack, Icon20CheckCircleFillGreen } from '@vkontakte/icons';
 
 import { validate } from '../../utils/validate';
 
@@ -81,6 +81,15 @@ const CreateTask = ({ id }) => {
         university: '5',
       })
         .then((response) => {
+          setSnackbar(
+            <Snackbar
+              before={<Icon20CheckCircleFillGreen />}
+              layout="vertical"
+              duration={900}
+              onClose={() => setSnackBar(null)}>
+              Задача успешно создана!
+            </Snackbar>,)
+          router.pushPage(PAGE_MAIN)
           console.log('Успено создан!');
         })
         .catch((error) => {
@@ -132,7 +141,7 @@ const CreateTask = ({ id }) => {
       </PanelHeader>
       <div className="create-container">
         <div className="create">
-        <h2 className="filter-modal__title">Укажите тему</h2>
+          <h2 className="filter-modal__title">Укажите тему</h2>
           <FormTextarea
             name={'title'}
             placeholder={'Обозначь тематику, например: написать курсовую'}
