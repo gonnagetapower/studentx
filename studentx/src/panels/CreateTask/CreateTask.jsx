@@ -90,7 +90,7 @@ const CreateTask = ({ id }) => {
               Задача успешно создана!
             </Snackbar>,
           );
-          router.pushPage(PAGE_HOME);
+          setTimeout(() => router.pushPage(PAGE_HOME), 2000);
           console.log('Успено создан!');
         })
         .catch((error) => {
