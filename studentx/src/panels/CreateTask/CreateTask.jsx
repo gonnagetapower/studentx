@@ -88,8 +88,9 @@ const CreateTask = ({ id }) => {
               duration={900}
               onClose={() => setSnackBar(null)}>
               Задача успешно создана!
-            </Snackbar>,)
-          router.pushPage(PAGE_MAIN)
+            </Snackbar>,
+          );
+          router.pushPage(PAGE_HOME);
           console.log('Успено создан!');
         })
         .catch((error) => {
@@ -124,7 +125,7 @@ const CreateTask = ({ id }) => {
   return (
     <Panel id={id}>
       <PanelHeader
-        style={{ background: "#F6F7FF" }}
+        style={{ background: '#F6F7FF' }}
         left={
           <PanelHeaderButton
             aria-label="кнопка"
