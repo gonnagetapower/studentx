@@ -43,6 +43,9 @@ const CreateTask = ({ id }) => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
+
+  const [fetching, setFetching] = useState(false)
+
   const [snackbar, setSnackbar] = useState(null);
 
   const handleChange = (e) => {
@@ -261,7 +264,7 @@ const CreateTask = ({ id }) => {
             </div>
           </div>
           <div className="create__button">
-            <button onClick={() => handleSubmit()} className="button">
+            <button disabled={fetching ? true : false} onClick={() => handleSubmit()} className="button">
               Опубликовать
             </button>
           </div>

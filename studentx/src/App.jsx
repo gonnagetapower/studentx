@@ -103,7 +103,7 @@ const App = () => {
   };
 
   const modal = (
-    <ModalRoot activeModal={location.getModalId()} onClose={() => router.popPage()}>
+    <ModalRoot settlingHeight={100} activeModal={location.getModalId()} onClose={() => router.popPage()}>
       <Terms
         onCheckBoxChecked={onCheckBoxChecked}
         id={MODAL_TERMS}

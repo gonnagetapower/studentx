@@ -4,9 +4,10 @@ import axios from "axios";
 
 export const fetchTasks = createAsyncThunk(
     'tasks/fetchTasksStatus',
-    async (currentPage) => {
+    async (params) => {
+        const { currentPage, disciplineQuery, instituteQuery } = params;
         const res = await axios.get(
-            `https://mtimofeev.fun/api/v2/tasks?limit=5&page=${currentPage}`
+            `https://mtimofeev.fun/api/v2/tasks?${disciplineQuery}${instituteQuery}imit=5&page=${currentPage}`
         );
         return res.data
     }
@@ -34,11 +35,12 @@ export const tasksSlice = createSlice({
     },
     extraReducers: {
         [fetchTasks.pending]: (state, action) => {
-            state.items = [...state.items];
+            state.items = [];
             state.status = 'loading';
         },
         [fetchTasks.fulfilled]: (state, action) => {
-            state.items.push(...action.payload)
+            // state.items.push(...action.payload)
+            state.items = [...action.payload]
             state.firstFetch = false;
             state.status = 'success';
         },

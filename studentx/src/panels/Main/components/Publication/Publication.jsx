@@ -23,9 +23,16 @@ const Publication = ({ Snackbar, setSnackBar }) => {
   const firstFetch = useSelector((state) => state.tasks.firstFetch);
   const refreshStatus = useSelector((state) => state.tasks.refreshStatus);
 
+  const discipline = useSelector((state) => state.filter.discipline)
+  const institute = useSelector((state) => state.filter.institute)
+
+
+  const disciplineQuery = discipline ? `category=${discipline}&` : '';
+  const instituteQuery = institute ? `university=${institute}&` : '';
+
   const getTasks = async () => {
     try {
-      await dispatch(fetchTasks(currentPage)).unwrap();
+      await dispatch(fetchTasks({ currentPage, disciplineQuery, instituteQuery })).unwrap();
     } catch (err) {
       setSnackBar(
         <Snackbar
@@ -39,11 +46,12 @@ const Publication = ({ Snackbar, setSnackBar }) => {
     }
   };
 
+
   useEffect(() => {
-    if (currentPage < 20) {
+    if (currentPage < 40) {
       getTasks();
     }
-  }, [currentPage]);
+  }, [currentPage, discipline, institute]);
 
   useEffect(() => {
     console.log(localStorage.getItem('tokenAccess'));
@@ -57,7 +65,7 @@ const Publication = ({ Snackbar, setSnackBar }) => {
   const scrollHandler = (e) => {
     if (
       e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
+      (e.target.documentElement.scrollTop + window.innerHeight) <
       100
     ) {
       dispatch(setCurrentPage());
@@ -96,15 +104,15 @@ const Publication = ({ Snackbar, setSnackBar }) => {
           {firstFetch
             ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
             : tasksData.map((obj, index) => (
-                <Task
-                  key={index}
-                  title={obj.title}
-                  descr={obj.description}
-                  dateOrder={obj.orderDate}
-                  price={obj.price}
-                  id={obj.id}
-                />
-              ))}
+              <Task
+                key={index}
+                title={obj.title}
+                descr={obj.description}
+                dateOrder={obj.orderDate}
+                price={obj.price}
+                id={obj.id}
+              />
+            ))}
           {status === 'loading' ? (
             <div>
               <SkeletonCard />

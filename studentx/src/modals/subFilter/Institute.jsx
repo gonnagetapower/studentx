@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setInstitute } from '../../redux/slices/filterSlice';
@@ -15,13 +16,20 @@ const Institute = ({ id, subTitle }) => {
 
   const discipline = useSelector((state) => state.filter.discipline);
   const dispatch = useDispatch();
-
-  // const handleInstitute = (item) => {
-  //   dispatch(setInstitute(item));
-  //   router.popPage();
-  // };
-
   const location = useLocation();
+
+  const [universities, setUniversities] = useState([])
+
+  useEffect(() => {
+    const fetchUniversities = () => {
+      axios.get('https://mtimofeev.fun/api/v2/universities')
+        .then((data) => {
+          setUniversities(data.data)
+        })
+    }
+    fetchUniversities()
+  }, [])
+
 
   const handleInstitute = (item) => {
     if (location.route.pageId.includes('/create')) {
@@ -33,23 +41,10 @@ const Institute = ({ id, subTitle }) => {
     }
   };
 
-  const itemsArray = [
-    'Московский государственный университет им. М. В. Ломоносова  ',
-    'Московский физико-технический институт',
-    'Высшая школа экономики',
-    'Санкт-Петербургский государственный университет',
-    'Национальный исследовательский ядерный университет “МИФИ”',
-    'Московский государственный технический университет им. Н. Э. Баумана',
-    'Московский государственный институт международных отношений МИД РФ ',
-    'Санкт-Петербургский политехнический университет Петра Великого',
-    'Национальный исследовательский Томский политехнический университет',
-    'Российская академия народного хозяйства и государственной службы при Призиденте РФ',
-    'Уральский федеральный университет им. Б. Н. Ельцины',
-  ];
 
   return (
     <ModalPage id={id} settlingHeight={100}>
-      <div className="subFilter">
+      <div style={{ height: '100vh' }} className="subFilter">
         <span className="swipe-line"></span>
         <h1 className="subFilter__title">Институт</h1>
         <div className="subFilter__search">
@@ -60,7 +55,7 @@ const Institute = ({ id, subTitle }) => {
             placeholder="Поиск"
           />
         </div>
-        {itemsArray
+        {universities
           .filter((item) => {
             if (searchValue === '') {
               return item;
@@ -69,13 +64,13 @@ const Institute = ({ id, subTitle }) => {
             }
           })
           .map((item) => (
-            <div className="subFilter__item">
+            <div key={item.id} className="subFilter__item">
               <SimpleCell
                 Component="label"
                 activeMode="activeItem"
                 multiline={true}
-                onClick={() => handleInstitute(item)}>
-                {item}
+                onClick={() => handleInstitute(item.name)}>
+                {item.name}
               </SimpleCell>
             </div>
           ))}

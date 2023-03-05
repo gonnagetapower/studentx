@@ -40,12 +40,6 @@ const Filter = ({ id, discipline, setDiscipline }) => {
           setDiscipline={setDiscipline}
           subModal={MODAL_DISCIPLINE}
         />
-        <h2 className="filter-modal__title">Город</h2>
-        <FilterItem
-          subTitle={filterState.town}
-          setDiscipline={setDiscipline}
-          subModal={MODAL_TOWNS}
-        />
         <h2 className="filter-modal__title">Учебное заведение</h2>
         <FilterItem
           subTitle={filterState.institute}

@@ -13,6 +13,10 @@ import Home from './components/Home/Home';
 import Publication from './components/Publication/Publication';
 
 import './Main.css';
+import { useDispatch, useSelector } from 'react-redux';
+
+import closeIcon from './../../img/closeIcon.svg'
+import { setDiscipline, setInstitute } from '../../redux/slices/filterSlice';
 
 const Main = ({ id }) => {
   const [buttonActive, setButtonActive] = useState('2');
@@ -25,6 +29,18 @@ const Main = ({ id }) => {
   };
 
   const [filterValue, setFilterValue] = useState('');
+
+  const university = useSelector((state) => state.filter.institute)
+  const discipline = useSelector((state) => state.filter.discipline)
+  const dispatch = useDispatch()
+
+  const removeUniversity = () => {
+    dispatch(setInstitute(''))
+  }
+  const removeDiscipline = () => {
+    dispatch(setDiscipline(''))
+  }
+
 
   return (
     <Panel id={id}>
@@ -63,6 +79,15 @@ const Main = ({ id }) => {
                 className="filter__title">
                 Фильтры
               </h2>
+              {university ?
+                (<div className='filter__item'>
+                  Институт
+                  <img src={closeIcon} onClick={() => removeUniversity()} />
+                </div>) : (null)}
+              {discipline ?
+                (<div className='filter__item'>Предмет
+                  <img src={closeIcon} onClick={() => removeDiscipline()} />
+                </div>) : (null)}
             </div>
           </div>
         </div>
