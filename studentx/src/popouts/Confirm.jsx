@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert } from '@vkontakte/vkui';
-import { PAGE_HOME, router } from '../router';
+import { PAGE_HOME, PAGE_MAIN, router } from '../router';
 
 import './Confirm.css';
 
@@ -20,9 +20,12 @@ const Confirm = () => {
       <Alert
         actions={[
           {
-            title: 'Отмена',
+            title: 'Выйти',
+            mode: 'destructive',
             autoclose: true,
-            mode: 'cancel',
+            action: () => {
+              router.popPage()
+            },
           },
           {
             title: 'Сохранить черновик',
@@ -32,18 +35,15 @@ const Confirm = () => {
             },
           },
           {
-            title: 'Выйти',
-            mode: 'destructive',
+            title: 'Отмена',
             autoclose: true,
-            action: () => {
-              actionLeave();
-            },
+            mode: 'cancel',
           },
         ]}
         actionsLayout="vertical"
-        onClose={() => router.popPage()}>
-        <h1 className="alert-title">Вы уверены, что хотите выйти?</h1>
-        <p className="alert-descr">Все изменения не сохранятся.</p>
+        onClose={() => router.popPage()}
+        header="Удаление документа"
+        text="Вы уверены, что хотите удалить этот документ?">
       </Alert>
     </div>
   );
