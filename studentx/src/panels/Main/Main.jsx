@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Panel } from '@vkontakte/vkui';
+import { Panel, Tappable } from '@vkontakte/vkui';
 import { useRouter } from '@happysanta/router';
 
 import bellIcon from './../../img/bellIcon.svg';
@@ -80,14 +80,21 @@ const Main = ({ id }) => {
                 Фильтры
               </h2>
               {university ?
-                (<div className='filter__item'>
-                  Институт
-                  <img src={closeIcon} onClick={() => removeUniversity()} />
-                </div>) : (null)}
+                (<Tappable>
+                  <div className='filter__item'>
+                    Институт
+                    <img src={closeIcon} onClick={() => removeUniversity()} />
+                  </div>
+                </Tappable>
+                ) : (null)}
               {discipline ?
-                (<div className='filter__item'>Предмет
-                  <img src={closeIcon} onClick={() => removeDiscipline()} />
-                </div>) : (null)}
+                (
+                  <Tappable>
+                    <div className='filter__item'>Предмет
+                      <img src={closeIcon} onClick={() => removeDiscipline()} />
+                    </div>
+                  </Tappable>
+                ) : (null)}
             </div>
           </div>
         </div>
