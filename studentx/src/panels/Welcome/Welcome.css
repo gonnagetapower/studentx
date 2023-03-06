@@ -1,9 +1,16 @@
 .welcome {
+    background: #fff;
     height: 100vh;
     position: relative;
     display: flex;
+    justify-content: center;
+}
+
+.welcome-content {
+    display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .welcome__icon {
@@ -13,8 +20,7 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    width: 150px;
-    animation: icon 2s 1;
+    width: 650px;
 }
 
 .welcome__title {
@@ -26,7 +32,7 @@
     font-size: 24px;
     line-height: 130%;
     color: black;
-    animation: text 3s 1;
+    animation: text 2s 1;
 }
 
 @keyframes text {
@@ -35,10 +41,12 @@
         letter-spacing: 13px;
         margin-top: -40px;
     }
+
     50% {
         margin-top: -20px;
         color: white;
     }
+
     65% {
         margin-top: 0px;
         letter-spacing: 7px;
@@ -50,6 +58,7 @@
     0% {
         width: 100px;
     }
+
     100% {
         width: 150px;
     }
