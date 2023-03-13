@@ -8,7 +8,7 @@ import { MiniTask, Task } from './../../../../components';
 import infoIcon from './../../../../img/infoIcon.svg';
 import { useRouter } from '@happysanta/router';
 
-import { PAGE_DEV, PAGE_HOME } from '../../../../router';
+import { PAGE_CREATE, PAGE_DEV, PAGE_HOME } from '../../../../router';
 
 import './Home.css';
 
@@ -49,7 +49,7 @@ const Home = () => {
             <img className="create-card__img" src={infoIcon} alt="info" />
           </div>
           <button
-            onClick={() => router.pushPage(PAGE_HOME)}
+            onClick={() => router.pushPage(PAGE_CREATE)}
             className="button create-card--button">
             Начать
           </button>
