@@ -1,6 +1,9 @@
 export { default as AddButton }
     from "./AddButton/AddButton.jsx";
 
+export { default as EmptyTask }
+    from './EmptyTask/EmptyTask.jsx';
+
 export { default as FilterItem }
     from "./FilterItem/FilterItem.jsx";
 

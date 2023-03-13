@@ -8,7 +8,7 @@ import { MiniTask, Task } from './../../../../components';
 import infoIcon from './../../../../img/infoIcon.svg';
 import { useRouter } from '@happysanta/router';
 
-import { PAGE_DEV } from '../../../../router';
+import { PAGE_DEV, PAGE_HOME } from '../../../../router';
 
 import './Home.css';
 
@@ -20,15 +20,6 @@ const Home = () => {
   const [watch, setWatch] = useState([]);
 
   const lastWatchedId = useSelector((state) => state.app.lastWatch);
-
-  // if (localStorage.getItem('lastWatchedPost')) {
-  //   lastWatchedId = JSON.parse(localStorage.getItem('lastWatchedPost'));
-  //   console.log(lastWatchedId)
-  // } else {
-  //   lastWatchedId = []
-  // }
-
-  console.log(lastWatchedId);
 
   const responce = [];
 
@@ -58,7 +49,7 @@ const Home = () => {
             <img className="create-card__img" src={infoIcon} alt="info" />
           </div>
           <button
-            onClick={() => router.pushPage(PAGE_DEV)}
+            onClick={() => router.pushPage(PAGE_HOME)}
             className="button create-card--button">
             Начать
           </button>

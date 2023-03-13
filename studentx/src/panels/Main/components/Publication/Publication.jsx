@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { PullToRefresh, Snackbar } from '@vkontakte/vkui';
-import { Task, AddButton, SkeletonCard } from '../../../../components';
+import { Task, AddButton, SkeletonCard, EmptyTask } from '../../../../components';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -23,16 +23,17 @@ const Publication = ({ Snackbar, setSnackBar }) => {
   const firstFetch = useSelector((state) => state.tasks.firstFetch);
   const refreshStatus = useSelector((state) => state.tasks.refreshStatus);
 
-  const discipline = useSelector((state) => state.filter.discipline)
-  const institute = useSelector((state) => state.filter.institute)
-
+  const discipline = useSelector((state) => state.filter.discipline);
+  const institute = useSelector((state) => state.filter.institute);
 
   const disciplineQuery = discipline ? `category=${discipline}&` : '';
   const instituteQuery = institute ? `university=${institute}&` : '';
 
   const getTasks = async () => {
     try {
-      await dispatch(fetchTasks({ currentPage, disciplineQuery, instituteQuery })).unwrap();
+      await dispatch(
+        fetchTasks({ currentPage, disciplineQuery, instituteQuery }),
+      ).unwrap();
     } catch (err) {
       setSnackBar(
         <Snackbar
@@ -45,7 +46,6 @@ const Publication = ({ Snackbar, setSnackBar }) => {
       );
     }
   };
-
 
   useEffect(() => {
     if (currentPage < 40) {
@@ -65,7 +65,7 @@ const Publication = ({ Snackbar, setSnackBar }) => {
   const scrollHandler = (e) => {
     if (
       e.target.documentElement.scrollHeight -
-      (e.target.documentElement.scrollTop + window.innerHeight) <
+        (e.target.documentElement.scrollTop + window.innerHeight) <
       100
     ) {
       dispatch(setCurrentPage());
@@ -96,6 +96,10 @@ const Publication = ({ Snackbar, setSnackBar }) => {
     }
   };
 
+  if (tasksData.length === 0) {
+    return <EmptyTask />;
+  }
+
   return (
     <div className="content-container">
       <AddButton router={router} createPanel={PAGE_CREATE} />
@@ -104,15 +108,15 @@ const Publication = ({ Snackbar, setSnackBar }) => {
           {firstFetch
             ? [...new Array(6)].map((index) => <SkeletonCard key={index} />)
             : tasksData.map((obj, index) => (
-              <Task
-                key={index}
-                title={obj.title}
-                descr={obj.description}
-                dateOrder={obj.orderDate}
-                price={obj.price}
-                id={obj.id}
-              />
-            ))}
+                <Task
+                  key={index}
+                  title={obj.title}
+                  descr={obj.description}
+                  dateOrder={obj.orderDate}
+                  price={obj.price}
+                  id={obj.id}
+                />
+              ))}
           {status === 'loading' ? (
             <div>
               <SkeletonCard />
