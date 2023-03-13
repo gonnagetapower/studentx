@@ -40,11 +40,11 @@ const CreateTask = ({ id }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const formValues = useSelector((state) => state.create);
+  const user = useSelector((state) => state.app.user);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
-
-  const [fetching, setFetching] = useState(false)
+  const [fetching, setFetching] = useState(false);
 
   const [snackbar, setSnackbar] = useState(null);
 
@@ -77,11 +77,11 @@ const CreateTask = ({ id }) => {
       createTaskAPI({
         title: formValues.title,
         description: formValues.descr,
-        deliveryDate: '2023-03-01',
-        is_published: true,
-        owner: '12345',
-        category: '2',
-        university: '5',
+        deliveryDate: dateTo.toLocaleDateString('ru-RU'),
+        is_published: formValues.publish,
+        owner: user,
+        category: formValues.discipline,
+        university: formValues.institute,
       })
         .then((response) => {
           setSnackbar(
@@ -264,7 +264,10 @@ const CreateTask = ({ id }) => {
             </div>
           </div>
           <div className="create__button">
-            <button disabled={fetching ? true : false} onClick={() => handleSubmit()} className="button">
+            <button
+              disabled={fetching ? true : false}
+              onClick={() => handleSubmit()}
+              className="button">
               Опубликовать
             </button>
           </div>
