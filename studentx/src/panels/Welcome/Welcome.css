@@ -16,11 +16,11 @@
 .welcome__icon {
     margin: 0;
     position: absolute;
-    top: 45%;
+    top: 35%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    width: 650px;
+    width: 350px;
 }
 
 .welcome__title {
@@ -41,12 +41,10 @@
         letter-spacing: 13px;
         margin-top: -40px;
     }
-
     50% {
         margin-top: -20px;
         color: white;
     }
-
     65% {
         margin-top: 0px;
         letter-spacing: 7px;
@@ -58,7 +56,6 @@
     0% {
         width: 100px;
     }
-
     100% {
         width: 150px;
     }
