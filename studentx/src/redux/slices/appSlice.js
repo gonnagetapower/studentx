@@ -50,10 +50,13 @@ export const appSlice = createSlice({
     },
     reducers: {
         setLastWatch: (state, action) => {
-            state.lastWatch = [...state.lastWatch , action.payload]
+            state.lastWatch = [...state.lastWatch, action.payload]
         },
         setJwtToken: (state, action) => {
             state.jwtToken = action.payload
+        },
+        setUser: (state, action) => {
+            state.user = [action.payload]
         }
     },
     extraReducers: {
@@ -70,6 +73,6 @@ export const appSlice = createSlice({
     }
 })
 
-export const {  setLastWatch, setJwtToken } = appSlice.actions;
+export const { setLastWatch, setJwtToken, setUser } = appSlice.actions;
 
 export default appSlice.reducer

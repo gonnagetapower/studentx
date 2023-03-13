@@ -77,9 +77,9 @@ const CreateTask = ({ id }) => {
       createTaskAPI({
         title: formValues.title,
         description: formValues.descr,
-        deliveryDate: dateTo.toLocaleDateString('ru-RU'),
+        deliveryDate: dateTo.toLocaleDateString('en-EN'),
         is_published: formValues.publish,
-        owner: user,
+        owner: user.id,
         category: formValues.discipline,
         university: formValues.institute,
       })
@@ -123,6 +123,18 @@ const CreateTask = ({ id }) => {
       return photo !== elem;
     });
     dispatch(setPhotoList(newPhotoList));
+  };
+
+  const fakeSubmit = () => {
+    console.log({
+      title: formValues.title,
+      description: formValues.descr,
+      deliveryDate: dateTo.toLocaleDateString('ru-RU'),
+      is_published: formValues.publish,
+      owner: user,
+      category: formValues.discipline,
+      university: formValues.institute,
+    });
   };
 
   return (
@@ -266,7 +278,7 @@ const CreateTask = ({ id }) => {
           <div className="create__button">
             <button
               disabled={fetching ? true : false}
-              onClick={() => handleSubmit()}
+              onClick={() => fakeSubmit()}
               className="button">
               Опубликовать
             </button>
